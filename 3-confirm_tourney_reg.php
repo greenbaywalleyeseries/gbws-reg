@@ -112,11 +112,11 @@ $i++;
 
 </form>
 
-<!--
+
 <script type="text/javascript">
   document.getElementById("TourneyForm").submit();
 </script>
--->
+
   
   
 </body>

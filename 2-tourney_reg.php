@@ -188,7 +188,6 @@ function formValidation(team_num)
         <input type="hidden" name="item_name_12" id="item_12">
         <input type="hidden" name="item_name_13" id="item_13">
         <input type="hidden" name="item_name_14" id="item_14">
-        
         <input type="hidden" name="team_id" id="team_id" value="<?php echo $team_id;?>">
         <input type="hidden" name="partner1_first" id="partner1_first">
         <input type="hidden" name="partner1_last" id="partner1_last">
