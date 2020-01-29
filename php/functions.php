@@ -84,7 +84,7 @@ function get_team($last_name) {
             
         }
     }
-    print_r $team_info;
+    print_r($team_info);
     return $team_info;
 }
 
