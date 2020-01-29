@@ -1,0 +1,9 @@
+Web App + MySQL (Microsoft)
+Changed app service plan to F1
+
+install git locally (if not already installed)
+From command prompt:
+create local folder (in "htdocs" to use local development environment)
+cd to local folder
+git clone https://github.com/greenbaywalleyeseries/greenbaywalleyeseries.github.io .
+
