@@ -69,6 +69,7 @@ function get_team($last_name) {
     include('gbws_reg_db.php');
     $sql="SELECT mbr_id FROM member_info WHERE last like '".$last_name."%'";
     $result = $mysqli->query($sql);
+    echo $result->num_rows;
     if ($result->num_rows > 0) {
         while($row = mysqli_fetch_array($result)) {
             $mbr_id=$row['mbr_id'];
