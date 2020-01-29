@@ -73,8 +73,9 @@ function get_team($last_name) {
     if ($result->num_rows > 0) {
         while($row = mysqli_fetch_array($result)) {
             $mbr_id=$row['mbr_id'];
-            echo $mbr_id;
-            //$team_sql="SELECT * from team_info where partner1='".$mbr_id."' or partner2='".$mbr_id."' or sub1='".$mbr_id."' or sub2='".$mbr_id."'";
+            //echo $mbr_id;
+            $team_sql="SELECT * from team_info where partner1='".$mbr_id."' or partner2='".$mbr_id."' or sub1='".$mbr_id."' or sub2='".$mbr_id."'";
+            echo $team_sql;
             //$team_result = $mysqli->query($team_sql);
             //echo $team_result;
         }
