@@ -78,6 +78,7 @@ function get_team($last_name) {
             if ($team_result->num_rows > 0) {
                 while($team_row = mysqli_fetch_array($team_result)) {
                     print_r($team_row);
+                    echo"next";
                 }
             
             }
