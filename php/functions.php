@@ -68,7 +68,8 @@ function chk_paid($team_id) {
 function get_team($last_name) {
     $team_info = array();
     include('gbws_reg_db.php');
-    $sql="SELECT mbr_id FROM member_info WHERE last like '".$last_name."%'";
+    //$sql="SELECT mbr_id FROM member_info WHERE last like '".$last_name."%'";
+    $sql="SELECT mbr_id FROM member_info";
     $result = $mysqli->query($sql);
     if ($result->num_rows > 0) {
         while($row = mysqli_fetch_array($result)) {
