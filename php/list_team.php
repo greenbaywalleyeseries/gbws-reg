@@ -36,45 +36,48 @@
                     <th>Partner 1</th>
                     <th>Partner 2</th>
                 </tr>';
-                while($row = mysqli_fetch_array($result)) {
-                    $Team_ID=$row['team_id'];
-                    $team_size=chk_paid($Team_ID);
-                    $partner1_id=$row['partner1'];
-                    $partner2_id=$row['partner2'];
-                    $sub1_id=$row['sub1'];
-                    $sub2_id=$row['sub2'];
+                $length= sizeof($result);
+                if ($length > 0) {
+                    foreach ($result as $row) {
+                        $Team_ID=$row['team_id'];
+                        $team_size=chk_paid($Team_ID);
+                        $partner1_id=$row['partner1'];
+                        $partner2_id=$row['partner2'];
+                        $sub1_id=$row['sub1'];
+                        $sub2_id=$row['sub2'];
                     
-                    $partner1=get_mbr_info($partner1_id);
-                    while($mbr1 = mysqli_fetch_array($partner1)) {
-                        $Partner1=$mbr1['first'] ." ".$mbr1['last'];
-                        $Partner1_URL='<a href="sel_tourney.php?team_id=' .$Team_ID. '&team_reg=' .$team_size. '">'.$Partner1.'</a>';
+                        $partner1=get_mbr_info($partner1_id);
+                        while($mbr1 = mysqli_fetch_array($partner1)) {
+                            $Partner1=$mbr1['first'] ." ".$mbr1['last'];
+                            $Partner1_URL='<a href="sel_tourney.php?team_id=' .$Team_ID. '&team_reg=' .$team_size. '">'.$Partner1.'</a>';
+                        }
+                        
+                        $partner2=get_mbr_info($partner2_id);
+                        while($mbr2 = mysqli_fetch_array($partner2)) {
+                            $Partner2=$mbr2['first'] ." ".$mbr2['last'];
+                            $Partner2_URL='<a href="sel_tourney.php?team_id=' .$Team_ID. '&team_reg=' .$team_size. '">'.$Partner2.'</a>';
+                        }
+                        
+                        $sub1=get_mbr_info($sub1_id);
+                        while($mbr3 = mysqli_fetch_array($sub1)) {
+                            $Sub1=$mbr3['first'] ." ".$mbr3['last'];
+                            $Sub1_URL='<a href="sel_tourney.php?team_id=' .$Team_ID. '&team_reg=' .$team_size. '">'.$Sub1.'</a>';
+                        }
+                        
+                        $sub2=get_mbr_info($sub2_id);
+                        while($mbr4 = mysqli_fetch_array($sub2)) {
+                            $Sub2=$mbr4['first'] ." ".$mbr4['last'];
+                            $Sub2_URL='<a href="sel_tourney.php?team_id=' .$Team_ID. '&team_reg=' .$team_size. '">'.$Sub2.'</a>';
+                        }
+    
+                        $Team_URL='<a href="sel_tourney.php?team_id=' .$Team_ID. '&team_reg=' .$team_size. '">'.$Team_ID.'</a>';
+    
+                        echo "<tr>";
+                            echo "<td>" . $Team_URL. "</td>";
+                            echo "<td>" . $Partner1_URL. "</td>";
+                            echo "<td>" . $Partner2_URL. "</td>";
+                        echo "</tr>";
                     }
-                    
-                    $partner2=get_mbr_info($partner2_id);
-                    while($mbr2 = mysqli_fetch_array($partner2)) {
-                        $Partner2=$mbr2['first'] ." ".$mbr2['last'];
-                        $Partner2_URL='<a href="sel_tourney.php?team_id=' .$Team_ID. '&team_reg=' .$team_size. '">'.$Partner2.'</a>';
-                    }
-                    
-                    $sub1=get_mbr_info($sub1_id);
-                    while($mbr3 = mysqli_fetch_array($sub1)) {
-                        $Sub1=$mbr3['first'] ." ".$mbr3['last'];
-                        $Sub1_URL='<a href="sel_tourney.php?team_id=' .$Team_ID. '&team_reg=' .$team_size. '">'.$Sub1.'</a>';
-                    }
-                    
-                    $sub2=get_mbr_info($sub2_id);
-                    while($mbr4 = mysqli_fetch_array($sub2)) {
-                        $Sub2=$mbr4['first'] ." ".$mbr4['last'];
-                        $Sub2_URL='<a href="sel_tourney.php?team_id=' .$Team_ID. '&team_reg=' .$team_size. '">'.$Sub2.'</a>';
-                    }
-
-                    $Team_URL='<a href="sel_tourney.php?team_id=' .$Team_ID. '&team_reg=' .$team_size. '">'.$Team_ID.'</a>';
-
-                    echo "<tr>";
-                        echo "<td>" . $Team_URL. "</td>";
-                        echo "<td>" . $Partner1_URL. "</td>";
-                        echo "<td>" . $Partner2_URL. "</td>";
-                    echo "</tr>";
                 }
             echo "</table>";
             mysqli_close($mysqli);

@@ -65,11 +65,17 @@ function chk_paid($team_id) {
     return $team_size;
 }
 
+function multi_unique($src){
+    $output = array_map("unserialize",
+        array_unique(array_map("serialize", $src)));
+    return $output;
+}
+
 function get_team($last_name) {
     $team_info = array();
     include('gbws_reg_db.php');
-    //$sql="SELECT mbr_id FROM member_info WHERE last like '".$last_name."%'";
-    $sql="SELECT mbr_id FROM member_info";
+    $sql="SELECT mbr_id FROM member_info WHERE last like '".$last_name."%'";
+    //$sql="SELECT mbr_id FROM member_info";
     $result = $mysqli->query($sql);
     if ($result->num_rows > 0) {
         while($row = mysqli_fetch_array($result)) {
@@ -77,15 +83,14 @@ function get_team($last_name) {
             $team_sql="SELECT * from team_info where partner1='".$mbr_id."' or partner2='".$mbr_id."' or sub1='".$mbr_id."' or sub2='".$mbr_id."'";
             $team_result = $mysqli->query($team_sql);
             if ($team_result->num_rows > 0) {
-                while($team_row = mysqli_fetch_array($team_result)) {
+                foreach ($team_result as $team_row) {
+                    array_push($team_info, $team_row);
                 }
-            
             }
-            
         }
+        $output=multi_unique($team_info);
     }
-    //print_r($team_info);
-    return $team_info;
+    return $output;
 }
 
 function get_mbr_info($mbr_id) {
