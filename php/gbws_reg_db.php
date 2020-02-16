@@ -1,7 +1,6 @@
 <?php
-$host = "gbws-registration-mysqldbserver.database.azure.com";
-//$host = "gbws-registration.mysql.database.azure.com";
-$username = "yami@gbws-registration-mysqldbserver";
+$host = "gbws-registration.mysql.database.azure.com";
+$username = "yami@gbws-registration";
 $password = "Th1sSucksa$$";
 $db_name = "gbws_reg";
 
