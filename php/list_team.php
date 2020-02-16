@@ -30,12 +30,19 @@
 
             $result = get_team($last_name);
             
-            echo '<table id="team">
-                <tr>
-                    <th>Team ID</th>
-                    <th>Partner 1</th>
-                    <th>Partner 2</th>
-                </tr>';
+            echo '
+    <div class="site-section">
+        <div class="col-6 col-md-6">
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Team Number</th>
+        <th>Partner #1</th>
+        <th>Partner #2</th>
+      </tr>
+    </thead>
+    <tbody>';
+            
                 $length= sizeof($result);
                 if ($length > 0) {
                     foreach ($result as $row) {
@@ -72,14 +79,26 @@
     
                         $Team_URL='<a href="sel_tourney.php?team_id=' .$Team_ID. '&team_reg=' .$team_size. '">'.$Team_ID.'</a>';
     
-                        echo "<tr>";
-                            echo "<td>" . $Team_URL. "</td>";
-                            echo "<td>" . $Partner1_URL. "</td>";
-                            echo "<td>" . $Partner2_URL. "</td>";
-                        echo "</tr>";
+                        echo '
+        <tr>
+            <td>' .$Team_URL .'</td>
+            <td>' .$Partner1_URL .'</td>
+            <td>' .$Partner2_URL .'</td>
+        </tr>';
                     }
+                echo '
+                    </tbody>
+                </table>
+        </div>
+    </div>
+
+';
+                
+
+
                 }
-            echo "</table>";
+
+                
             mysqli_close($mysqli);
         ?>
         

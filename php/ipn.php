@@ -147,10 +147,19 @@ for ($i=1; $i<=$num_cart_items; $i++) {
     for ($i=1; $i<=$num_cart_items; $i++) {
         $item_number=$_POST['item_number'.$i];
         $item_name=$_POST['item_name'.$i];
+        if (isset($_POST['option_selection1_'.$i])) {
+            $partner1=$_POST['option_selection1_'.$i];
+        } else $partner1='';
+        if (isset($_POST['option_selection2_'.$i])) {
+            $partner2=$_POST['option_selection2_'.$i];
+        } else $partner2='';
         $quantity=$_POST['quantity'.$i];
         $mc_gross=$_POST['mc_gross_'.$i];
-        mysqli_query($mysqli, "INSERT INTO transaction_items (txn_id, item_number, item_name, quantity, mc_gross)
-        VALUES ('$txn_id', '$item_number', '$item_name', '$quantity', '$mc_gross')") or die ("unable to execute query 2");
+        mysqli_query($mysqli, "INSERT INTO transaction_items (txn_id, item_number, item_name, partner1, partner2, quantity, mc_gross)
+        VALUES ('$txn_id', '$item_number', '$item_name', '$partner1', '$partner2', '$quantity', '$mc_gross')") or die ("unable to execute query 2");
+        if (strpos($item_number, 'Registration') !== false) {
+            mysqli_query($mysqli, "UPDATE team_info SET paid='X' WHERE team_id='$custom'");
+        }
     }
 }
 

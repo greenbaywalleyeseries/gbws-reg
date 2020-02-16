@@ -1,70 +1,23 @@
-
-function createConfirm(message, okHandler) {
-	    var confirm = '<p id="confirmMessage">'+message+'</p><div class="clearfix dropbig">'+
-	            '<input type="button" id="confirmYes" class="alignleft ui-button ui-widget ui-state-default" value="Yes" />' +
-	            '<input type="button" id="confirmNo" class="ui-button ui-widget ui-state-default" value="No" /></div>';
-
-	    $.fn.colorbox({html:confirm, 
-	        onComplete: function(){
-	            $("#confirmYes").click(function(){
-	                okHandler();
-	                $.fn.colorbox.close();
-	            });
-	            $("#confirmNo").click(function(){
-	                $.fn.colorbox.close();
-	            });
-	    }});
-}
-
-
-
-	//prompt("In the event a tournament is cancelled, do you want a refund or have money rolled forward to the championship tournament.  If you choose to have your money refunded, you will not be eligible to fish the championship tournament");
-
-function CheckTeamSize(first, last, chkbox) {
-	var team_size = Object.keys(team).length;
-	if (team_size == 2)
-	{
-		alert('Only two team members may be selected') 
-		document.TourneyForm; 
-		document.getElementById(chkbox).checked = false;
-	}
-	else if (team_size == 1)
-	{
-		team.push({"first":first, "last":last});
-		document.getElementById("partner2_first").value = team[1]["first"];
-		document.getElementById("partner2_last").value = team[1]["last"];
-	}
-	else if (team_size == 0)
-	{
-		team = [{"first":first, "last":last}];
-		document.getElementById("partner1_first").value = team[0]["first"];
-		document.getElementById("partner1_last").value = team[0]["last"];
-	}
-}
-
-
-function CheckPartnerCount(last_checked) {
-	team = new Array();
-	if (document.TourneyForm.partner1.checked)
-	{
-		CheckTeamSize(team_info.first[0], team_info.last[0], last_checked);
-	}
-	if (document.TourneyForm.partner2.checked)
-	{
-		CheckTeamSize(team_info.first[1], team_info.last[1], last_checked);
-	}
-	var arrayLength = team_info.position.length-2;
-	{
-		for (var i = 1; i <= arrayLength; i++) 
-		{
-			var obj = "sub"+i;
-			if (document.getElementById(obj).checked)
-			{
-				var j=i+1;
-				CheckTeamSize(team_info.first[j], team_info.last[j], last_checked);
-			}
-		}
-	}
+function showTeam(name) {
+    if (name == "") {
+        document.getElementById("ListTeams").innerHTML = "";
+        return;
+    } else {
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("ListTeams").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET","php/list_team.php?last_name="+name,true);
+        xmlhttp.send();
+    }
 }
 
 function CalcMbrRegFee(quantity){
@@ -83,25 +36,12 @@ function CalcMbrRegFee(quantity){
 function UpdateCart(chkbox_name,description,cost){
 	var chk_box_sel=document.getElementById(chkbox_name).checked;
 	if (chk_box_sel == true) {
-// 		var params = "team_id=" + document.getElementById('team_id').value + "&field=" + chkbox_name;
-//		$.ajax({
-//			url: 'php/parseItemNumber.php',
-//			type: 'POST',
-//			data: params,
-//		    success: function(response) {
-//			    if(response == "1") {
-// 				    alert("This team is already registered for this tournament");
-// 				    document.getElementById(chkbox_name).checked = false;
-// 			    } else {
-             		items.push({
-	               		check_box: chkbox_name,
-    	           		desc: description,
-        	       		cost: cost        	       		
-            		});
-             		UpdateTotal();
- //             	}
- //			}
-// 		});
+ 		items.push({
+    		check_box: chkbox_name,
+        	desc: description,
+        	cost: cost
+        });
+        UpdateTotal();  
 	}
 	if (chk_box_sel == false) {
     	for (var i = 0; i < items.length; i++) {
@@ -111,9 +51,8 @@ function UpdateCart(chkbox_name,description,cost){
     	}
     UpdateTotal();
 	}
-
+	console.log(items);
 }
-
 
 function UpdateTotal()
 {
@@ -130,11 +69,32 @@ function populateInputFields() {
  		var j=i+1;
  		var item_number_id = "\"item_number_"+[j]+"\"" ;
      	var check_box = items[i].check_box ;
+        if (check_box.includes("Tourney")) {
+        	console.log(check_box);
+        	var location= check_box.substr(0, check_box.indexOf('-'));
+        	var partner1_field=location+'-Partner1';
+        	var partner2_field=location+'-Partner2';
+        	var partner1_var_field="'"+partner1_field+"'";
+        	var partner2_var_field="'"+partner2_field+"'";
+        	var partner1_mbr_id = document.getElementById(eval(partner1_var_field)).value;
+        	var partner2_mbr_id = document.getElementById(eval(partner2_var_field)).value;
+
+
+         	var on0_id = "\"on0_"+[j]+"\"" ;
+         	var partner1_hdr = "partner1";
+         	$('#TourneyForm').append('<input type="hidden" name=' + on0_id + 'id=' + on0_id + ' value=' + partner1_hdr + '>');
+         	var os0_id = "\"os0_"+[j]+"\"" ;
+         	$('#TourneyForm').append('<input type="hidden" name=' + os0_id + 'id=' + os0_id + ' value=' + partner1_mbr_id + '>');
+         	var on1_id = "\"on1_"+[j]+"\"" ;
+         	var partner2_hdr = "partner2";
+         	$('#TourneyForm').append('<input type="hidden" name=' + on1_id + 'id=' + on1_id + ' value=' + partner2_hdr + '>');
+         	var os1_id = "\"os1_"+[j]+"\"" ;
+         	$('#TourneyForm').append('<input type="hidden" name=' + os1_id + 'id=' + os1_id + ' value=' + partner2_mbr_id + '>');       	
+        }
      	var item_name_id = "\"item_name_"+[j]+"\"" ;
      	var desc = items[i].desc ;
      	var item_amount_id = "\"amount_"+[j]+"\"" ;
      	var cost = items[i].cost ;
-
      	$('#TourneyForm').append('<input type="hidden" name=' + item_number_id + 'id=' + item_number_id + ' value=' + check_box + '>');
      	$('#TourneyForm').append('<input type="hidden" name=' + item_name_id + 'id=' + item_name_id + ' value="' + desc + '">');
      	$('#TourneyForm').append('<input type="hidden" name=' + item_amount_id + 'id=' + item_amount_id + ' value=' + cost + '>');
@@ -143,17 +103,11 @@ function populateInputFields() {
 
 function formValidation(team_num)
 {
-//	var team_size = Object.keys(team).length;
-//	if (team_size != 2)
-//	{
-//		alert('Select Two Team Members');
-//		event.preventDefault();
-//	} else {
-		populateInputFields();
-		console.log(items);
-		var custom_text = team_id + ";" + partner1 + ";" + partner2;
-		document.getElementById("custom").value = custom_text;
-		//createConfirm('a', 'b');
-//	}
+	populateInputFields();
+	//console.log(items);
+	var custom_text = team_id;
+	//var custom_text = team_id + ";" + partner1 + ";" + partner2;
+	document.getElementById("custom").value = custom_text;
+
 }
 

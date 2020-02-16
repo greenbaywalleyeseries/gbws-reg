@@ -27,6 +27,12 @@
         $("#myModal").modal('show');
     });
     
+    function Refund() {
+    	var refund=document.getElementById("refund").value ;
+    	if (refund == "Refund") {
+    		$("#Refund").modal('show');
+    	}
+    }
 
 	</script>
   </head>
@@ -43,7 +49,25 @@
           <h4 class="modal-title">Team Subs</h4>
         </div>
         <div class="modal-body">
-          <p>Up to 2 Subs may be used throughout the season to qualify and fish in the championship tournament.  Teams registering subs will not be eligible to win Team of the Year.  Subs must be registered when the team is registered.</p>
+          <p>Teams using subs during the season will not be eligible to win Team of the Year.  Subs must be registered when the team is registered.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  
+    <div class="modal fade" id="Refund" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          
+          <h4 class="modal-title">Refund Selected</h4>
+        </div>
+        <div class="modal-body">
+          <p>If a tournament is cancelled and a refund is issued, the team will be ineligible to fish the championship tournament</p>
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -220,6 +244,12 @@
 									<label for="partner1_email">Email</label>
 									<input name="partner1_email" id="partner1_email" type="text" class="form-control" placeholder="Email">
 								</div>
+							</div>
+							<div class="form-row">
+								<div class="col">
+									<label for="partner1_SSN">SSN</label>
+									<input name="partner1_SSN" id="partner1_SSN" type="text" class="form-control" placeholder="111-11-1111" required>
+								</div>
 							</div>							
 						</div>
 <!--  Partner 2 registration info -->
@@ -326,12 +356,63 @@
 									<label for="partner2_email">Email</label>
 									<input name="partner2_email" id="partner2_email" type="text" class="form-control" placeholder="Email">
 								</div>
-							</div>							
+							</div>
+							<div class="form-row">
+								<div class="col">
+									<label for="partner2_SSN">SSN</label>
+									<input name="partner2_SSN" id="partner2_SSN" type="text" class="form-control" placeholder="111-11-1111" required>
+								</div>
+							</div>
 						</div>
 					</div>
+					
 					<br>
 					<hr>
 					<br>
+					
+<!--  Team Equipment registration info -->					
+					<div class="row align-items-center">
+						<div class="col-md-12 center-block">
+							<div class="form-row">
+								<div class="col">
+									<label for="refund">In the event of a tournament cancellation, should the fees for the cancelled tournement to be refunded or rolled into the championship pot?</label>
+									<select onchange="Refund()" name="refund" id="refund">
+                        				<option value="Roll">Roll into Championship Payout</option>
+                        				<option value="Refund">Refund</option>
+                    				</select>
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="col">
+									<label for="boat">Boat</label>
+									<input name="boat" id="boat" type="text" class="form-control" placeholder="Boat">
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="col">
+									<label for="motor">Motor</label>
+									<input name="motor" id="motor" type="text" class="form-control" placeholder="Motor">
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="col">
+									<label for="trolling_motor">Trolling Motor</label>
+									<input name="trolling_motor" id="trolling_motor" type="text" class="form-control" placeholder="Trolling Motor">
+								</div>
+							</div>
+							<div class="form-row">
+								<div class="col">
+									<label for="electronics">Electronics</label>
+									<input name="electronics" id="electronics" type="text" class="form-control" placeholder="Electronics">
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<br>
+					<hr>
+					<br>
+
 <!--  Sub 1 registration info -->
 					<div class="row align-items-center">
 						<div class="col-md-6 center-block">
@@ -437,7 +518,13 @@
 									<label for="sub1_email">Email</label>
 									<input name="sub1_email" id="sub1_email" type="text" class="form-control" placeholder="Email">
 								</div>
-							</div>							
+							</div>
+							<div class="form-row">
+								<div class="col">
+									<label for="sub1_SSN">SSN</label>
+									<input name="sub1_SSN" id="sub1_SSN" type="text" class="form-control" placeholder="111-11-1111">
+								</div>
+							</div>
 						</div>
 <!-- Sub 2 Registration Info -->
 						<div class="col-md-6 center-block">
@@ -543,7 +630,13 @@
 									<label for="sub2_email">Email</label>
 									<input name="sub2_email" id="sub2_email" type="text" class="form-control" placeholder="Email">
 								</div>
-							</div>							
+							</div>
+							<div class="form-row">
+								<div class="col">
+									<label for="sub2_SSN">SSN</label>
+									<input name="sub2_SSN" id="partner1_SSN" type="text" class="form-control" placeholder="111-11-1111">
+								</div>
+							</div>
 						</div>
 					</div>
 					<br>

@@ -1,6 +1,7 @@
 	<?php
         include('php/gbws_reg_db.php');
         include('php/functions.php');
+
         mysqli_select_db($mysqli,"gbws_reg");
         $team_id = $_GET['team_id'];
         $team_reg = $_GET['team_reg'];
@@ -13,29 +14,37 @@
             $sub1_id=$row['sub1'];
             $sub2_id=$row['sub2'];
         }
-        $partner1=get_mbr_info($partner1_id);
-        $partner2=get_mbr_info($partner2_id);
-        $sub1=get_mbr_info($sub1_id);
-        $sub2=get_mbr_info($sub2_id);
-        while ($row = mysqli_fetch_array($partner1)) {
-            $first=$row['first'];
-            $last=$row['last'];
-            $partner1_name=$first." ".$last;
+        if (isset($partner1_id)) {
+            $partner1=get_mbr_info($partner1_id);
+            while ($row = mysqli_fetch_array($partner1)) {
+                $first=$row['first'];
+                $last=$row['last'];
+                $partner1_name=$first." ".$last;
+            }
         }
-        while ($row = mysqli_fetch_array($partner2)) {
-            $first=$row['first'];
-            $last=$row['last'];
-            $partner2_name=$first." ".$last;
+        if (isset($partner1_id)) {
+            $partner2=get_mbr_info($partner2_id);
+            while ($row = mysqli_fetch_array($partner2)) {
+                $first=$row['first'];
+                $last=$row['last'];
+                $partner2_name=$first." ".$last;
+            }
         }
-        while ($row = mysqli_fetch_array($sub1)) {
-            $first=$row['first'];
-            $last=$row['last'];
-            $sub1_name=$first." ".$last;
+        if (isset($sub1_id)) {
+            $sub1=get_mbr_info($sub1_id);
+            while ($row = mysqli_fetch_array($sub1)) {
+                $first=$row['first'];
+                $last=$row['last'];
+                $sub1_name=$first." ".$last;
+            }
         }
-        while ($row = mysqli_fetch_array($sub2)) {
-            $first=$row['first'];
-            $last=$row['last'];
-            $sub2_name=$first." ".$last;
+        if (isset($sub2_id)) {
+            $sub2=get_mbr_info($sub2_id);
+            while ($row = mysqli_fetch_array($sub2)) {
+                $first=$row['first'];
+                $last=$row['last'];
+                $sub2_name=$first." ".$last;
+            }
         }
     ?>
 
@@ -49,7 +58,7 @@
     	var items = new Array();
     	var total=0;
     	var team_reg=<?php echo $team_reg ?>;
-    	var team_id=<?php echo $team_id ?>;
+    	var team_id="<?php echo $team_id ?>";
     	var partner1='<?php echo $partner1_name ?>';
     	var partner2='<?php echo $partner2_name ?>';
     </script>
@@ -72,9 +81,7 @@
              			document.getElementById("registrations").value = team_reg; 
             	}
             }
-
         });
-
     </script>
 
     <title>Green Bay Walleye Series</title>
@@ -97,10 +104,7 @@
   </head>
 
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
-
-    
     <div class="site-wrap" id="home-section">
-
       <div class="site-mobile-menu site-navbar-target">
         <div class="site-mobile-menu-header">
           <div class="site-mobile-menu-close mt-3">
@@ -170,34 +174,60 @@
                 <input type="hidden" name="team_id" id="team_id" value="<?php echo $team_id;?>">
                 
                 <div class="form-row">
-                    <div class="col-4 col-md-4 text center">
-                    	<p>Team Member 1: <?php echo $partner1_name?></p>
+                    <div class="col-3 col-md-3 text center">
+                    	<p>Team Member 1: <?php
+                    	   if (isset($partner1_name)) {
+                    	       echo $partner1_name;
+                    	   }?></p>
                     </div>
-                    
-                    <div class="col-4 col-md-4 text center">
-                    	<p>Team Member 2: <?php echo $partner2_name?></p>
+                    <div class="col-3 col-md-3 text center">
+                    	<p>Team Member 2: <?php
+                    	   if (isset($partner2_name)) {
+                    	       echo $partner2_name;
+                    	   }?></p>
+                    </div>
+                    <div class="col-3 col-md-3 text center">
+                    	<p>First Sub: <?php
+                    	   if (isset($sub1_name)) {
+                    	       echo $sub1_name;
+                    	   }?></p>
+                    </div>
+                    <div class="col-3 col-md-3 text center">
+                    	<p>Second Sub: <?php
+                    	   if (isset($sub2_name)) {
+                    	       echo $sub2_name;
+                    	   }?></p>
                     </div>
                 </div>
-                
-                <div class="form-row">
-                    <div class="col-4 col-md-12 text center">
-        				GBWS Membership Registration ($40 per team member): <input type="text" size="5" id="registrations" name="registrations" value="0" disabled/>
-        				<br>
+                <hr>
+                <div class="form-row mb-3">
+                    <div class="col-4 col-md-4 text-center">
+        				GBWS Membership Registration 
+        				($40 per team member): 
+        			</div>
+        			<div class="col-1 col-md-1 text-center align-middle">
+        				<input type="text" size="1" id="registrations" name="registrations" value="0" disabled/>
         			</div>
     			</div>
-    			
+    			<hr>
     			<div class="form-row">
-    				<div class="col-3  col-md-2">
+    				<div class="col-2  col-md-2">
     			
     				</div>
-    				<div class="col-3  col-md-2 text-center">
+    				<div class="col-2  col-md-2 text-center">
     					<p>Tournament<br>$410</p>
     				</div>
-    				<div class="col-3  col-md-2 text-center">
+    				<div class="col-2  col-md-2 text-center">
     					<p>Option Pot - 100% Payback<br>$200</p>
     				</div>
-    				<div class="col-3  col-md-2 text-center">
+    				<div class="col-2  col-md-2 text-center">
     					<p>Big Fish<br>$20</p>
+    				</div>
+    				<div class="col-2  col-md-2 text-center">
+    					<p>Partner #1</p>
+    				</div>
+    				<div class="col-2  col-md-2 text-center">
+    					<p>Partner #2</p>
     				</div>
     			</div>
     
@@ -214,17 +244,31 @@
                         
                         
                         echo '<div class="form-row">';
-                            echo '<div class="col-3  col-md-2">';
+                            echo '<div class="col-2  col-md-2">';
                                 echo '<p>'. $description .'</p>';
                             echo '</div>';
-                            echo '<div class="col-3  col-md-2 text-center">';
+                            echo '<div class="col-2  col-md-2 text-center">';
                                 echo '<input type="checkbox" id=' . $tourney["local"] . '-Tourney value="' . $tourney_fee . '" onclick="UpdateCart(\''.$tourney["local"].'-Tourney\',\''.$description.' Registration'.'\','. $tourney_fee.')">';
                             echo '</div>';
-                            echo '<div class="col-3  col-md-2 text-center">';
+                            echo '<div class="col-2  col-md-2 text-center">';
                                 echo '<input type="checkbox" id=' . $tourney["local"] . '-Option value="' .$option_fee. '" onclick="UpdateCart(\''.$tourney["local"].'-Option\',\''.$description.' Option Pot'.'\','. $option_fee.')">';
                             echo '</div>';
-                            echo '<div class="col-3  col-md-2 text-center">';
+                            echo '<div class="col-2  col-md-2 text-center">';
                                 echo '<input type="checkbox" id=' . $tourney["local"] . '-Fish value="' .$big_fish_fee. '" onclick="UpdateCart(\''.$tourney["local"].'-Fish\',\''.$description.' Big Fish'.'\','. $big_fish_fee.')">';
+                            echo '</div>';
+                            echo '<div class="col-2  col-md-2 text-center">';
+                                echo '<select name="'.$tourney["local"].'-Partner1" id="'.$tourney["local"].'-Partner1">';
+                                    echo '<option value='.$partner1_id.'>'.$partner1_name.'</option>';
+                                    echo '<option value='.$sub1_id.'>'.$sub1_name.'</option>';
+                                    echo '<option value='.$sub2_id.'>'.$sub2_name.'</option>';
+                                echo '</select>';
+                            echo '</div>';
+                            echo '<div class="col-2  col-md-2 text-center">';
+                                echo '<select name="'.$tourney["local"].'-Partner2" id="'.$tourney["local"].'-Partner2">';;
+                                    echo '<option value='.$partner2_id.'>'.$partner2_name.'</option>';
+                                    echo '<option value='.$sub1_id.'>'.$sub1_name.'</option>';
+                                    echo '<option value='.$sub2_id.'>'.$sub2_name.'</option>';
+                                echo '</select>';
                             echo '</div>';
                         echo '</div>';
     
@@ -232,17 +276,23 @@
               ?>
                     
               <div class="form-row">
-    				<div class="col-3  col-md-2">
+    				<div class="col-2  col-md-2">
     			
     				</div>
-    				<div class="col-3  col-md-2 text-center">
+    				<div class="col-2  col-md-2 text-center">
     					<p>Championship Tournament<br>$510</p>
     				</div>
-    				<div class="col-3  col-md-2 text-center">
+    				<div class="col-2  col-md-2 text-center">
     					<p>Option Pot - 100% Payback<br>$200</p>
     				</div>
-    				<div class="col-3  col-md-2 text-center">
+    				<div class="col-2  col-md-2 text-center">
     					<p>Big Fish<br>$40</p>
+    				</div>
+    				<div class="col-2  col-md-2 text-center">
+    					<p>Partner #1</p>
+    				</div>
+    				<div class="col-2  col-md-2 text-center">
+    					<p>Partner #2</p>
     				</div>
     			</div>
     
@@ -257,32 +307,42 @@
                         $option_fee=$tourney["option_fee"];
                         $big_fish_fee=$tourney["big_fish_fee"];
                         echo '<div class="form-row">';
-                            echo '<div class="col-3  col-md-2">';
+                            echo '<div class="col-2  col-md-2">';
                                 echo '<p>'. $description .'</p>';
                             echo '</div>';
-                            echo '<div class="col-3  col-md-2 text-center">';
+                            echo '<div class="col-2  col-md-2 text-center">';
                                 echo '<input type="checkbox" id=' . $tourney["local"] . '-Tourney value="' . $tourney_fee . '" onclick="UpdateCart(\''.$tourney["local"].'-Tourney\',\''.$description.' Registration'.'\','. $tourney_fee.')">';
                             echo '</div>';
-                            echo '<div class="col-3  col-md-2 text-center">';
+                            echo '<div class="col-2  col-md-2 text-center">';
                                 echo '<input type="checkbox" id=' . $tourney["local"] . '-Option value="' .$option_fee. '" onclick="UpdateCart(\''.$tourney["local"].'-Option\',\''.$description.' Option Pot'.'\','. $option_fee.')"></td>';
                             echo '</div>';
-                            echo '<div class="col-3  col-md-2 text-center">';
+                            echo '<div class="col-2  col-md-2 text-center">';
                                 echo '<input type="checkbox" id=' . $tourney["local"] . '-Fish value="' .$big_fish_fee. '" onclick="UpdateCart(\''.$tourney["local"].'-Fish\',\''.$description.' Big Fish'.'\','. $big_fish_fee.')"></td>';
+                            echo '</div>';                          
+                            echo '<div class="col-2  col-md-2 text-center">';
+                                echo '<select name="'.$tourney["local"].'-Partner1" id="'.$tourney["local"].'-Partner1">';
+                                    echo '<option value='.$partner1_id.'>'.$partner1_name.'</option>';
+                                        echo '<option value='.$sub1_id.'>'.$sub1_name.'</option>';
+                                        echo '<option value='.$sub2_id.'>'.$sub2_name.'</option>';
+                                echo '</select>';
+                            echo '</div>';
+                            echo '<div class="col-2  col-md-2 text-center">';
+                                echo '<select name="'.$tourney["local"].'-Partner2" id="'.$tourney["local"].'-Partner2">';;
+                                    echo '<option value='.$partner2_id.'>'.$partner2_name.'</option>';
+                                    echo '<option value='.$sub1_id.'>'.$sub1_name.'</option>';
+                                    echo '<option value='.$sub2_id.'>'.$sub2_name.'</option>';
+                                echo '</select>';
                             echo '</div>';
                         echo '</div>';
                     }
                     mysqli_close($mysqli);
                 ?>
-                
+                <hr>
     			<div class="form-row"> 
-    				<div class="col-4 col-md-12 text center">
+    				<div class="col-2 col-md-2">
     					Total: $<input type="text" size="5" id="total" name="total" value="0" disabled/>
-    			
     				</div>
-    			</div>
-    			<br>
-    			<div class="form-row">
-    				<div class="col-md-12 text-center">
+    				<div class="col-2 col-md-2 text-center">
 						<input type="submit" class="btn btn-block btn-primary text-white py-3 px-2" value="Submit">
 					</div>
 				</div>
