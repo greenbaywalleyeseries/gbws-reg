@@ -73,6 +73,7 @@ function multi_unique($src){
 
 function get_team($last_name) {
     $team_info = array();
+    $output = array();
     include('gbws_reg_db.php');
     $sql="SELECT mbr_id FROM member_info WHERE last like '".$last_name."%'";
     //$sql="SELECT mbr_id FROM member_info";
@@ -88,7 +89,9 @@ function get_team($last_name) {
                 }
             }
         }
-        $output=multi_unique($team_info);
+        if ( sizeof($team_info) != 0 ) {
+            $output=multi_unique($team_info);
+        }
     }
     return $output;
 }
