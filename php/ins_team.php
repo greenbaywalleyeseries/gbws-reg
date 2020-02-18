@@ -135,7 +135,8 @@ echo 'alert("Problem registering team")';
 
 $mysqli->close();
 //
-header("Location:../sel_tourney.php?team_id='.$team_id.'&team_reg='.$reg_size",  true,  301 );  exit;
+echo "<script type='text/javascript'>window.top.location='../sel_tourney.php?team_id='.$team_id.'&team_reg='.$reg_size';</script>"; exit;
+
 
 echo "<br>";
 
