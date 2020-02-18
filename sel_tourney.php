@@ -347,6 +347,11 @@
 						<input type="submit" class="btn btn-block btn-primary text-white py-3 px-2" value="Submit">
 					</div>
 				</div>
+				<div class="form-row">
+					<div class="col-4 col-md-4 mt-3">
+    					Coupon Code: <input type="text" size="8" id="coupon" name="coupon" value="" onchange="checkCoupon()">
+    				</div>
+				</div>
 			</form>
 		</div>
 
