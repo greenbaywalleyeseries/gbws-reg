@@ -58,7 +58,7 @@ if ($receiver_email != "gbwalleyeseries@gmail.com") {
     mysqli_query($mysqli, "insert into log (message) values ('$msg')");
     exit(); // exit script
 }
-mysqli_query($mysqli, "insert into log (message) values ('Receiver email good')");
+
 // Check number 2 ------------------------------------------------------------------------------------------------------------
 if ($_POST['payment_status'] != "Completed") {
     // Handle how you think you should if a payment is not complete yet, a few scenarios can cause a transaction to be incomplete
@@ -75,6 +75,7 @@ if ($numRows > 0) {
     mysqli_query($mysqli, "insert into log (message) values ('$msg')");
     exit(); // exit script
 }
+mysqli_query($mysqli, "insert into log (message) values ('TXN ID good')");
 // Check number 4 ------------------------------------------------------------------------------------------------------------
 /*
 $product_id_string = $_POST['custom'];
@@ -136,6 +137,7 @@ $notify_version = $_POST['notify_version'];
 $transaction_subject = $_POST['transaction_subject'];
 $charset = $_POST['charset'];
 $discount= $_POST['discount'];
+mysqli_query($mysqli, "insert into log (message) values ('Before IPN test good')");
 if (isset($_POST['test_ipn'])) {
     $test_ipn= $_POST['test_ipn'];
 } else {
