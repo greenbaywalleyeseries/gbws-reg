@@ -23,7 +23,7 @@ function showTeam(name) {
 function CalcMbrRegFee(quantity){
 	var regitem = "Registration-(X" +quantity+ ")";
 	var regdesc = "2020 GBWS Registration";
-	var regtotal = quantity * 40;
+	var regtotal = quantity * 1;
 	
 		items.push({
        		check_box: regiten,
@@ -51,11 +51,25 @@ function UpdateCart(chkbox_name,description,cost){
     	}
     UpdateTotal();
 	}
-	console.log(items);
 }
 
-function UpdateTotal()
-{
+function checkCoupon() {
+	var code = document.getElementById("coupon").value;
+	if (code == 'TopStick2019') {
+	 	for (var i = 0; i < items.length; i++) {
+	     	var check_box = items[i].check_box ;
+	        if (check_box == "MAR-Tourney") {
+	        	items[i].cost = 260;
+	        }
+	        if (check_box == "GB-Tourney" || check_box == "DY-Tourney" || check_box == "SB-Tourney"){
+	        	items[i].cost = 210;
+	        }
+	 	}
+	}
+}
+
+function UpdateTotal() {
+	checkCoupon();
 	var total=0;
  	for (var i = 0; i < items.length; i++) {
 		total = total + items[i].cost;
@@ -70,7 +84,6 @@ function populateInputFields() {
  		var item_number_id = "\"item_number_"+[j]+"\"" ;
      	var check_box = items[i].check_box ;
         if (check_box.includes("Tourney")) {
-        	console.log(check_box);
         	var location= check_box.substr(0, check_box.indexOf('-'));
         	var partner1_field=location+'-Partner1';
         	var partner2_field=location+'-Partner2';
@@ -101,8 +114,11 @@ function populateInputFields() {
  	}
 }
 
+
+
 function formValidation(team_num)
 {
+	checkCoupon();
 	populateInputFields();
 	//console.log(items);
 	var custom_text = team_id;
