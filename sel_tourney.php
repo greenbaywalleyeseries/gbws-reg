@@ -342,7 +342,7 @@
     				<div class="col-2 col-md-2">
     					Total: $<input type="text" size="5" id="total" name="total" value="0" disabled/>
     				</div>
-    				<div class="col-2 col-md-2 text-center">
+    				<div class="col-4 col-md-2 text-center">
 						<input type="submit" class="btn btn-block btn-primary text-white py-3 px-2" value="Submit">
 					</div>
 				</div>
