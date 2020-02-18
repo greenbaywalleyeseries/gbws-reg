@@ -55,9 +55,7 @@ function UpdateCart(chkbox_name,description,cost){
 
 function checkCoupon() {
 	var code = document.getElementById("coupon").value;
-	console.log(code);
 	if (code == 'TopStick2019') {
-	console.log(code);
 	 	for (var i = 0; i < items.length; i++) {
 	     	var check_box = items[i].check_box ;
 	        if (check_box == "MAR-Tourney") {
