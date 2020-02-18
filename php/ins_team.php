@@ -132,8 +132,7 @@ echo 'alert("Problem registering team")';
     echo '</script>';
 }
 
-$mysqli->close();
-
+$mysqli->close();\
 header("Location:../sel_tourney.php?team_id=$team_id&new_team=$reg_size");
 
 echo "<br>";
