@@ -201,7 +201,7 @@
                 </div>
                 <hr>
                 <div class="form-row mb-3">
-                    <div class="col-4 col-md-4 text-center">
+                    <div class="col-6 col-md-4 text-center">
         				GBWS Membership Registration 
         				($40 per team member): 
         			</div>
@@ -223,10 +223,10 @@
     				<div class="col-3  col-md-2 text-center">
     					<p>Big Fish<br>$20</p>
     				</div>
-    				<div class="col-4  col-md-2 text-center">
+    				<div class="col-6  col-md-2 text-center">
     					<p>Partner #1</p>
     				</div>
-    				<div class="col-4  col-md-2 text-center">
+    				<div class="col-6  col-md-2 text-center">
     					<p>Partner #2</p>
     				</div>
     			</div>
@@ -256,14 +256,14 @@
                             echo '<div class="col-3  col-md-2 text-center">';
                                 echo '<input type="checkbox" id=' . $tourney["local"] . '-Fish value="' .$big_fish_fee. '" onclick="UpdateCart(\''.$tourney["local"].'-Fish\',\''.$description.' Big Fish'.'\','. $big_fish_fee.')">';
                             echo '</div>';
-                            echo '<div class="col-4  col-md-2 text-center">';
+                            echo '<div class="col-6  col-md-2 text-center">';
                                 echo '<select name="'.$tourney["local"].'-Partner1" id="'.$tourney["local"].'-Partner1">';
                                     echo '<option value='.$partner1_id.'>'.$partner1_name.'</option>';
                                     echo '<option value='.$sub1_id.'>'.$sub1_name.'</option>';
                                     echo '<option value='.$sub2_id.'>'.$sub2_name.'</option>';
                                 echo '</select>';
                             echo '</div>';
-                            echo '<div class="col-4  col-md-2 text-center">';
+                            echo '<div class="col-6  col-md-2 text-center">';
                                 echo '<select name="'.$tourney["local"].'-Partner2" id="'.$tourney["local"].'-Partner2">';;
                                     echo '<option value='.$partner2_id.'>'.$partner2_name.'</option>';
                                     echo '<option value='.$sub1_id.'>'.$sub1_name.'</option>';
@@ -288,10 +288,10 @@
     				<div class="col-3  col-md-2 text-center">
     					<p>Big Fish<br>$40</p>
     				</div>
-    				<div class="col-4  col-md-2 text-center">
+    				<div class="col-6  col-md-2 text-center">
     					<p>Partner #1</p>
     				</div>
-    				<div class="col-4  col-md-2 text-center">
+    				<div class="col-6  col-md-2 text-center">
     					<p>Partner #2</p>
     				</div>
     			</div>
@@ -319,14 +319,14 @@
                             echo '<div class="col-3  col-md-2 text-center">';
                                 echo '<input type="checkbox" id=' . $tourney["local"] . '-Fish value="' .$big_fish_fee. '" onclick="UpdateCart(\''.$tourney["local"].'-Fish\',\''.$description.' Big Fish'.'\','. $big_fish_fee.')"></td>';
                             echo '</div>';                          
-                            echo '<div class="col-4  col-md-2 text-center">';
+                            echo '<div class="col-6  col-md-2 text-center">';
                                 echo '<select name="'.$tourney["local"].'-Partner1" id="'.$tourney["local"].'-Partner1">';
                                     echo '<option value='.$partner1_id.'>'.$partner1_name.'</option>';
                                         echo '<option value='.$sub1_id.'>'.$sub1_name.'</option>';
                                         echo '<option value='.$sub2_id.'>'.$sub2_name.'</option>';
                                 echo '</select>';
                             echo '</div>';
-                            echo '<div class="col-4  col-md-2 text-center">';
+                            echo '<div class="col-6  col-md-2 text-center">';
                                 echo '<select name="'.$tourney["local"].'-Partner2" id="'.$tourney["local"].'-Partner2">';;
                                     echo '<option value='.$partner2_id.'>'.$partner2_name.'</option>';
                                     echo '<option value='.$sub1_id.'>'.$sub1_name.'</option>';
