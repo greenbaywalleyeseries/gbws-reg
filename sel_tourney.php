@@ -70,7 +70,7 @@
             	if ( team_reg > 0 ) {
             		var regitem = "Registration-(X" +team_reg+ ")";
             		var regdesc = "2020 GBWS Registration";
-            		var regtotal = team_reg * 40;
+            		var regtotal = team_reg * 1;
             	
             			items.push({
                	    		check_box: regitem,
