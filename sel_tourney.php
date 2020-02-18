@@ -349,7 +349,7 @@
 				</div>
 				<div class="form-row">
 					<div class="col-4 col-md-4 mt-3">
-    					Coupon Code: <input type="text" size="8" id="coupon" name="coupon" value="" onchange="checkCoupon()">
+    					Coupon Code: <input type="text" onchange="checkCoupon()" size="8" id="coupon" name="coupon" value="">
     				</div>
 				</div>
 			</form>
