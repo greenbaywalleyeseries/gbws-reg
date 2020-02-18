@@ -135,7 +135,12 @@ $notify_version = $_POST['notify_version'];
 $transaction_subject = $_POST['transaction_subject'];
 $charset = $_POST['charset'];
 $discount= $_POST['discount'];
-$test_ipn= $_POST['test_ipn'];
+if (isset($_POST['test_ipn'])) {
+    $test_ipn= $_POST['test_ipn'];
+} else {
+    $test_ipn='';
+}
+
 
 $SQL="INSERT INTO transactions (txn_id, payer_id, payer_status, custom, payment_status, payer_email, first_name, last_name, address_name, address_street, address_city, address_state, address_zip, address_country, address_country_code, address_status, residence_country, payment_date, num_cart_items, mc_gross, mc_fee, mc_currency, ipn_track_id, verify_sign, txn_type, payment_type, receiver_email, receiver_id, notify_version, transaction_subject, charset, discount, test_ipn) 
     VALUES('$txn_id', '$payer_id', '$payer_status', '$custom', '$payment_status', '$payer_email', '$first_name', '$last_name', '$address_name', '$address_street', '$address_city', '$address_state', '$address_zip', '$address_country', '$address_country_code', '$address_status', '$residence_country', '$payment_date', $num_cart_items, '$mc_gross', '$mc_fee', '$mc_currency', '$ipn_track_id', '$verify_sign', '$txn_type', '$payment_type', '$receiver_email', '$receiver_id', '$notify_version', '$transaction_subject', '$charset', '$discount', $test_ipn)";
