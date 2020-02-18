@@ -14,8 +14,8 @@ foreach ($_POST as $key => $value) {
 }
 // Now Post all of that back to PayPal's server using curl, and validate everything with PayPal
 // We will use CURL instead of PHP for this for a more universally operable script (fsockopen has issues on some environments)
-$url = "https://www.sandbox.paypal.com/cgi-bin/webscr";
-//$url = "https://www.paypal.com/cgi-bin/webscr";
+//$url = "https://www.sandbox.paypal.com/cgi-bin/webscr";
+$url = "https://www.paypal.com/cgi-bin/webscr";
 $curl_result=$curl_err='';
 $ch = curl_init();
 curl_setopt($ch, CURLOPT_URL,$url);
@@ -51,8 +51,8 @@ $req = str_replace("&", "\n", $req);  // Make it a nice list in case we want to 
 
 // Check Number 1 ------------------------------------------------------------------------------------------------------------
 $receiver_email = $_POST['receiver_email'];
-if ($receiver_email != "gbwalleyeseries-facilitator@gmail.com") {
-//if ($receiver_email != "gbwalleyeseries@gmail.com") {
+//if ($receiver_email != "gbwalleyeseries-facilitator@gmail.com") {
+if ($receiver_email != "gbwalleyeseries@gmail.com") {
     $msg = "Investigate why and how receiver email is wrong. Email = " . $_POST['receiver_email'] . "\n\n\n$req";
     //mail("gbwalleyeseries@gmail.com", "Receiver Email is incorrect", $message, "From: gbwalleyeseries@gmail.com" );
     mysqli_query($mysqli, "insert into log (message) values ('$msg')");
