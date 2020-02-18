@@ -139,6 +139,6 @@ echo "<br>";
 
 echo "<a href=../sel_tourney.php?team_id=".$team_id."&team_reg=".$reg_size.">Click here if not automatically redirected to tournament registration page</a>";
 
-echo "<script type='text/javascript'>window.top.location='../sel_tourney.php?team_id='$team_id'&team_reg='$reg_size';</script>"; exit;
+echo "<script type='text/javascript'>window.top.location='../sel_tourney.php?team_id='".$team_id."'&team_reg='".$reg_size."';</script>"; exit;
 
 ?>
