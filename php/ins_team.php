@@ -132,7 +132,6 @@ echo 'alert("Problem registering team")';
     echo '</script>';
 }
 
-
 $mysqli->close();
 //
 
