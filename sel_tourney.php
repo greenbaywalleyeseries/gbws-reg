@@ -223,7 +223,7 @@
     				<div class="col-3  col-md-2 text-center">
     					<p>Big Fish<br>$20</p>
     				</div>
-    				<div class="col-6  col-md-2 text-center .d-none .d-sm-block">
+    				<div class="col-md-2 text-center .d-none .d-sm-block">
     					<p>Partner #1</p>
     				</div>
     				<div class="col-md-2 text-center .d-none .d-sm-block">
