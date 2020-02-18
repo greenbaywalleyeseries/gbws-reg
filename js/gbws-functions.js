@@ -23,7 +23,7 @@ function showTeam(name) {
 function CalcMbrRegFee(quantity){
 	var regitem = "Registration-(X" +quantity+ ")";
 	var regdesc = "2020 GBWS Registration";
-	var regtotal = quantity * 40;
+	var regtotal = quantity * 1;
 	
 		items.push({
        		check_box: regiten,
