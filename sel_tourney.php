@@ -271,6 +271,7 @@
                                 echo '</select>';
                             echo '</div>';
                         echo '</div>';
+                        echo '<hr>';
     
                     }
               ?>
