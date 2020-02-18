@@ -161,7 +161,7 @@
 	    <div class="col-12 col-md-12">
 	       <!--<form name="TourneyForm" id="TourneyForm" action="https://www.sandbox.paypal.com/cgi-bin/webscr" onsubmit="formValidation('X')"  method="post"> -->
             <form name="TourneyForm" id="TourneyForm" action="https://www.paypal.com/cgi-bin/webscr" onsubmit="formValidation('<?php echo $team_id;?>')"  method="post">
-            	//<input type="hidden" name="business" value="gbwalleyeseries@gmail.com">
+            	<input type="hidden" name="business" value="gbwalleyeseries@gmail.com">
                 <!-- <input type="hidden" name="cpp_header_image" value="https://www.yourwebsite.com/logo.jpg"> -->
             	<input type="hidden" name="cancel_return" value="http://www.greenbaywalleyeseries.com/online-registration.html">
                 <input type="hidden" name="return" value="http://www.greenbaywalleyeseries.com">
