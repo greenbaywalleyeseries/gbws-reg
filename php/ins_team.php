@@ -133,12 +133,11 @@ echo 'alert("Problem registering team")';
 }
 
 $mysqli->close();
-//
+
+header('Location: ./sel_tourney.php?team_id='.$team_ID.'&new_team='.$reg_size.');
 
 echo "<br>";
 
 echo "<a href=../sel_tourney.php?team_id=".$team_id."&team_reg=".$reg_size.">Click here if not automatically redirected to tournament registration page</a>";
-
-header("location:../sel_tourney.php?team_id=$team_id&team_reg=$reg_size",  true,  301 );  exit;
 
 ?>
