@@ -211,22 +211,22 @@
     			</div>
     			<hr>
     			<div class="form-row">
-    				<div class="col-2  col-md-2">
+    				<div class="col-3  col-md-2">
     			
     				</div>
-    				<div class="col-2  col-md-2 text-center">
+    				<div class="col-3  col-md-2 text-center">
     					<p>Tournament<br>$410</p>
     				</div>
-    				<div class="col-2  col-md-2 text-center">
+    				<div class="col-3 col-md-2 text-center">
     					<p>Option Pot - 100% Payback<br>$200</p>
     				</div>
-    				<div class="col-2  col-md-2 text-center">
+    				<div class="col-3  col-md-2 text-center">
     					<p>Big Fish<br>$20</p>
     				</div>
-    				<div class="col-2  col-md-2 text-center">
+    				<div class="col-4  col-md-2 text-center">
     					<p>Partner #1</p>
     				</div>
-    				<div class="col-2  col-md-2 text-center">
+    				<div class="col-4  col-md-2 text-center">
     					<p>Partner #2</p>
     				</div>
     			</div>
@@ -244,26 +244,26 @@
                         
                         
                         echo '<div class="form-row">';
-                            echo '<div class="col-2  col-md-2">';
+                            echo '<div class="col-3  col-md-2">';
                                 echo '<p>'. $description .'</p>';
                             echo '</div>';
-                            echo '<div class="col-2  col-md-2 text-center">';
+                            echo '<div class="col-3  col-md-2 text-center">';
                                 echo '<input type="checkbox" id=' . $tourney["local"] . '-Tourney value="' . $tourney_fee . '" onclick="UpdateCart(\''.$tourney["local"].'-Tourney\',\''.$description.' Registration'.'\','. $tourney_fee.')">';
                             echo '</div>';
-                            echo '<div class="col-2  col-md-2 text-center">';
+                            echo '<div class="col-3  col-md-2 text-center">';
                                 echo '<input type="checkbox" id=' . $tourney["local"] . '-Option value="' .$option_fee. '" onclick="UpdateCart(\''.$tourney["local"].'-Option\',\''.$description.' Option Pot'.'\','. $option_fee.')">';
                             echo '</div>';
-                            echo '<div class="col-2  col-md-2 text-center">';
+                            echo '<div class="col-3  col-md-2 text-center">';
                                 echo '<input type="checkbox" id=' . $tourney["local"] . '-Fish value="' .$big_fish_fee. '" onclick="UpdateCart(\''.$tourney["local"].'-Fish\',\''.$description.' Big Fish'.'\','. $big_fish_fee.')">';
                             echo '</div>';
-                            echo '<div class="col-2  col-md-2 text-center">';
+                            echo '<div class="col-4  col-md-2 text-center">';
                                 echo '<select name="'.$tourney["local"].'-Partner1" id="'.$tourney["local"].'-Partner1">';
                                     echo '<option value='.$partner1_id.'>'.$partner1_name.'</option>';
                                     echo '<option value='.$sub1_id.'>'.$sub1_name.'</option>';
                                     echo '<option value='.$sub2_id.'>'.$sub2_name.'</option>';
                                 echo '</select>';
                             echo '</div>';
-                            echo '<div class="col-2  col-md-2 text-center">';
+                            echo '<div class="col-4  col-md-2 text-center">';
                                 echo '<select name="'.$tourney["local"].'-Partner2" id="'.$tourney["local"].'-Partner2">';;
                                     echo '<option value='.$partner2_id.'>'.$partner2_name.'</option>';
                                     echo '<option value='.$sub1_id.'>'.$sub1_name.'</option>';
@@ -276,22 +276,22 @@
               ?>
                     
               <div class="form-row">
-    				<div class="col-2  col-md-2">
+    				<div class="col-3  col-md-2">
     			
     				</div>
-    				<div class="col-2  col-md-2 text-center">
+    				<div class="col-3  col-md-2 text-center">
     					<p>Championship Tournament<br>$510</p>
     				</div>
-    				<div class="col-2  col-md-2 text-center">
+    				<div class="col-3  col-md-2 text-center">
     					<p>Option Pot - 100% Payback<br>$200</p>
     				</div>
-    				<div class="col-2  col-md-2 text-center">
+    				<div class="col-3  col-md-2 text-center">
     					<p>Big Fish<br>$40</p>
     				</div>
-    				<div class="col-2  col-md-2 text-center">
+    				<div class="col-4  col-md-2 text-center">
     					<p>Partner #1</p>
     				</div>
-    				<div class="col-2  col-md-2 text-center">
+    				<div class="col-4  col-md-2 text-center">
     					<p>Partner #2</p>
     				</div>
     			</div>
@@ -307,26 +307,26 @@
                         $option_fee=$tourney["option_fee"];
                         $big_fish_fee=$tourney["big_fish_fee"];
                         echo '<div class="form-row">';
-                            echo '<div class="col-2  col-md-2">';
+                            echo '<div class="col-3  col-md-2">';
                                 echo '<p>'. $description .'</p>';
                             echo '</div>';
-                            echo '<div class="col-2  col-md-2 text-center">';
+                            echo '<div class="col-3  col-md-2 text-center">';
                                 echo '<input type="checkbox" id=' . $tourney["local"] . '-Tourney value="' . $tourney_fee . '" onclick="UpdateCart(\''.$tourney["local"].'-Tourney\',\''.$description.' Registration'.'\','. $tourney_fee.')">';
                             echo '</div>';
-                            echo '<div class="col-2  col-md-2 text-center">';
+                            echo '<div class="col-3  col-md-2 text-center">';
                                 echo '<input type="checkbox" id=' . $tourney["local"] . '-Option value="' .$option_fee. '" onclick="UpdateCart(\''.$tourney["local"].'-Option\',\''.$description.' Option Pot'.'\','. $option_fee.')"></td>';
                             echo '</div>';
-                            echo '<div class="col-2  col-md-2 text-center">';
+                            echo '<div class="col-3  col-md-2 text-center">';
                                 echo '<input type="checkbox" id=' . $tourney["local"] . '-Fish value="' .$big_fish_fee. '" onclick="UpdateCart(\''.$tourney["local"].'-Fish\',\''.$description.' Big Fish'.'\','. $big_fish_fee.')"></td>';
                             echo '</div>';                          
-                            echo '<div class="col-2  col-md-2 text-center">';
+                            echo '<div class="col-4  col-md-2 text-center">';
                                 echo '<select name="'.$tourney["local"].'-Partner1" id="'.$tourney["local"].'-Partner1">';
                                     echo '<option value='.$partner1_id.'>'.$partner1_name.'</option>';
                                         echo '<option value='.$sub1_id.'>'.$sub1_name.'</option>';
                                         echo '<option value='.$sub2_id.'>'.$sub2_name.'</option>';
                                 echo '</select>';
                             echo '</div>';
-                            echo '<div class="col-2  col-md-2 text-center">';
+                            echo '<div class="col-4  col-md-2 text-center">';
                                 echo '<select name="'.$tourney["local"].'-Partner2" id="'.$tourney["local"].'-Partner2">';;
                                     echo '<option value='.$partner2_id.'>'.$partner2_name.'</option>';
                                     echo '<option value='.$sub1_id.'>'.$sub1_name.'</option>';
