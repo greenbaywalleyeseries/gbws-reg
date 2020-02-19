@@ -179,7 +179,7 @@
             <form name="TourneyForm" id="TourneyForm" action="https://www.paypal.com/cgi-bin/webscr" onsubmit="formValidation('<?php echo $team_id;?>')"  method="post">
             	<input type="hidden" name="business" value="gbwalleyeseries@gmail.com">
                 <!-- <input type="hidden" name="cpp_header_image" value="https://www.yourwebsite.com/logo.jpg"> -->
-            	<input type="hidden" name="cancel_return" value="http://www.greenbaywalleyeseries.com/online-registration.html">
+            	<input type="hidden" name="cancel_return" value="https://gbws-reg.azurewebsites.net/registration.html">
                 <input type="hidden" name="return" value="http://www.greenbaywalleyeseries.com">
                 <input type="hidden" name="cmd" value="_cart">
                 <input type="hidden" name="currency_code" value="USD">
