@@ -15,7 +15,7 @@
         <link rel="stylesheet" href="../../css/aos.css">
     
         <!-- MAIN CSS -->
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="../../css/style.css">
 
     </head>
     
@@ -56,28 +56,28 @@
                         $partner1=get_mbr_info($partner1_id);
                         while($mbr1 = mysqli_fetch_array($partner1)) {
                             $Partner1=$mbr1['first'] ." ".$mbr1['last'];
-                            $Partner1_URL='<a href="admin/mailin/mailin_sel_tourney.php?team_id=' .$Team_ID. '&team_reg=' .$team_size. '">'.$Partner1.'</a>';
+                            $Partner1_URL='<a href="mailin_sel_tourney.php?team_id=' .$Team_ID. '&team_reg=' .$team_size. '">'.$Partner1.'</a>';
                         }
                         
                         $partner2=get_mbr_info($partner2_id);
                         while($mbr2 = mysqli_fetch_array($partner2)) {
                             $Partner2=$mbr2['first'] ." ".$mbr2['last'];
-                            $Partner2_URL='<a href="admin/mailin/mailin_sel_tourney.php?team_id=' .$Team_ID. '&team_reg=' .$team_size. '">'.$Partner2.'</a>';
+                            $Partner2_URL='<a href="mailin_sel_tourney.php?team_id=' .$Team_ID. '&team_reg=' .$team_size. '">'.$Partner2.'</a>';
                         }
                         
                         $sub1=get_mbr_info($sub1_id);
                         while($mbr3 = mysqli_fetch_array($sub1)) {
                             $Sub1=$mbr3['first'] ." ".$mbr3['last'];
-                            $Sub1_URL='<a href="admin/mailin/mailin_sel_tourney.php?team_id=' .$Team_ID. '&team_reg=' .$team_size. '">'.$Sub1.'</a>';
+                            $Sub1_URL='<a href="mailin_sel_tourney.php?team_id=' .$Team_ID. '&team_reg=' .$team_size. '">'.$Sub1.'</a>';
                         }
                         
                         $sub2=get_mbr_info($sub2_id);
                         while($mbr4 = mysqli_fetch_array($sub2)) {
                             $Sub2=$mbr4['first'] ." ".$mbr4['last'];
-                            $Sub2_URL='<a href="admin/mailin/mailin_sel_tourney.php?team_id=' .$Team_ID. '&team_reg=' .$team_size. '">'.$Sub2.'</a>';
+                            $Sub2_URL='<a href="mailin_sel_tourney.php?team_id=' .$Team_ID. '&team_reg=' .$team_size. '">'.$Sub2.'</a>';
                         }
     
-                        $Team_URL='<a href="admin/mailin/mailin_sel_tourney.php?team_id=' .$Team_ID. '&team_reg=' .$team_size. '">'.$Team_ID.'</a>';
+                        $Team_URL='<a href="mailin_sel_tourney.php?team_id=' .$Team_ID. '&team_reg=' .$team_size. '">'.$Team_ID.'</a>';
     
                         echo '
         <tr>
