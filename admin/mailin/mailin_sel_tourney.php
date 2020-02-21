@@ -62,7 +62,7 @@
     	var partner1='<?php echo $partner1_name ?>';
     	var partner2='<?php echo $partner2_name ?>';
     </script>
-    <script type="text/javascript" src="js/gbws-functions.js"></script>
+    <script type="text/javascript" src="../../js/gbws-functions.js"></script>
     <script>
         document.addEventListener('readystatechange', event => {
     
