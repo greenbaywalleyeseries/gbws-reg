@@ -37,7 +37,7 @@ function showMailInTeam(name) {
                 document.getElementById("ListTeams").innerHTML = this.responseText;
             }
         };
-        xmlhttp.open("GET","admin/mailin/list_team.php?last_name="+name,true);
+        xmlhttp.open("GET","list_team.php?last_name="+name,true);
         xmlhttp.send();
     }
 }
