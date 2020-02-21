@@ -20,6 +20,28 @@ function showTeam(name) {
     }
 }
 
+function showMailInTeam(name) {
+    if (name == "") {
+        document.getElementById("ListTeams").innerHTML = "";
+        return;
+    } else {
+        if (window.XMLHttpRequest) {
+            // code for IE7+, Firefox, Chrome, Opera, Safari
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            // code for IE6, IE5
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("ListTeams").innerHTML = this.responseText;
+            }
+        };
+        xmlhttp.open("GET","admin/mailin/list_team.php?last_name="+name,true);
+        xmlhttp.send();
+    }
+}
+
 function CalcMbrRegFee(quantity){
 	var regitem = "Registration-(X" +quantity+ ")";
 	var regdesc = "2020 GBWS Registration";
@@ -112,11 +134,23 @@ function populateInputFields() {
      	$('#TourneyForm').append('<input type="hidden" name=' + item_name_id + 'id=' + item_name_id + ' value="' + desc + '">');
      	$('#TourneyForm').append('<input type="hidden" name=' + item_amount_id + 'id=' + item_amount_id + ' value=' + cost + '>');
  	}
+ 	var cart_items= items.length;
+ 	$('#TourneyForm').append('<input type="hidden" name="cart_items" id="cart_items" value=' + cart_items + '>');
 }
 
 
 
 function formValidation(team_num)
+{
+	checkCoupon();
+	populateInputFields();
+	//console.log(items);
+	var custom_text = team_id;
+	//var custom_text = team_id + ";" + partner1 + ";" + partner2;
+	document.getElementById("custom").value = custom_text;
+
+}
+function MailInValidation(team_num)
 {
 	checkCoupon();
 	populateInputFields();

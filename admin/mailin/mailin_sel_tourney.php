@@ -1,6 +1,6 @@
 	<?php
-        include('/php/gbws_reg_db.php');
-        include('/php/functions.php');
+        include('../../php/gbws_reg_db.php');
+        include('../../php/functions.php');
 
         mysqli_select_db($mysqli,"gbws_reg");
         $team_id = $_GET['team_id'];
@@ -52,6 +52,7 @@
 <html lang="en">
 
   <head>
+  	<base href="http://127.0.0.1/gbws-reg/">
   	<script src="js/jquery-3.3.1.min.js"></script>
     <script type="text/javascript">
     	team_info= new Array();
@@ -146,7 +147,7 @@
       </header>
 
 	<div class="ftco-blocks-cover-1">
-      <div class="site-section-cover overlay" style= "background-image: url('/images/gbws_background.jpg')"> 
+      <div class="site-section-cover overlay" style= "background-image: url('images/gbws_background.jpg')"> 
         <div class="container">
         	<div class="row align-items-center justify-content-center">
             	<div class="col-md-12 text-center">
@@ -160,7 +161,7 @@
     <div class="site-section">
 	    <div class="col-12 col-md-12">
 	       <!--<form name="TourneyForm" id="TourneyForm" action="https://www.sandbox.paypal.com/cgi-bin/webscr" onsubmit="formValidation('X')"  method="post"> -->
-            <form name="TourneyForm" id="TourneyForm" action="https://www.paypal.com/cgi-bin/webscr" onsubmit="formValidation('<?php echo $team_id;?>')"  method="post">
+            <form name="TourneyForm" id="TourneyForm" action="admin/mailin/submit_tourney_reg.php" onsubmit="MailInValidation('<?php echo $team_id;?>')"  method="post">
             	<input type="hidden" name="business" value="gbwalleyeseries@gmail.com">
                 <!-- <input type="hidden" name="cpp_header_image" value="https://www.yourwebsite.com/logo.jpg"> -->
             	<input type="hidden" name="cancel_return" value="http://www.greenbaywalleyeseries.com/online-registration.html">
