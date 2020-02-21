@@ -160,7 +160,7 @@
     <div class="site-section">
 	    <div class="col-12 col-md-12">
 	       <!--<form name="TourneyForm" id="TourneyForm" action="https://www.sandbox.paypal.com/cgi-bin/webscr" onsubmit="formValidation('X')"  method="post"> -->
-            <form name="TourneyForm" id="TourneyForm" action="admin/mailin/submit_tourney_reg.php" onsubmit="MailInValidation('<?php echo $team_id;?>')"  method="post">
+            <form name="TourneyForm" id="TourneyForm" action="submit_tourney_reg.php" onsubmit="MailInValidation('<?php echo $team_id;?>')"  method="post">
             	<input type="hidden" name="business" value="gbwalleyeseries@gmail.com">
                 <!-- <input type="hidden" name="cpp_header_image" value="https://www.yourwebsite.com/logo.jpg"> -->
             	<input type="hidden" name="cancel_return" value="http://www.greenbaywalleyeseries.com/online-registration.html">
