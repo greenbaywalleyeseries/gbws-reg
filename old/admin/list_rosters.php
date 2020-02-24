@@ -34,10 +34,10 @@
 	<br>
 	<div>Select tournament to view roster:</div>
 <form name="GetTourney" method="post">
-<input type="radio" name="Tourney" id="Tourney" Value="1" onclick="showTourneyTeams(this.value)">Green Bay<br>
-<input type="radio" name="Tourney" id="Tourney" Value="2" onclick="showTourneyTeams(this.value)">Marinette<br>
-<input type="radio" name="Tourney" id="Tourney" Value="3" onclick="showTourneyTeams(this.value)">Oconto<br>
-<input type="radio" name="Tourney" id="Tourney" Value="4" onclick="showTourneyTeams(this.value)">Sturgeon Bay<br>
+<input type="radio" name="Tourney" id="Tourney" Value="GB" onclick="showTourneyTeams(this.value)">Green Bay<br>
+<input type="radio" name="Tourney" id="Tourney" Value="DY" onclick="showTourneyTeams(this.value)">Oconto<br>
+<input type="radio" name="Tourney" id="Tourney" Value="SB" onclick="showTourneyTeams(this.value)">Sturgeon Bay<br>
+<input type="radio" name="Tourney" id="Tourney" Value="Mar" onclick="showTourneyTeams(this.value)">Marinette<br>
 </form>
 
 <br>
