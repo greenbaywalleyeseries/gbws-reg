@@ -1,0 +1,121 @@
+<?php
+include('../php/gbws_reg_db.php');
+require('../pdf/fpdf.php');
+
+class PDF extends FPDF
+{
+    // Page header
+    function Header()
+    {
+        include('../php/gbws_reg_db.php');
+        
+        $location_sql='select location from tourneyinfo';
+        $location_result = $mysqli->query($location_sql);
+        foreach ($location_result as $row):
+        $location=$row['location'];
+        endforeach;
+        
+        $dates_sql='select start_date from tourneyinfo';;
+        $dates_result = $mysqli->query($dates_sql);
+        foreach ($dates_result as $row):
+        $dates=$row['start_date'];
+        endforeach;
+        
+        // Logo
+        $this->Image('../images/gbws_logo-no-background.png',.25,.25,1.5,1.5);
+        // Arial bold 15
+        $this->SetFont('Arial','B',15);
+        // Move to the right
+        $this->Cell(2);
+        // Title
+        $this->Cell(3,.5,'Green Bay Walleye Series',0,0,'C');
+        //2nd Image
+        $this->Image('../images/gbws_logo-no-background.png', 6.5,.25,1.5,1.5);
+        // Line break
+        $this->Ln(.5);
+        //Next Line for Tourney Location
+        // Arial bold 12
+        $this->SetFont('Arial','B',12);
+        $this->Cell(2);
+        $this->Cell(3,.25,$location,0,1,'C');
+        // Line break
+        //$this->Ln(20);
+        //Next Line for Tourney Dates
+        $this->Cell(2);
+        $this->Cell(3,.25,$dates,0,0,'C');
+        // Line break
+        $this->Ln(.5);
+    }
+    
+    // Page footer
+    function Footer()
+    {
+        // Position at 1.5 cm from bottom
+        $this->SetY(-.5);
+        // Arial italic 8
+        $this->SetFont('Arial','I',8);
+        // Page number
+        $this->Cell(0,.5,'Page '.$this->PageNo().'/{nb}',0,0,'C');
+    }
+    function BasicTable($tbl_header, $roster)
+    {
+        // Header
+        $this->Cell(.5,.25,$tbl_header[0],1,0,'C');
+        $this->Cell(2.5,.25,$tbl_header[1],1,0,'C');
+        $this->Cell(2.5,.25,$tbl_header[2],1,0,'C');
+        $this->Cell(.75,.25,$tbl_header[3],1,0,'C');
+        $this->Cell(.75,.25,$tbl_header[4],1,0,'C');
+        $this->Ln();
+        // Data
+        $x = 0;
+        //foreach($rankings as $row)
+        while ($x < count($roster,0)) {
+            $this->Cell(.5,.25,$roster[$x][0],1,0,'C');
+            $this->Cell(2.5,.25,$roster[$x][1],1,0,'C');
+            $this->Cell(2.5,.25,$roster[$x][2],1,0,'C');
+            $this->Cell(.75,.25,$roster[$x][3],1,0,'C');
+            $this->Cell(.75,.25,$roster[$x][4],1,0,'C');
+            $this->Ln();
+            $x++;
+        }
+    }
+}
+$tourney_id='GB';
+$roster=array();
+$tbl_header=array('Boat #','Partner 1','Partner 2','Option Pot','Big Fish');
+$sql="call ListTourneyRoster('".$tourney_id."')";
+$result = mysqli_query($mysqli,$sql);
+$i=1;
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        
+        $boat_num=$i;
+        $partner1=$row["partner1"];
+        $partner2=$row["partner2"];
+        $option_pot=$row["option_pot"];
+        $big_fish=$row["big_fish"];
+        
+        $data=array($boat_num, $partner1, $partner2, $option_pot, $big_fish);
+        $roster[]=$data;
+        $i=$i+1;
+        
+    }
+    
+}
+
+
+$mysqli->close();
+
+
+// Instanciation of inherited class
+$pdf = new PDF('P','in','LETTER');
+$pdf->SetLeftMargin(.5);
+// Column headings
+$pdf->SetFont('Arial','',8);
+$pdf->AddPage();
+$pdf->BasicTable($tbl_header, $roster);
+$pdf->AliasNbPages();
+$pdf->Output();
+
+
+?>
