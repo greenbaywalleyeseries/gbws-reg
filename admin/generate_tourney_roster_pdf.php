@@ -1,6 +1,7 @@
 <?php
 include('../php/gbws_reg_db.php');
 require('../pdf/fpdf.php');
+$tourney_id = $_GET['tourney_id'];
 
 class PDF extends FPDF
 {
@@ -8,18 +9,15 @@ class PDF extends FPDF
     function Header()
     {
         include('../php/gbws_reg_db.php');
+        $tourney_id = $_GET['tourney_id'];
         
-        $location_sql='select location from tourneyinfo';
+        $location_sql = "select * from tourneyinfo where local='".$tourney_id."'";
         $location_result = $mysqli->query($location_sql);
         foreach ($location_result as $row):
-        $location=$row['location'];
+            $location=$row['location'];
+            $dates=$row['start_date'];
         endforeach;
-        
-        $dates_sql='select start_date from tourneyinfo';;
-        $dates_result = $mysqli->query($dates_sql);
-        foreach ($dates_result as $row):
-        $dates=$row['start_date'];
-        endforeach;
+
         
         // Logo
         $this->Image('../images/gbws_logo-no-background.png',.25,.25,1.5,1.5);
@@ -80,7 +78,7 @@ class PDF extends FPDF
         }
     }
 }
-$tourney_id='GB';
+
 $roster=array();
 $tbl_header=array('Boat #','Partner 1','Partner 2','Option Pot','Big Fish');
 $sql="call ListTourneyRoster('".$tourney_id."')";
