@@ -11,7 +11,7 @@ class PDF extends FPDF
         include('../php/gbws_reg_db.php');
         $tourney_id = $_GET['tourney_id'];
         
-        $location_sql = "select * from tourneyinfo where local='".$tourney_id."'";
+        $location_sql = "select location, DATE_FORMAT(start_date, '%M %d, %Y') as start_date from tourneyinfo where local='".$tourney_id."'";
         $location_result = $mysqli->query($location_sql);
         foreach ($location_result as $row):
             $location=$row['location'];
