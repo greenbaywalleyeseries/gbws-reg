@@ -62,6 +62,12 @@ $partner1_phone = preg_replace('/\D+/', '', $partner1_phone); // Removes special
 $partner2_phone = preg_replace('/\D+/', '', $partner2_phone); // Removes special chars.
 $sub1_phone = preg_replace('/\D+/', '', $sub1_phone); // Removes special chars.
 $sub2_phone = preg_replace('/\D+/', '', $sub2_phone); // Removes special chars.
+//ClearSSN of spaces, hypens, etc.
+$partner1_SSN = preg_replace('/\D+/', '', $partner1_SSN); // Removes special chars.
+$partner2_SSN = preg_replace('/\D+/', '', $partner2_SSN); // Removes special chars.
+$sub1_SSN = preg_replace('/\D+/', '', $sub1_SSN); // Removes special chars.
+$sub2_SSN = preg_replace('/\D+/', '', $sub2_SSN); // Removes special chars.
+
 
 $reg_size=0;
 
