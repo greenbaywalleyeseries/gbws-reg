@@ -29,12 +29,12 @@
     while($row = mysqli_fetch_array($result)) {
     
         echo "<tr>";
-        echo "<td>" . $i. "</td>";
+        echo "<td align='center'>" . $i. "</td>";
         echo "<td>" . $row['team_id']. "</td>";
         echo "<td>" . $row['partner1']. "</td>";
         echo "<td>" . $row['partner2']. "</td>";
-        echo "<td>" . $row['option_pot']. "</td>";
-        echo "<td>" . $row['big_fish']. "</td>";
+        echo "<td align='center'>" . $row['option_pot']. "</td>";
+        echo "<td align='center'>" . $row['big_fish']. "</td>";
         echo "</tr>";
         $i=$i+1;
     }
