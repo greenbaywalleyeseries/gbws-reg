@@ -23,25 +23,12 @@
         <script type="text/javascript">
     
         function showTourneyTeams(str) {
-            if (str == "") {
-                document.getElementById("txtHint").innerHTML = "";
-                return;
-            } else {
-                if (window.XMLHttpRequest) {
-                    // code for IE7+, Firefox, Chrome, Opera, Safari
-                    xmlhttp = new XMLHttpRequest();
-                } else {
-                    // code for IE6, IE5
-                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                xmlhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        document.getElementById("txtHint").innerHTML = this.responseText;
-                    }
-                };
-                xmlhttp.open("GET","list_tourney_teams.php?tourney_id="+str,true);
-                xmlhttp.send();
-            }
+        	if (str != " ") {
+        		window.location.href="generate_tourney_roster_pdf.php?tourney_id="+str;
+        	}
+        	
+        	
+//                window.open("generate_tourney_roster_pdf.php?tourney_id="+str,,"_self");
         }
     </script>
 
@@ -118,7 +105,7 @@
 		        <div class="form-group">
 		  			<label for="tourney">Select tournament to view roster: </label>
 		  			<select class="form-control" id="tourney" onchange="showTourneyTeams(this.value)">
-		  				<option Value=""></option>
+		  				<option Value=" "></option>
 		    			<option Value="GB">Green Bay</option>
 		    			<option Value="DY">Oconto</option>
 		    			<option Value="SB">Sturgeon Bay</option>
