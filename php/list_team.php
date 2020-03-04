@@ -32,7 +32,7 @@
             
             echo '
     <div class="site-section">
-        <div class="col-6 col-md-6">
+        <div class="col-8 col-md-8">
   <table class="table table-striped">
     <thead>
       <tr>
