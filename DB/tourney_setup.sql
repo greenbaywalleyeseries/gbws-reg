@@ -82,11 +82,11 @@ WHILE(@boats > 0) DO
     
 	Insert into tempsortfish (boat_num, fish_num, weight, time)
     select boat_num, fish_num, weight, time  from reg_fish 
-    where boat_num = @boatvar and approved = 1 and time like '2018-07-16%' order by weight desc limit 5;
+    where boat_num = @boatvar and approved = 1 and time like '2020-04-11%' order by weight desc limit 5;
     
     Insert into tempsortfish (boat_num, fish_num, weight, time)
     select boat_num, fish_num, weight, time  from reg_fish 
-    where boat_num = @boatvar and approved = 1 and time like '2018-07-17%' order by weight desc limit 5;
+    where boat_num = @boatvar and approved = 1 and time like '2020-04-12%' order by weight desc limit 5;
     
     delete from tempMemberFish where boat_num = @boatvar;
     
@@ -119,7 +119,7 @@ select b.boat_num
          from tourney_teams b
          left join tempsortfish a
         	on a.boat_num=b.boat_num
-        where a.time like '2018-07-16%'
+        where a.time like '2020-04-11%'
         group by b.boat_num ;
         
         
@@ -135,7 +135,7 @@ select b.boat_num
          from tourney_teams b
          left join tempsortfish a
         	on a.boat_num=b.boat_num
-        where a.time like '2018-07-17%'
+        where a.time like '2020-04-12%'
         group by b.boat_num
         
 on duplicate key update
@@ -149,12 +149,12 @@ left  join temp_places as b on a.boat_num=b.boat_num
 where b.boat_num is null;
 
 insert into temp_places (boat_num, day_1_penalty)
-select boat_num, minutes_late as day_1_penalty from penalties where date like '2018-07-16%'
+select boat_num, minutes_late as day_1_penalty from penalties where date like '2020-04-11%'
 on duplicate key update
 	day_1_penalty=values(day_1_penalty);
 
 insert into temp_places (boat_num, day_2_penalty)
-select boat_num, minutes_late as day_2_penalty from penalties where date like '2018-07-17%'
+select boat_num, minutes_late as day_2_penalty from penalties where date like '2020-04-12%'
 on duplicate key update
 	day_2_penalty=values(day_2_penalty);
 
@@ -178,8 +178,3 @@ update temp_places set total_weight=(day_1_weight+day_2_weight);
 
 end ;;
 DELIMITER ;
-
-
-
-
-

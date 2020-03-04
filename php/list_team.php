@@ -39,6 +39,8 @@
         <th>Team Number</th>
         <th>Partner #1</th>
         <th>Partner #2</th>
+        <th>Sub #1</th>
+        <th>Sub #2</th>
       </tr>
     </thead>
     <tbody>';
@@ -65,16 +67,23 @@
                             $Partner2_URL='<a href="sel_tourney.php?team_id=' .$Team_ID. '&team_reg=' .$team_size. '">'.$Partner2.'</a>';
                         }
                         
-                        $sub1=get_mbr_info($sub1_id);
-                        while($mbr3 = mysqli_fetch_array($sub1)) {
-                            $Sub1=$mbr3['first'] ." ".$mbr3['last'];
-                            $Sub1_URL='<a href="sel_tourney.php?team_id=' .$Team_ID. '&team_reg=' .$team_size. '">'.$Sub1.'</a>';
+                        if("" == trim($sub1_id)){
+                            $Sub1_URL='';
+                        } else {
+                            $sub1=get_mbr_info($sub1_id);
+                            while($mbr3 = mysqli_fetch_array($sub1)) {
+                                $Sub1=$mbr3['first'] ." ".$mbr3['last'];
+                                $Sub1_URL='<a href="sel_tourney.php?team_id=' .$Team_ID. '&team_reg=' .$team_size. '">'.$Sub1.'</a>';
+                            }
                         }
-                        
-                        $sub2=get_mbr_info($sub2_id);
-                        while($mbr4 = mysqli_fetch_array($sub2)) {
-                            $Sub2=$mbr4['first'] ." ".$mbr4['last'];
-                            $Sub2_URL='<a href="sel_tourney.php?team_id=' .$Team_ID. '&team_reg=' .$team_size. '">'.$Sub2.'</a>';
+                        if("" == trim($sub2_id)){
+                            $Sub2_URL='';
+                        } else {
+                            $sub2=get_mbr_info($sub2_id);
+                            while($mbr4 = mysqli_fetch_array($sub2)) {
+                                $Sub2=$mbr4['first'] ." ".$mbr4['last'];
+                                $Sub2_URL='<a href="sel_tourney.php?team_id=' .$Team_ID. '&team_reg=' .$team_size. '">'.$Sub2.'</a>';
+                            }
                         }
     
                         $Team_URL='<a href="sel_tourney.php?team_id=' .$Team_ID. '&team_reg=' .$team_size. '">'.$Team_ID.'</a>';
@@ -84,6 +93,8 @@
             <td>' .$Team_URL .'</td>
             <td>' .$Partner1_URL .'</td>
             <td>' .$Partner2_URL .'</td>
+            <td>' .$Sub1_URL .'</td>
+            <td>' .$Sub2_URL .'</td>
         </tr>';
                     }
                 echo '
