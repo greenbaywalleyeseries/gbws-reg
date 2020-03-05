@@ -59,6 +59,7 @@ function showAllTeams() {
         xmlhttp.send();
 }
 
+
 function CalcMbrRegFee(quantity){
 	var regitem = "Registration-(X" +quantity+ ")";
 	var regdesc = "2020 GBWS Registration";
