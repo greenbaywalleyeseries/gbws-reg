@@ -2,10 +2,14 @@
 <html lang="en">
 
   <head>
+
     <title>Green Bay Walleye Series</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+	
+	<script src="../js/jquery-3.3.1.min.js"></script>
+  	<script type="text/javascript" src="../js/gbws-functions.js"></script>
+  	
     <link href="https://fonts.googleapis.com/css?family=Muli:400,700" rel="stylesheet">
 
     <link rel="stylesheet" href="../fonts/icomoon/style.css">
@@ -20,35 +24,10 @@
 
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="../css/style.css">
-        <script type="text/javascript">
-    
-        function showTourneyTeams(str) {
-            if (str == "") {
-                document.getElementById("txtHint").innerHTML = "";
-                return;
-            } else {
-                if (window.XMLHttpRequest) {
-                    // code for IE7+, Firefox, Chrome, Opera, Safari
-                    xmlhttp = new XMLHttpRequest();
-                } else {
-                    // code for IE6, IE5
-                    xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
-                }
-                xmlhttp.onreadystatechange = function() {
-                    if (this.readyState == 4 && this.status == 200) {
-                        document.getElementById("txtHint").innerHTML = this.responseText;
-                    }
-                };
-                xmlhttp.open("GET","list_tourney_teams.php?tourney_id="+str,true);
-                xmlhttp.send();
-            }
-        }
-    </script>
-
 
   </head>
 
-  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+  <body onload="showAllMembers()" data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 
     
     <div class="site-wrap" id="home-section">
@@ -62,8 +41,6 @@
         <div class="site-mobile-menu-body"></div>
       </div>
 
-
-
       <header class="site-navbar site-navbar-target" role="banner">
 
         <div class="container">
@@ -71,28 +48,41 @@
 
             <div class="col-4 ">
               <div class="site-logo">
-                <a href="index.html" class="font-weight-bold">Green Bay Walleye Series</a>
+                <a href="/index.html" class="font-weight-bold">Green Bay Walleye Series</a>
               </div>
             </div>
 
             <div class="col-6  text-right">
-              
 
               <span class="d-inline-block d-lg-block"><a href="#" class="text-white site-menu-toggle js-menu-toggle py-5 text-white"><span class="icon-menu h3 text-white"></span></a></span>
 
-              
-
               <nav class="site-navigation text-right ml-auto d-none d-lg-none" role="navigation">
                 <ul class="site-menu main-menu js-clone-nav ml-auto ">
-                  <li class="active"><a href="index.html" class="nav-link">Home</a></li>
-                  <li><a href="registration.html" class="nav-link">Registration</a></li>
-                  <li><a href="payouts.html" class="nav-link">Payouts</a></li>
+                  <li><a href="https://www.greenbaywalleyeseries.com/" class="nav-link">Home</a></li>
+                  <li class="active"><a href="registration.html" class="nav-link">Registration</a></li>
+                  <li><a href="https://www.greenbaywalleyeseries.com/payouts.html" class="nav-link">Payouts</a></li>
                   <li><a href="standings.html" class="nav-link">Standings</a></li>
                   <li><a href="documents/green_bay_walleye_series_rules.pdf" class="nav-link">Rules</a></li>
                   <li><a href="documents/green_bay_walleye_series_length_to_weight_conversion_chart.pdf" class="nav-link">Conversion Chart</a></li>
-                  <li><a href="index.html#sponsors" class="nav-link">Sponsors</a></li>
+                  <li><a href="https://www.greenbaywalleyeseries.com/sponsors.html" class="nav-link">Sponsors</a></li>
                 </ul>
               </nav>
+
+
+<!-- 
+              <nav class="site-navigation text-right ml-auto d-none d-lg-none" role="navigation">
+                <ul class="site-menu main-menu js-clone-nav ml-auto ">
+                  <li><a href="/index.html" class="nav-link">Home</a></li>
+                  <li class="active"><a href="/registration.html" class="nav-link">Registration</a></li>
+                  <li><a href="/payouts.html" class="nav-link">Payouts</a></li>
+                  <li><a href="/standings.html" class="nav-link">Standings</a></li>
+                  <li><a href="/documents/green_bay_walleye_series_rules.pdf" class="nav-link">Rules</a></li>
+                  <li><a href="/documents/green_bay_walleye_series_length_to_weight_conversion_chart.pdf" class="nav-link">Conversion Chart</a></li>
+                  <li><a href="/index.html#sponsors" class="nav-link">Sponsors</a></li>
+                </ul>
+              </nav>
+-->
+
             </div>
           </div>
         </div>
@@ -103,49 +93,36 @@
         <div class="container">
         	<div class="row align-items-center justify-content-center">
             	<div class="col-md-12 text-center">
-              		<h1 class="md-12 text-white">Tournament Rosters</h1>
+              		<h1 class="md-12 text-white">GBWS Member List</h1>
             	</div>
 			</div>
         </div>
       </div>
 	</div> 
-
-
+    
     <div class="site-section">
-      <div class="container text-center">
-        <div class="row align-items-center">
-        	<form class="form-inline">
-		        <div class="form-group">
-		  			<label for="tourney">Select tournament to view roster: </label>
-		  			<select class="form-control" id="tourney" onchange="showTourneyTeams(this.value)">
-		  				<option Value=""></option>
-		    			<option Value="GB">Green Bay</option>
-		    			<option Value="DY">Oconto</option>
-		    			<option Value="SB">Sturgeon Bay</option>
-		    			<option Value="Mar">Marinette</option>
-		  			</select>
-				</div>
-			</form>
-		</div>
-	  </div>
-	  <div id="txtHint">
-	  </div>
+		<div id="ListMembers">
+    
+    	</div>
+
 	</div>
+
     <footer class="site-footer">
       <div class="container">
         <div class="row">
+
           <div class="col-lg-8 ml-auto">
             <div class="row">
               <div class="col-lg-6 ml-auto">
                 <h2 class="footer-heading mb-4">Quick Links</h2>
                 <ul class="list-unstyled">
-                  <li><a href="../index.html">Home</a></li>
-                  <li><a href="../registration.html">Registration</a></li>
-                  <li><a href="../payouts.html">Payouts</a></li>
-                  <li><a href="../standings.html">Standings</a></li>
-                  <li><a href="../documents/green_bay_walleye_series_rules.pdf">Rules</a></li>
-                  <li><a href="../documents/green_bay_walleye_series_length_to_weight_conversion_chart.pdf">Conversion Chart</a></li>
-                  <li><a href="../index.html#sponsors" >Sponsors</a></li>
+                  <li><a href="index.html">Home</a></li>
+                  <li><a href="registration.html">Registration</a></li>
+                  <li><a href="payouts.html">Payouts</a></li>
+                  <li><a href="standings.html">Standings</a></li>
+                  <li><a href="documents/green_bay_walleye_series_rules.pdf">Rules</a></li>
+                  <li><a href="documents/green_bay_walleye_series_length_to_weight_conversion_chart.pdf">Conversion Chart</a></li>
+                  <li><a href="index.html#sponsors" >Sponsors</a></li>
                 </ul>
               </div>
               <div class="col-lg-6">
