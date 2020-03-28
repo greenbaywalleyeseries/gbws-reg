@@ -46,6 +46,7 @@
         <div class="col-12 col-md-12">
             <table class="table table-striped">
                 <thead>
+                    <th>ID</th>
                     <th>First</th>
                     <th>Last</th>
                     <th>Address</th>
@@ -60,6 +61,7 @@
     while($row = mysqli_fetch_array($result)) {
     
         echo "<tr>";
+        echo "<td>" . $row['mbr_id']. "</td>";
         echo "<td>" . $row['first']. "</td>";
         echo "<td>" . $row['last']. "</td>";
         echo "<td>" . $row['address']. "</td>";
