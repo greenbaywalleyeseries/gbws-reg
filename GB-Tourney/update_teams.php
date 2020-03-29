@@ -15,7 +15,9 @@ if($status == false)
 $roster=array();
 $tbl_header=array('Boat #','Team ID','Partner 1','Partner 2','Option Pot','Big Fish');
 $sql="call ListTourneyRoster('".$tourney_id."')";
+
 $result = mysqli_query($mysqli,$sql);
+
 $i=1;
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
@@ -38,6 +40,7 @@ if ($result->num_rows > 0) {
     }
 }
 
+
 echo $i ." teams loaded from registration site";
 
-
+?>
