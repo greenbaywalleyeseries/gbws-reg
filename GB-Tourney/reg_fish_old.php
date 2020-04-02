@@ -45,7 +45,42 @@ if(!isset($_COOKIE['GBWS-admin'])) {
 					<td align="center"><input type="radio" name="length2" id="length2-3" value=".75"></td>
     			</tr>
    			</table>
+<!-- 
+<table class="pictures-tbl">
+	<tr>
+	<th class="pictures-title"></th>
+	<th class="pictures-file"></th><th>
+	</tr>
+	
+	<tr>
+  <th> <label for="pic1">Picture 1 <span>*</span></label> </th>
+	<td>  <input id="pic1" type="file" aria-required="true"name="pic1" required/> </td>
+  </tr>
 
+	<tr>
+  <th> <label for="pic2">Picture 2 <span>*</span></label> </th>
+	<td>  <input id="pic2" type="file" aria-required="true"name="pic2" required/> </td>
+  </tr>
+
+	<tr>
+  <th> <label for="pic3">Picture 3</label> </th>
+	<td>  <input id="pic3" type="file" aria-required="true"name="pic3" /> </td>
+  </tr>
+
+	<tr>
+  <th> <label for="pic4">Picture 4</label> </th>
+	<td>  <input id="pic4" type="file" aria-required="true"name="pic4" /> </td>
+  </tr>
+
+	<tr>
+  <th> <label for="pic5">Picture 5</label> </th>
+	<td>  <input id="pic5" type="file" aria-required="true"name="pic5" /> </td>
+  </tr>
+
+</table>
+<br>
+<br>
+ -->  
  	<input id="page" type="hidden" name="page" value="reg_fish.php" />
 					<div style="text-align:left; margin-top:10px; margin-bottom:10px;">
 
@@ -53,12 +88,11 @@ if(!isset($_COOKIE['GBWS-admin'])) {
 							<button type="submit" name="upload" >SUBMIT</button>
 					</div>
 
-		</div>
-	</form>
 
-   <div class="divider">
+</form>
+</div>
+   <div class="divider"/>
     	<a href="Admin_Dashboard.php" class="button">Admin Dashboard</a>
-	</div>
-   
+   <div class="divider"/>
 </body>
 </html>

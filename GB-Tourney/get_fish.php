@@ -20,7 +20,7 @@ if (!empty($partner_result) && $partner_result->num_rows > 0) {
 
 //Get Dates for tourney
 $day1='2020-04-11';
-$day2='2019-04-12';
+$day2='2020-04-12';
 #$sql_dates="select * from tourney_info";
 #$dates_result = $mysqli->query($sql_dates);
 #while($tourney_dates = $dates_result->fetch_assoc()) {
@@ -29,7 +29,7 @@ $day2='2019-04-12';
 #}
 
 //Get Day 1 Results
-$day1_sql = "SELECT * FROM reg_fish where boat_num=".$_GET['boat_num']." and time='".$day1."' order by weight desc limit 5";
+$day1_sql = "SELECT * FROM reg_fish where boat_num=".$_GET['boat_num']." and time like '".$day1."%' order by fish_num";
 
 $result = $mysqli_tourney->query($day1_sql);
 $total=0;
@@ -56,10 +56,12 @@ if (!empty($result) && $result->num_rows > 0) {
     }
 
     echo "</table>";
+/* 
     $penalties=calculate_penalty($_GET['boat_num']);
     $day1_weight=deduct_penalty($penalties, $total);
     echo "Day 1 Penalty: ". $penalties."<br>";
     echo "Day 1 Weight: ".$day1_weight. "<br>";
+*/
     
 } else {
     $day1_weight=0;
@@ -67,7 +69,7 @@ if (!empty($result) && $result->num_rows > 0) {
 }
 
 //Get Day 2 Results
-$day2_sql = "SELECT * FROM reg_fish where boat_num=".$_GET['boat_num']." and time='".$day2."' order by weight desc limit 5";
+$day2_sql = "SELECT * FROM reg_fish where boat_num=".$_GET['boat_num']." and time like '".$day2."%' order by fish_num";
 
 $result = $mysqli_tourney->query($day2_sql);
 $total=0;
@@ -95,17 +97,20 @@ if (!empty($result) && $result->num_rows > 0) {
     
     
     echo "</table>";
+/*
     $penalties=calculate_penalty($_GET['boat_num']);
     $day2_weight=deduct_penalty($penalties, $total);
     echo "Day 2 Penalty: ". $penalties."<br>";
     echo "Day 2 Weight: ".$day2_weight. "<br>";
-    
+*/
 } else {
     $day2_weight=0;
     echo "<h2>No Day 2 results</h2><br>";
 }
+/*
     $total_weight=$day1_weight+$day2_weight;
     echo "<h2>Total Weight: " .$total_weight ."</h2>";
+*/
 
 $mysqli_tourney->close();
 ?>

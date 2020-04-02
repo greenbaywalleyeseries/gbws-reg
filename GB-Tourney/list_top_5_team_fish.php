@@ -42,7 +42,6 @@ if(!isset($_COOKIE['GBWS-admin'])) {
     	window.location.reload();
     }
 </script>
-<link rel="stylesheet" type="text/css" href="./includes/gbws.css">
 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <title>GBWS Team Fish</title>
 </head>
@@ -57,15 +56,15 @@ Top 5 Fish by Team
     <input class="number" id="boat" name="boat" type="number" placeholder="" oninput="ShowFish()">
     </form>
 
-<br>
-<div id="Top5Fish"></div>
-<br>
+        <br>
+        <div id="Top5Fish"></div>
+        <br>
+        
+    <div class="divider">
+    	<a href="admin_dashboard.php" class="button">Admin Dashboard</a>
+    </div>
 
-<div class="divider"/>
-<a href="admin_dashboard.php" class="button">Admin Dashboard</a>
-<div class="divider"/>
-
-</body>
+    </body>
 
 </html>
 

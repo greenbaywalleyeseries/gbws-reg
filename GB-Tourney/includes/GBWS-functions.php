@@ -31,4 +31,43 @@ function deduct_penalty($penalty, $total_weight) {
     return $total_weight;
 }
 
+function TourneyDuration() {
+    include('includes/datalogin.php');
+    $dates_sql='select DATE_FORMAT(Day1, "%M %d, %Y") as Day1, DATE_FORMAT(Day2, "%M %d, %Y") as Day2 from tourney_info';;
+    $dates_result = $mysqli_tourney->query($dates_sql);
+    foreach ($dates_result as $row):
+    $Day1=$row['Day1'];
+    $Day2=$row['Day2'];
+    if (isset($Day2)) {
+        $duration=2;
+    } else {
+        $duration=1;
+    }
+    
+    endforeach;
+    
+    return $duration;
+    
+}
+
+function TourneyDates() {
+    include('includes/datalogin.php');
+    $dates_sql='select DATE_FORMAT(Day1, "%M %d, %Y") as Day1, DATE_FORMAT(Day2, "%M %d, %Y") as Day2 from tourney_info';;
+    $dates_result = $mysqli_tourney->query($dates_sql);
+    foreach ($dates_result as $row):
+        $Day1=$row['Day1'];
+        $Day2=$row['Day2'];
+        if (isset($Day2)) {
+            $dates=$Day1 ." - ".$Day2;
+        } else {
+            $dates=$row['Day1'];
+        }
+        
+    endforeach;
+    
+    return $dates;
+    
+}
+    
+
 ?>

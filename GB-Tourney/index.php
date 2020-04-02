@@ -1,7 +1,15 @@
 <?php 
+include('includes/GBWS-functions.php');
+include('includes/datalogin.php');
 
 if(empty($_GET['page'])) {
-    $tgt_page= 'Admin_Dashboard.php';
+    $duration=TourneyDuration();
+    if ($duration == 1) {
+        $tgt_page= 'one_day_dashboard.php';
+    }
+    if ($duration == 2) {
+        $tgt_page= 'two_day_dashboard.php';
+    }  
 } else {
     $tgt_page = $_GET['page'];
 }

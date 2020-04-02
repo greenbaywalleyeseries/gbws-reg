@@ -22,11 +22,44 @@
 
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="css/style.css">
+	<script>
+	$(document).ready(function(){
+		var ba = ["Chrome","Firefox","Safari","Opera","MSIE","Trident","Edge"];
+		var b, ua = navigator.userAgent;
+		for(var i=0; i < ba.length; i++){
+		    if( ua.indexOf(ba[i]) > -1 ){
+		        b = ba[i];
+		        break;
+		    }
+		}
+		if(b == "MSIE" || b == "Trident" || b == "Edge"){
+		    b = "Internet Explorer";
+        	$("#myModal").modal('show');
+		}
+    });
+	</Script>
+
 
   </head>
 
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300"">
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          
+          <h4 class="modal-title">Incompatible Browser</h4>
+        </div>
+        <div class="modal-body">
+          <p>Internet Explorer is not compatible with our registration software.  Please use another browser such as Chrome or Edge</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
 
+    </div>
+  </div>
     
     <div class="site-wrap" id="home-section">
 
