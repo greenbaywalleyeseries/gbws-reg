@@ -2,6 +2,14 @@
 include_once 'includes/GBWS-functions.php';
 $target='list_top_5_team_fish.php';
 
+$duration=TourneyDuration();
+if ($duration == 1) {
+    $tgt_page= 'one_day_dashboard.php';
+}
+if ($duration == 2) {
+    $tgt_page= 'two_day_dashboard.php';
+}  
+
 if(!isset($_COOKIE['GBWS-admin'])) {
     header('Location: index.php?page='.$target);
 }
@@ -10,6 +18,7 @@ if(!isset($_COOKIE['GBWS-admin'])) {
 
 <html>
 <head>
+<link rel="stylesheet" type="text/css" href="includes/gbws.css">
 <script>
     function ShowFish() {
     	var str = document.getElementById("boat").value;
@@ -61,7 +70,7 @@ Top 5 Fish by Team
         <br>
         
     <div class="divider">
-    	<a href="admin_dashboard.php" class="button">Admin Dashboard</a>
+    	<a href="<?php echo $tgt_page ?>" class="button">Admin Dashboard</a>
     </div>
 
     </body>

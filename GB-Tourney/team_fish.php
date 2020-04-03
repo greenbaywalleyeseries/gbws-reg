@@ -1,6 +1,14 @@
 <?php 
 include_once 'includes/GBWS-functions.php';
-$target='list_top_5_team_fish.php';
+$target='team_fish.php';
+
+$duration=TourneyDuration();
+if ($duration == 1) {
+    $tgt_page= 'one_day_dashboard.php';
+}
+if ($duration == 2) {
+    $tgt_page= 'two_day_dashboard.php';
+}  
 
 if(!isset($_COOKIE['GBWS-admin'])) {
     header('Location: index.php?page='.$target);
@@ -10,10 +18,10 @@ if(!isset($_COOKIE['GBWS-admin'])) {
 
 <html>
     <head>
+    <link rel="stylesheet" type="text/css" href="includes/gbws.css">
     <script>
         function ShowAllFish() {
         	var str = document.getElementById("boat").value;
-        	document.getElementById("boat2").value = str;
         //    if (str == "") {
         //        document.getElementById("txtHint").innerHTML = "";
         //        return;
@@ -34,22 +42,39 @@ if(!isset($_COOKIE['GBWS-admin'])) {
                 xmlhttp.send();
         //    }
         }
+        
         function saveFishToDatabase(editableObj,column,boat_num,fish_num) {
         	$.ajax({
         		url: "save_fish_edit.php",
         		type: "POST",
         		data:'column='+column+'&editval='+editableObj.innerHTML+'&boat_num='+boat_num+'&fish_num='+fish_num
            });
-        	window.location.reload();
+        	ShowAllFish();
         }
-        function InsFishToDatabase(editableObj,column,boat_num,fish_num) {
-        	$.ajax({
-        		url: "save_fish_edit.php",
-        		type: "POST",
-        		data:'column='+column+'&editval='+editableObj.innerHTML+'&boat_num='+boat_num+'&fish_num='+fish_num
-           });
-        	window.location.reload();
+
+        function NewFish() {
+            var length = document.getElementById("length").value;
+            var boat = document.getElementById("boat").value
+            var ele = document.getElementsByName('length2'); 
+            for(i = 0; i < ele.length; i++) { 
+            	if(ele[i].checked) 
+                	var length2 = ele[i].value; 
+            } 
+            var dataString = 'length='+ length + '&length2=' + length2 + '&boat=' + boat;
+            jQuery.ajax({
+                url: "ins_new_fish.php",
+                data: dataString,
+                type: "POST",
+                success: function(data){
+                    $("#myForm").html(data);
+                },
+                error: function (){}
+            });
+        ShowAllFish();
+        return true;
+
         }
+
         
     </script>
     <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -75,7 +100,7 @@ if(!isset($_COOKIE['GBWS-admin'])) {
         
         <!-- Begin area for entering new fish -->    
         <div class="entry-form">
-            <form enctype="multipart/form-data" action="ins_new_fish.php" method="POST" id="form-catches">
+            <form enctype="multipart/form-data" method="POST" action="" id="form-catches">
             	<input type="hidden" name="boat2" id="boat2">
             	<table class="entry">
             		<tr>
@@ -89,22 +114,22 @@ if(!isset($_COOKIE['GBWS-admin'])) {
             		<tr>
             			<th><label for="Length">Length</label> </th>
             			<th align="left"><input class="number" id="length" name="length" type="number" min="15" placeholder="" required></th>
-            			<td align="center"><input type="radio" name="length2" id="length2-0" value=".0" checked="checked"></td>
-            			<td align="center"><input type="radio" name="length2" id="length2-1" value=".25"></td>
-            			<td align="center"><input type="radio" name="length2" id="length2-2" value=".5"></td>
-            			<td align="center"><input type="radio" name="length2" id="length2-3" value=".75"></td>
+            			<td align="center"><input type="radio" name="length2" id="length2" value=".0" checked="checked"></td>
+            			<td align="center"><input type="radio" name="length2" id="length2" value=".25"></td>
+            			<td align="center"><input type="radio" name="length2" id="length2" value=".5"></td>
+            			<td align="center"><input type="radio" name="length2" id="length2" value=".75"></td>
             		</tr>
             	</table>
             
              	<input id="page" type="hidden" name="page" value="reg_fish.php" />
             	<div style="text-align:left; margin-top:10px; margin-bottom:10px;">
-            	<button type="submit" name="upload" >SUBMIT</button>
+            	<input type="button" onclick="return NewFish();"value="Submit">
             	</div>
         	</form>
         </div>
                 
         <div class="divider">
-        	<a href="admin_dashboard.php" class="button">Admin Dashboard</a>
+        	<a href="<?php echo $tgt_page ?>" class="button">Admin Dashboard</a>
         </div>
 
     </body>

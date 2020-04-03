@@ -19,6 +19,7 @@ if(empty($_GET['page'])) {
 <html>
 <head>
 <head>
+<link rel="stylesheet" type="text/css" href="includes/gbws.css">
 
 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 <meta charset="ISO-8859-1">

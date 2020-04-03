@@ -1,0 +1,258 @@
+@charset "ISO-8859-1";
+
+@media only screen 
+   and (max-device-width: 480px) 
+   and (orientation:landscape) {
+    /* iPhone landscape */
+}
+
+@media only screen 
+   and (max-device-width: 480px) 
+   and (orientation:portrait) {
+    /* iPhone portrait */
+}
+
+a.button{
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    transition-duration: 0.4s;
+    border: 2px solid #e7e7e7;
+    appearance: button;
+	padding: 15px 15px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    text-decoration: none;
+    color: initial;
+    width: 200px;
+    box-sizing: conter-box;
+    
+    
+	height: 40px;
+	vertical-align: middle;
+}
+
+.button:hover {background-color: #e7e7e7;}
+
+.small_button{
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+	padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    margin: 4px 2px;
+    text-decoration: none;
+    color: initial;
+    width: 150px;
+    box-sizing: conter-box;
+}
+
+.divider{
+    width:20px;
+    height:20x;
+}
+
+.text{
+	width:200px;
+	font-style: italic;
+}
+
+.number {
+  width: 3em;
+}
+
+.entry-form {
+	max-width: 150px;
+	
+}
+
+.leader {
+  table-layout: fixed;
+   border: 1px solid black;
+   width: 100%;
+   max-width: 1024px;
+   text-align: center;
+}
+.leader td {
+  overflow: hidden;
+  border: 1px solid black;
+  text-overflow: ellipsis;
+}
+
+/* Column widths are based on these cells */
+.row-place {
+  width: 5%;
+}
+.row-boat {
+  width: 5%;
+}
+.row-team {
+  width: 40%;
+}
+.row-fish {
+  width: 10%;
+}
+.row-penalty{
+	width: 10%;
+}
+.row-weight {
+  width: 15%;
+}
+.row-total_weight {
+  width: 15%;
+}
+
+.fish-tbl {
+	table-layout: fixed;
+	border: 1px solid black;
+	width: 100%;
+	max-width: 800px;
+	text-align: center;	
+}
+.fish-tbl td {
+  overflow: hidden;
+  border: 1px solid black;
+  text-overflow: ellipsis;
+}
+.fish-boat{
+	width: 10%;
+}
+.fish-team{
+	width: 40%;
+}
+.fish-fish{
+	width: 10%;
+}
+.fish-length{
+	width: 20%;
+}
+.fish-weight{
+	width: 20%;
+}
+
+.teamfish-tbl {
+	table-layout: fixed;
+	border: 1px solid black;
+	width: 100%;
+	max-width: 500px;
+	text-align: center;	
+}
+.teamfish-tbl td {
+  overflow: hidden;
+  border: 1px solid black;
+  text-overflow: ellipsis;
+}
+.fish-boat{
+	width: 10%;
+}
+.fish-fish{
+	width: 10%;
+}
+.fish-length{
+	width: 25%;
+}
+.fish-weight{
+	width: 25%;
+}
+.fish-approval{
+	width: 30%;
+}
+
+.teamdetail-tbl {
+	table-layout: fixed;
+	border: 1px solid black;
+	width: 100%;
+	max-width: 800px;
+	text-align: center;	
+}
+.teamdetail-tbl td {
+  overflow: hidden;
+  border: 1px solid black;
+  text-overflow: ellipsis;
+}
+.editable-col {
+	maxlength: 1;
+	
+}
+.team-boat{
+	width: 10%;
+}
+.team-partner{
+	width: 30%;
+}
+.team-fish{
+	width: 10%;
+}
+.team-option{
+	width: 10%;
+}
+.team-sidepot{
+	width: 10%;
+}
+
+.pictures-tbl {
+	table-layout: fixed;
+	width: 300px;
+	text-align: left	
+}
+.pictures-tbl td {
+  overflow: hidden;
+  text-overflow: string;
+  height: 30px;
+}
+.pictures-title{
+	width: 40%;
+	text-align: left;
+	padding: 5px;
+}
+
+.pictures-file{
+	width: 60%;
+	padding: 5px;
+}
+
+.title-header {
+	text-align: center;
+	font-size: 22px;
+	max-width:800px;
+
+}
+
+.wrapper {
+  width: 45%;
+  height: auto;
+  margin: 10px auto;
+  border: 1px solid #cbcbcb;
+  background: white;
+}
+
+.team_form {
+  width: 80%;
+  margin: 100px auto;
+  border: 1px solid green;
+  background: #fafcfc;
+  padding: 20px;
+}
+
+#search_btn, #submit_btn, #update_btn {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+	padding: 5px 5px;
+    text-align: center;
+    text-decoration: none;
+    font-size: 12px;
+    margin: 4px 2px;
+    text-decoration: none;
+    color: initial;
+    width: 60px;
+    box-sizing: conter-box;
+}
+
+editable-col {
+	maxlength: 1;
+	
+}

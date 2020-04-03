@@ -3,7 +3,7 @@ include_once 'includes/GBWS-functions.php';
 include('includes/datalogin.php');
 
 $status=0;
-$boat=$_POST['boat2'];
+$boat=$_POST['boat'];
 $length=$_POST['length'];
 $length2=$_POST['length2'];
 

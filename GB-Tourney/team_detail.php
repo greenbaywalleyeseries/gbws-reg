@@ -2,6 +2,14 @@
 include_once './includes/GBWS-functions.php';
 $target='team_detail.php';
 
+$duration=TourneyDuration();
+if ($duration == 1) {
+    $tgt_page= 'one_day_dashboard.php';
+}
+if ($duration == 2) {
+    $tgt_page= 'two_day_dashboard.php';
+}  
+
 if(!isset($_COOKIE['GBWS-admin'])) {
     header('Location: index.php?page='.$target);
 }
@@ -9,6 +17,10 @@ if(!isset($_COOKIE['GBWS-admin'])) {
 ?>
 
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
 <script>
 function showTeam() {
 	var str = document.getElementById("boat").value;
@@ -41,11 +53,7 @@ function saveToDatabase(editableObj,column,id) {
 }
 
 </script>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-
-<link rel="stylesheet" type="text/css" href="./includes/gbws.css">
+<link rel="stylesheet" type="text/css" href="includes/gbws.css">
 <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 </head>
 <body onload="showTeam()">
@@ -63,9 +71,9 @@ GBWS Team Detail
 <div id="txtHint"><b>Team info will be listed here...</b></div>
 <br>
 
-   <div class="divider"/>
-    	<a href="admin_dashboard.php" class="button">Admin Dashboard</a>
-   <div class="divider"/>
+   <div class="divider"></div>
+    	<a href="<?php echo $tgt_page ?>" class="button">Admin Dashboard</a>
+   <div class="divider"></div>
    
 </body>
 </html>

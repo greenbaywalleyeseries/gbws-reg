@@ -3,7 +3,6 @@ include_once 'includes/GBWS-functions.php';
 include_once('includes/datalogin.php');
 require('../pdf/fpdf.php');
 
-$duration=TourneyDuration();
 
 class PDF extends FPDF
 {
@@ -215,20 +214,6 @@ $mysqli_tourney->close();
 
 
 // Instanciation of inherited class
-if ($duration == 1) {
-    $pdf = new PDF('P','in','LETTER');
-    $pdf->SetLeftMargin(.25);
-    // Column headings
-    $pdf->SetFont('Arial','',8);
-    $pdf->AddPage();
-    $pdf->OneDayTable($tbl_header,$rankings);
-    $pdf->AliasNbPages();
-    $pdf->Output();
-    
-}
-
-if ($duration == 2) {
-
     $pdf = new PDF('L','in','LETTER');
     $pdf->SetLeftMargin(.25);
     // Column headings
@@ -237,7 +222,7 @@ if ($duration == 2) {
     $pdf->TwoDayTable($tbl_header,$rankings,$comeback_team_string);
     $pdf->AliasNbPages();
     $pdf->Output();
-}
+
 
 
 ?>
