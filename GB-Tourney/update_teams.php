@@ -17,7 +17,7 @@ $tbl_header=array('Boat #','Team ID','Partner 1','Partner 2','Option Pot','Big F
 $sql="call ListTourneyRoster('".$tourney_id."')";
 
 $result = mysqli_query($mysqli,$sql);
-
+print_r($result);
 $i=1;
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
