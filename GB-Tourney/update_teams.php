@@ -5,9 +5,9 @@ include('includes/datalogin.php');
 $tourney_id='GB';
 
 $del_teams_SQL="delete from tourney_teams";
-echo $del_teams_SQL;
+
 $status=mysqli_query($mysqli_tourney,$del_teams_SQL);
-print_r($status);
+
 if($status == false)
 {
     die("Teams not updated - unable to delete");
@@ -16,9 +16,9 @@ if($status == false)
 $roster=array();
 $tbl_header=array('Boat #','Team ID','Partner 1','Partner 2','Option Pot','Big Fish');
 $sql="call ListTourneyRoster('".$tourney_id."')";
-echo "I made it to here";
+
 $result = mysqli_query($mysqli,$sql);
-print_r($result);
+
 $i=1;
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
