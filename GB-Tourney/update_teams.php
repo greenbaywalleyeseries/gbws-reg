@@ -15,7 +15,7 @@ if($status == false)
 $roster=array();
 $tbl_header=array('Boat #','Team ID','Partner 1','Partner 2','Option Pot','Big Fish');
 $sql="call ListTourneyRoster('".$tourney_id."')";
-
+echo "I made it to here";
 $result = mysqli_query($mysqli,$sql);
 print_r($result);
 $i=1;
