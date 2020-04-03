@@ -2,7 +2,7 @@
 $host = "gbws-registration.mysql.database.azure.com";
 $username = "yami@gbws-registration";
 $password = "Th1sSucksa$$";
-$db_name = "gbws_reg";
+$db_name = "gb_tourney";
 
 //$host = "localhost";
 //$username = "root";
