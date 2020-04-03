@@ -7,7 +7,7 @@ $tourney_id='GB';
 $del_teams_SQL="delete from tourney_teams";
 echo $del_teams_SQL;
 $status=mysqli_query($mysqli_tourney,$del_teams_SQL);
-echo $status;
+print_r($status);
 if($status == false)
 {
     die("Teams not updated - unable to delete");
