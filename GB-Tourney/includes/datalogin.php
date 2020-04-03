@@ -1,13 +1,13 @@
 <?php
-//$host = "gbws-registration-mysql.mysql.database.azure.com";
-//$username = "yami@gbws-registration-mysql";
-//$password = "Th1sSucksa$$";
-//$db_name = "gb-tourney";
+$host = "gbws-registration.mysql.database.azure.com";
+$username = "yami@gbws-registration";
+$password = "Th1sSucksa$$";
+$db_name = "gbws_reg";
 
-$host = "localhost";
-$username = "root";
-$password = "";
-$db_name = "gb_tourney";
+//$host = "localhost";
+//$username = "root";
+//$password = "";
+//$db_name = "gb_tourney";
 
 // Create connection for mysqli extension
 $mysqli_tourney = new mysqli($host, $username, $password, $db_name);
