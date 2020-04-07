@@ -66,21 +66,21 @@ class PDF extends FPDF
     function BasicTable($tbl_header, $roster)
     {
         // Header
-        $this->Cell(.5,.25,$tbl_header[0],1,0,'C');
-        $this->Cell(2.5,.25,$tbl_header[1],1,0,'C');
-        $this->Cell(2.5,.25,$tbl_header[2],1,0,'C');
-        $this->Cell(.75,.25,$tbl_header[3],1,0,'C');
-        $this->Cell(.75,.25,$tbl_header[4],1,0,'C');
+        $this->Cell(8,5,$tbl_header[0],1,0,'C');
+        $this->Cell(10,5,$tbl_header[1],1,0,'C');
+        $this->Cell(55,5,$tbl_header[2],1,0,'C');
+        $this->Cell(15,5,$tbl_header[3],1,0,'C');
+        $this->Cell(20,5,$tbl_header[4],1,0,'C');
         $this->Ln();
         // Data
         $x = 0;
         //foreach($rankings as $row)
         while ($x < count($roster,0)) {
-            $this->Cell(.5,.25,$roster[$x][0],1,0,'C');
-            $this->Cell(2.5,.25,$roster[$x][1],1,0,'C');
-            $this->Cell(2.5,.25,$roster[$x][2],1,0,'C');
-            $this->Cell(.75,.25,$roster[$x][3],1,0,'C');
-            $this->Cell(.75,.25,$roster[$x][4],1,0,'C');
+            $this->Cell(8,5,$roster[$x][0],1,0,'C');
+            $this->Cell(10,5,$roster[$x][1],1,0,'C');
+            $this->Cell(55,5,$roster[$x][2],1,0,'C');
+            $this->Cell(15,5,$roster[$x][3],1,0,'C');
+            $this->Cell(20,5,$roster[$x][4],1,0,'C');
             $this->Ln();
             $x++;
         }
