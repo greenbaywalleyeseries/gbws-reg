@@ -252,7 +252,17 @@
                     $tourney_result = mysqli_query($mysqli,$tourney_sql);
                     
                     while($tourney = mysqli_fetch_array($tourney_result)) {
+                        $disabled='';
                         $date=date_create($tourney['start_date']);
+                        $reg_deadline = $date;
+                        date_sub($reg_deadline, date_interval_create_from_date_string('5 days'));
+                        $reg_deadline = date_format($reg_deadline,'Y-m-d');
+                        $today = date('Y-m-d');
+                        if ($today >= $reg_deadline) {
+                            $disabled='disabled';
+                        } else {
+                            $disabled='';
+                        }
                         $description=date_format($date, 'F d') ." - " . $tourney['location'];
                         $tourney_fee=$tourney["entry_fee"];
                         $option_fee=$tourney["option_fee"];
@@ -264,13 +274,13 @@
                                 echo '<p>'. $description .'</p>';
                             echo '</div>';
                             echo '<div class="col-3  col-md-2 text-center">';
-                                echo '<input type="checkbox" id=' . $tourney["local"] . '-Tourney value="' . $tourney_fee . '" onclick="UpdateCart(\''.$tourney["local"].'-Tourney\',\''.$description.' Registration'.'\','. $tourney_fee.')">';
+                                echo '<input type="checkbox" id=' . $tourney["local"] . '-Tourney value="' . $tourney_fee . '" onclick="UpdateCart(\''.$tourney["local"].'-Tourney\',\''.$description.' Registration'.'\','. $tourney_fee .')" ' . $disabled .'>';
                             echo '</div>';
                             echo '<div class="col-3  col-md-2 text-center">';
-                                echo '<input type="checkbox" id=' . $tourney["local"] . '-Option value="' .$option_fee. '" onclick="UpdateCart(\''.$tourney["local"].'-Option\',\''.$description.' Option Pot'.'\','. $option_fee.')">';
+                                echo '<input type="checkbox" id=' . $tourney["local"] . '-Option value="' .$option_fee. '" onclick="UpdateCart(\''.$tourney["local"].'-Option\',\''.$description.' Option Pot'.'\','. $option_fee.')" ' . $disabled . '>';
                             echo '</div>';
                             echo '<div class="col-3  col-md-2 text-center">';
-                                echo '<input type="checkbox" id=' . $tourney["local"] . '-Fish value="' .$big_fish_fee. '" onclick="UpdateCart(\''.$tourney["local"].'-Fish\',\''.$description.' Big Fish'.'\','. $big_fish_fee.')">';
+                                echo '<input type="checkbox" id=' . $tourney["local"] . '-Fish value="' .$big_fish_fee. '" onclick="UpdateCart(\''.$tourney["local"].'-Fish\',\''.$description.' Big Fish'.'\','. $big_fish_fee.')" ' . $disabled . '>';
                             echo '</div>';
                             echo '<div class="col-6  col-md-2 text-center">';
                                 echo '<select name="'.$tourney["local"].'-Partner1" id="'.$tourney["local"].'-Partner1">';
