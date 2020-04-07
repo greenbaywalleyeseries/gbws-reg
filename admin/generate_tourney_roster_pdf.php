@@ -114,11 +114,12 @@ $mysqli->close();
 
 
 // Instanciation of inherited class
-$pdf = new PDF('P','in','LETTER');
-$pdf->SetLeftMargin(.5);
+$pdf = new PDF('P');
+$pdf->SetLeftMargin(3);
 // Column headings
 $pdf->SetFont('Arial','',8);
 $pdf->AddPage();
+
 $pdf->BasicTable($tbl_header, $roster);
 $pdf->AliasNbPages();
 $pdf->Output();
