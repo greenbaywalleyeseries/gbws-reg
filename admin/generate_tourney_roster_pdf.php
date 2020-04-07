@@ -28,40 +28,40 @@ class PDF extends FPDF
         }
         
         // Logo
-        $this->Image('../images/gbws_logo-no-background.png',.25,.25,1.5,1.5);
+        $this->Image('../images/gbws_logo-no-background.png',35,6,40,40);
         // Arial bold 15
         $this->SetFont('Arial','B',15);
         // Move to the right
-        $this->Cell(2);
+        $this->Cell(50);
         // Title
-        $this->Cell(3,.5,'Green Bay Walleye Series',0,0,'C');
+        $this->Cell(100,8,'Green Bay Walleye Series',0,0,'C');
         //2nd Image
-        $this->Image('../images/gbws_logo-no-background.png', 6.5,.25,1.5,1.5);
+        $this->Image('../images/gbws_logo-no-background.png', 140,6,40,40);
         // Line break
-        $this->Ln(.5);
+        $this->Ln(15);
         //Next Line for Tourney Location
         // Arial bold 12
         $this->SetFont('Arial','B',12);
-        $this->Cell(2);
-        $this->Cell(3,.25,$location,0,1,'C');
+        $this->Cell(50);
+        $this->Cell(100,5,$location,0,1,'C');
         // Line break
         //$this->Ln(20);
         //Next Line for Tourney Dates
-        $this->Cell(2);
-        $this->Cell(3,.25,$date,0,0,'C');
+        $this->Cell(50);
+        $this->Cell(100,5,$dates,0,0,'C');
         // Line break
-        $this->Ln(.5);
+        $this->Ln(15);
     }
     
     // Page footer
     function Footer()
     {
         // Position at 1.5 cm from bottom
-        $this->SetY(-.5);
+        $this->SetY(-15);
         // Arial italic 8
         $this->SetFont('Arial','I',8);
         // Page number
-        $this->Cell(0,.5,'Page '.$this->PageNo().'/{nb}',0,0,'C');
+        $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
     }
     function BasicTable($tbl_header, $roster)
     {
