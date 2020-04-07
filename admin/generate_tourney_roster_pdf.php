@@ -48,7 +48,7 @@ class PDF extends FPDF
         //$this->Ln(20);
         //Next Line for Tourney Dates
         $this->Cell(50);
-        $this->Cell(100,5,$dates,0,0,'C');
+        $this->Cell(100,5,$date,0,0,'C');
         // Line break
         $this->Ln(15);
     }
