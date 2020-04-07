@@ -79,8 +79,8 @@ class PDF extends FPDF
         while ($x < count($roster,0)) {
             $this->Setx(45);
             $this->Cell(15,5,$roster[$x][0],1,0,'C');
-            $this->Cell(30,5,$roster[$x][1],1,0,'C');
-            $this->Cell(30,5,$roster[$x][2],1,0,'C');
+            $this->Cell(40,5,$roster[$x][1],1,0,'C');
+            $this->Cell(40,5,$roster[$x][2],1,0,'C');
             $this->Cell(15,5,$roster[$x][3],1,0,'C');
             $this->Cell(20,5,$roster[$x][4],1,0,'C');
             $this->Ln();
