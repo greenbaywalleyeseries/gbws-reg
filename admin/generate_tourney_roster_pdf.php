@@ -116,7 +116,7 @@ $mysqli->close();
 
 
 // Instanciation of inherited class
-$pdf = new PDF('P');
+$pdf = new PDF('P','mm','Legal');
 $pdf->SetLeftMargin(3);
 // Column headings
 $pdf->SetFont('Arial','',8);
