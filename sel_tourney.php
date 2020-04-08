@@ -254,6 +254,7 @@
                     while($tourney = mysqli_fetch_array($tourney_result)) { 
                         $disabled='';
                         $date=date_create($tourney['start_date']);
+                        $date2=date_create($tourney['start_date']);
                         $reg_deadline = $date;
                         date_sub($reg_deadline, date_interval_create_from_date_string('5 days'));
                         $reg_deadline = date_format($reg_deadline,'Y-m-d');
@@ -264,7 +265,7 @@
                         } else {
                             $disabled='';
                         }
-                        $description=date_format($date, 'F d') ." - " . $tourney['location'];
+                        $description=date_format($date2, 'F d') ." - " . $tourney['location'];
                         $tourney_fee=$tourney["entry_fee"];
                         $option_fee=$tourney["option_fee"];
                         $big_fish_fee=$tourney["big_fish_fee"];
