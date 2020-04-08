@@ -1,7 +1,7 @@
 <?php
 /* These are our valid username and passwords */
 $user='admin';
-$pass='h@rley1';
+$pass='C@ssie01';
 $target=$_GET['page'];
 
 include('includes/datalogin.php');
