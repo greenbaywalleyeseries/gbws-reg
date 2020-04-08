@@ -264,7 +264,7 @@
                         } else {
                             $disabled='';
                         }
-                        $description=date_format($today, 'F d') ." - " . $tourney['location'];
+                        $description=date_format($date, 'F d') ." - " . $tourney['location'];
                         $tourney_fee=$tourney["entry_fee"];
                         $option_fee=$tourney["option_fee"];
                         $big_fish_fee=$tourney["big_fish_fee"];
