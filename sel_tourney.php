@@ -251,7 +251,7 @@
                    $tourney_sql="SELECT * FROM tourneyinfo WHERE second_date IS NULL";
                     $tourney_result = mysqli_query($mysqli,$tourney_sql);
                     
-                    while($tourney = mysqli_fetch_array($tourney_result)) {
+                    while($tourney = mysqli_fetch_array($tourney_result)) { 
                         $disabled='';
                         $date=date_create($tourney['start_date']);
                         $reg_deadline = $date;
@@ -264,7 +264,7 @@
                         } else {
                             $disabled='';
                         }
-                        $description=date_format($date, 'F d') ." - " . $tourney['location'];
+                        $description=date_format($today, 'F d') ." - " . $tourney['location'];
                         $tourney_fee=$tourney["entry_fee"];
                         $option_fee=$tourney["option_fee"];
                         $big_fish_fee=$tourney["big_fish_fee"];
