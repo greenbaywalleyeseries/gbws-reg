@@ -259,7 +259,8 @@
                         $reg_deadline = date_format($reg_deadline,'Y-m-d');
                         $today = date('Y-m-d');
                         if ($today >= $reg_deadline) {
-                            $disabled='disabled';
+                            $disabled='';
+                            #$disabled='disabled';
                         } else {
                             $disabled='';
                         }
