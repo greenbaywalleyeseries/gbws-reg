@@ -27,7 +27,7 @@ if(!isset($_COOKIE['GBWS-admin'])) {
 <title>GBWS Admin Dashboard</title>
 </head>
     <body>
-        	<a href="update_teams.php" class="button">Update Teams from Registration Database</a>
+        	<a href="update_teams.php" class="button" disable>Update Teams from Registration Database</a>
        <div class="divider"></div>
         	<a href="team_detail.php" class="button">Team Detail</a>
        <div class="divider"></div>
