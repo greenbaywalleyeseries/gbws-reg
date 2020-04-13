@@ -102,36 +102,36 @@ class PDF extends FPDF
     function OneDayTable($tbl_header, $rankings)
     {
         // Header
-        $this->Cell(.5,.25,$tbl_header[0],1,0,'C');
+        $this->Cell(.45,.25,$tbl_header[0],1,0,'C');
         $this->Cell(.5,.25,$tbl_header[1],1,0,'C');
-        $this->Cell(2.5,.25,$tbl_header[2],1,0,'C');
-        $this->Cell(.5,.25,$tbl_header[3],1,0,'C');
+        $this->Cell(2.6,.25,$tbl_header[2],1,0,'C');
+        $this->Cell(.4,.25,$tbl_header[3],1,0,'C');
         $this->Cell(.5,.25,$tbl_header[4],1,0,'C');
 #        $this->Cell(.75,.25,$tbl_header[5],1,0,'C');
 #        $this->Cell(.75,.25,$tbl_header[6],1,0,'C');
 #        #$this->Cell(.75,.25,$tbl_header[7],1,0,'C');
 #        $this->Cell(.75,.25,$tbl_header[8],1,0,'C');
-        $this->Cell(.75,.25,$tbl_header[9],1,0,'C');
+        $this->Cell(.8,.25,$tbl_header[9],1,0,'C');
         $this->Cell(.75,.25,$tbl_header[10],1,0,'C');
-        $this->Cell(.75,.25,$tbl_header[11],1,0,'C');
+        $this->Cell(.7,.25,$tbl_header[11],1,0,'C');
         $this->Cell(1,.25,$tbl_header[12],1,0,'C');
         $this->Ln();
         // Data
         $x = 0;
         //foreach($rankings as $row)
         while ($x < count($rankings,0)) {
-            $this->Cell(.5,.15,$rankings[$x][1],1,0,'C');
+            $this->Cell(.45,.15,$rankings[$x][1],1,0,'C');
             $this->Cell(.5,.15,$rankings[$x][2],1,0,'C');
-            $this->Cell(2.5,.15,$rankings[$x][3],1,0,'C');
-            $this->Cell(.5,.15,$rankings[$x][4],1,0,'C');
+            $this->Cell(2.6,.15,$rankings[$x][3],1,0,'C');
+            $this->Cell(.4,.15,$rankings[$x][4],1,0,'C');
             $this->Cell(.5,.15,$rankings[$x][5],1,0,'C');
 #            $this->Cell(.75,.15,$rankings[$x][6],1,0,'C');
 #            $this->Cell(.75,.15,$rankings[$x][7],1,0,'C');
 #            #$this->Cell(.75,.15,$rankings[$x][8],1,0,'C');
 #            $this->Cell(.75,.15,$rankings[$x][9],1,0,'C');
-            $this->Cell(.75,.15,$rankings[$x][10],1,0,'C');
+            $this->Cell(.8,.15,$rankings[$x][10],1,0,'C');
             $this->Cell(.75,.15,$rankings[$x][11],1,0,'C');
-            $this->Cell(.75,.15,$rankings[$x][12],1,0,'C');
+            $this->Cell(.7,.15,$rankings[$x][12],1,0,'C');
             $this->Cell(1,.15,$rankings[$x][13],1,0,'C');
             $this->Ln();
             $x++;
