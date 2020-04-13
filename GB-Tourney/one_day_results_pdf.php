@@ -120,19 +120,19 @@ class PDF extends FPDF
         $x = 0;
         //foreach($rankings as $row)
         while ($x < count($rankings,0)) {
-            $this->Cell(.45,.15,$rankings[$x][1],1,0,'C');
-            $this->Cell(.5,.15,$rankings[$x][2],1,0,'C');
-            $this->Cell(2.6,.15,$rankings[$x][3],1,0,'C');
-            $this->Cell(.4,.15,$rankings[$x][4],1,0,'C');
-            $this->Cell(.5,.15,$rankings[$x][5],1,0,'C');
+            $this->Cell(.45,.2,$rankings[$x][1],1,0,'C');
+            $this->Cell(.5,.2,$rankings[$x][2],1,0,'C');
+            $this->Cell(2.6,.2,$rankings[$x][3],1,0,'C');
+            $this->Cell(.4,.2,$rankings[$x][4],1,0,'C');
+            $this->Cell(.5,.2,$rankings[$x][5],1,0,'C');
 #            $this->Cell(.75,.15,$rankings[$x][6],1,0,'C');
 #            $this->Cell(.75,.15,$rankings[$x][7],1,0,'C');
 #            #$this->Cell(.75,.15,$rankings[$x][8],1,0,'C');
 #            $this->Cell(.75,.15,$rankings[$x][9],1,0,'C');
-            $this->Cell(.8,.15,$rankings[$x][10],1,0,'C');
-            $this->Cell(.75,.15,$rankings[$x][11],1,0,'C');
-            $this->Cell(.7,.15,$rankings[$x][12],1,0,'C');
-            $this->Cell(1,.15,$rankings[$x][13],1,0,'C');
+            $this->Cell(.8,.2,$rankings[$x][10],1,0,'C');
+            $this->Cell(.75,.2,$rankings[$x][11],1,0,'C');
+            $this->Cell(.7,.2,$rankings[$x][12],1,0,'C');
+            $this->Cell(1,.2,$rankings[$x][13],1,0,'C');
             $this->Ln();
             $x++;
         }
