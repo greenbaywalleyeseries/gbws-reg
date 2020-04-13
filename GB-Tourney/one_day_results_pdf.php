@@ -216,7 +216,7 @@ $mysqli_tourney->close();
 
 // Instanciation of inherited class
 if ($duration == 1) {
-    $pdf = new PDF('P','in','LEGAL');
+    $pdf = new PDF('P','in','LETTER');
     $pdf->SetLeftMargin(.25);
     // Column headings
     $pdf->SetFont('Arial','',10);
