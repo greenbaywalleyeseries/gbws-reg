@@ -219,7 +219,7 @@ if ($duration == 1) {
     $pdf = new PDF('P','in','LEGAL');
     $pdf->SetLeftMargin(.25);
     // Column headings
-    $pdf->SetFont('Arial','',8);
+    $pdf->SetFont('Arial','',12);
     $pdf->AddPage();
     $pdf->OneDayTable($tbl_header,$rankings);
     $pdf->AliasNbPages();
@@ -232,7 +232,7 @@ if ($duration == 2) {
     $pdf = new PDF('L','in','LETTER');
     $pdf->SetLeftMargin(.25);
     // Column headings
-    $pdf->SetFont('Arial','',8);
+    $pdf->SetFont('Arial','',12);
     $pdf->AddPage();
     $pdf->TwoDayTable($tbl_header,$rankings,$comeback_team_string);
     $pdf->AliasNbPages();
