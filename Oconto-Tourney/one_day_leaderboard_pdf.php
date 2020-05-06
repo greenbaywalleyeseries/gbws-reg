@@ -61,7 +61,7 @@ class PDF extends FPDF
             $this->Cell(10,5,$tbl_header[1],1,0,'C');
             $this->Cell(55,5,$tbl_header[2],1,0,'C');
             $this->Cell(15,5,$tbl_header[3],1,0,'C');
-            $this->Cell(20,5,$tbl_header[4],1,0,'C');
+#            $this->Cell(20,5,$tbl_header[4],1,0,'C');
 #            $this->Cell(20,5,$tbl_header[5],1,0,'C');
 #            $this->Cell(15,5,$tbl_header[6],1,0,'C');
 #            $this->Cell(20,5,$tbl_header[7],1,0,'C');
@@ -81,7 +81,7 @@ class PDF extends FPDF
 #                $this->Cell(20,5,$rankings[$x][6],1,0,'C');
 #                $this->Cell(15,5,$rankings[$x][7],1,0,'C');
 #                $this->Cell(20,5,$rankings[$x][8],1,0,'C');
-                $this->Cell(20,5,$rankings[$x][9],1,0,'C');
+#                $this->Cell(20,5,$rankings[$x][9],1,0,'C');
                 $this->Cell(20,5,$rankings[$x][10],1,0,'C');
                 $this->Ln();
                 $x++;
