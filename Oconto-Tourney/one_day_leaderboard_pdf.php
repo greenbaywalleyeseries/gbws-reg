@@ -56,7 +56,7 @@ class PDF extends FPDF
     function BasicTable($tbl_header, $rankings)
     {
         // Header
-            $this->Setx(45);
+            $this->Setx(50);
             $this->Cell(8,5,$tbl_header[0],1,0,'C');
             $this->Cell(10,5,$tbl_header[1],1,0,'C');
             $this->Cell(55,5,$tbl_header[2],1,0,'C');
@@ -72,7 +72,7 @@ class PDF extends FPDF
             $x = 0;
             //foreach($rankings as $row)
             while ($x < count($rankings,0)) {
-                $this->Setx(45);
+                $this->Setx(50);
                 $this->Cell(8,5,$rankings[$x][1],1,0,'C');
                 $this->Cell(10,5,$rankings[$x][2],1,0,'C');
                 $this->Cell(55,5,$rankings[$x][3],1,0,'C');
