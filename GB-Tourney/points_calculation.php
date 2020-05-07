@@ -2,7 +2,7 @@
 include('includes/GBWS-functions.php');
 include('includes/datalogin.php');
 
-$points_field="sturgeon_bay";
+$points_field="GB";
 $points_table='points';
 
 $rankings=array();
