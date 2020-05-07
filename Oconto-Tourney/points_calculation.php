@@ -52,6 +52,9 @@ if ($mysqli_tourney->query('CALL UpdateRankings()') == TRUE) {
                 $rankings[]=$data;
                 $pos++;
                 $prev_weight = $row['total_weight'];
+                if ($total_weight < .00000000001 ) {
+                    $points = 100;
+                }
             }
         } else {
             echo "0 results";
