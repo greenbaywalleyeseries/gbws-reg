@@ -37,7 +37,7 @@ if ($result->num_rows > 0) {
     // output data of each row
     foreach ($result as $row) :?>  
         <tr>
-        	<td><?php echo $row['participant'];?></td>
+        	<td><?php echo $row['boat_num'];?></td> 
         	<?php if ( $row['participant'] == '') {
         	   $participant='No Entry';
         	} else {
