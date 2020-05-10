@@ -1,6 +1,6 @@
 <?php 
 include_once 'includes/GBWS-functions.php';
-$target='Admin_Dashboard.php';
+$target='one_day_dashboard.php';
 
 if(!isset($_COOKIE['GBWS-admin'])) {
     header('Location: index.php?page='.$target);

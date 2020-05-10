@@ -27,6 +27,7 @@ if ($result->num_rows > 0) {
     echo "<table class='teamdetail-tbl'>";
     echo "<tr>";
     echo "<th class='boat'>Boat #</th>";
+    echo "<th class='participant'>Fish Donkey Paticipant</th>";
     echo "<th class='partner'>Partner 1</th>";
     echo "<th class='partner'>Partner 2</th>";
     echo "<th class='fish'>Big Fish</th>";
@@ -36,7 +37,8 @@ if ($result->num_rows > 0) {
     // output data of each row
     foreach ($result as $row) :?>  
         <tr>
-        	<td><?php echo $row['boat_num'];?></td>  
+        	<td><?php echo $row['boat_num'];?></td>
+        	<td><?php echo $row['participant'];?></td>  
         	<td><?php echo $row['partner1'];?></td> 
         	<td><?php echo $row['partner2'];?></td>  
         	<td class="editable-col" contenteditable="true" onBlur="saveToDatabase(this,'big_fish','<?php echo $row['boat_num']; ?>')" oldVal="<php echo $row['big_fish';?>"><?php echo $row['big_fish'];?></td> 

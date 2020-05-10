@@ -127,7 +127,7 @@ a.button{
 	width: 10%;
 }
 .fish-length{
-	width: 20%;
+	width: 10%;
 }
 .fish-weight{
 	width: 20%;
@@ -137,7 +137,7 @@ a.button{
 	table-layout: fixed;
 	border: 1px solid black;
 	width: 100%;
-	max-width: 500px;
+	max-width: 800px;
 	text-align: center;	
 }
 .teamfish-tbl td {
@@ -178,7 +178,10 @@ a.button{
 	
 }
 .team-boat{
-	width: 10%;
+	width: 5%;
+}
+.team-participant{
+	width: 35%;
 }
 .team-partner{
 	width: 30%;
