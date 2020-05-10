@@ -38,15 +38,7 @@ if ($result->num_rows > 0) {
     foreach ($result as $row) :?>  
         <tr>
         	<td><?php echo $row['boat_num'];?></td> 
-        	<?php if ( $row['participant'] == '') {
-        	   $participant='No Entry';
-        	} else {
-        	    $participant=$row['participant'];
-        	}
-        	    
-        	    
-        	?>
-        	<td class="editable-col" contenteditable="true" onBlur="saveToDatabase(this,'participant','<?php echo $row['boat_num']; ?>')" oldVal="<php echo $participant;?>"><?php echo $participant;?></td> 
+        	<td class="editable-col" contenteditable="true" onBlur="saveToDatabase(this,'participant','<?php echo $row['boat_num']; ?>')" oldVal="<php echo $row['participant'];?>"><?php echo $row['participant'];?></td> 
         	<td><?php echo $row['partner1'];?></td> 
         	<td><?php echo $row['partner2'];?></td>  
         	<td class="editable-col" contenteditable="true" onBlur="saveToDatabase(this,'big_fish','<?php echo $row['boat_num']; ?>')" oldVal="<php echo $row['big_fish';?>"><?php echo $row['big_fish'];?></td> 
