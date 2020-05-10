@@ -4,6 +4,12 @@ include('includes/datalogin.php');
 
 $tourney_id='DY';
 
+$save_mapping_SQL1="DROP TABLE IF EXISTS participant_mapping";
+$save_mapping_SQL2="CREATE TABLE participant_mapping AS SELECT team_id, participant from tourney_teams";
+
+mysqli_query($mysqli_tourney,$save_mapping_SQL1);
+mysqli_query($mysqli_tourney,$save_mapping_SQL2);
+
 $del_teams_SQL="delete from tourney_teams";
 
 $status=mysqli_query($mysqli_tourney,$del_teams_SQL);
@@ -19,10 +25,10 @@ $sql="call ListTourneyRoster('".$tourney_id."')";
 
 $result = mysqli_query($mysqli,$sql);
 
-$i=1;
+$i=0;
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-        
+        $i=$i+1;
         $boat_num=$i;
         $team_id=$row["team_id"];;
         $partner1=$row["partner1"];
@@ -37,9 +43,13 @@ if ($result->num_rows > 0) {
         {
             die("Teams not updated");
         }
-        $i=$i+1;
+
     }
 }
+
+$restore_mappings_SQL="UPDATE tourney_teams t1 INNER JOIN participant_mapping t2 ON t1.team_id = t2.team_id SET t1.participant = t2.participant";
+
+mysqli_query($mysqli_tourney, $restore_mappings_SQL);
 
 
 echo $i ." teams loaded from registration site";
