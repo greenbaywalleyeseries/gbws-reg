@@ -44,6 +44,23 @@ class PDF extends FPDF
         $this->Cell(3.5,.25,$dates,0,0,'C');
         // Line break
         $this->Ln(.5);
+        $this->SetFont('Arial','B',8);
+        $tbl_header=array('Place','Boat #','Team','Fish','Penalty','Day 1 Weight','Day 2 Fish','Day 2 Penalty','Day 2 Weight','Total Weight','Option Pot','Big Fish','Big Fish Weight');
+        // Header
+        $this->Cell(.45,.25,$tbl_header[0],1,0,'C');
+        $this->Cell(.5,.25,$tbl_header[1],1,0,'C');
+        $this->Cell(2.6,.25,$tbl_header[2],1,0,'C');
+        $this->Cell(.4,.25,$tbl_header[3],1,0,'C');
+        $this->Cell(.5,.25,$tbl_header[4],1,0,'C');
+        #        $this->Cell(.75,.25,$tbl_header[5],1,0,'C');
+        #        $this->Cell(.75,.25,$tbl_header[6],1,0,'C');
+        #        #$this->Cell(.75,.25,$tbl_header[7],1,0,'C');
+        #        $this->Cell(.75,.25,$tbl_header[8],1,0,'C');
+        $this->Cell(.8,.25,$tbl_header[9],1,0,'C');
+        $this->Cell(.75,.25,$tbl_header[10],1,0,'C');
+        $this->Cell(.7,.25,$tbl_header[11],1,0,'C');
+        $this->Cell(1,.25,$tbl_header[12],1,0,'C');
+        $this->Ln();
     }
     
     // Page footer
@@ -99,23 +116,9 @@ class PDF extends FPDF
             $this->cell(9.5,.15,$comeback_team_string,0,0);
             
     }
-    function OneDayTable($tbl_header, $rankings)
+    function OneDayTable($rankings)
     {
-        // Header
-        $this->Cell(.45,.25,$tbl_header[0],1,0,'C');
-        $this->Cell(.5,.25,$tbl_header[1],1,0,'C');
-        $this->Cell(2.6,.25,$tbl_header[2],1,0,'C');
-        $this->Cell(.4,.25,$tbl_header[3],1,0,'C');
-        $this->Cell(.5,.25,$tbl_header[4],1,0,'C');
-#        $this->Cell(.75,.25,$tbl_header[5],1,0,'C');
-#        $this->Cell(.75,.25,$tbl_header[6],1,0,'C');
-#        #$this->Cell(.75,.25,$tbl_header[7],1,0,'C');
-#        $this->Cell(.75,.25,$tbl_header[8],1,0,'C');
-        $this->Cell(.8,.25,$tbl_header[9],1,0,'C');
-        $this->Cell(.75,.25,$tbl_header[10],1,0,'C');
-        $this->Cell(.7,.25,$tbl_header[11],1,0,'C');
-        $this->Cell(1,.25,$tbl_header[12],1,0,'C');
-        $this->Ln();
+
         // Data
         $x = 0;
         //foreach($rankings as $row)
@@ -152,7 +155,7 @@ if ($mysqli_tourney->query('CALL UpdateRankings()') == TRUE) {
     $result = $mysqli_tourney->query($result_sql);
     if ($result->num_rows > 0) {
         // output data of each row
-        $tbl_header=array('Place','Boat #','Team','Fish','Penalty','Day 1 Weight','Day 2 Fish','Day 2 Penalty','Day 2 Weight','Total Weight','Option Pot','Big Fish','Big Fish Weight');
+       
         $place=0;
         $place_position=0;
         $prev_weight=1000000;
@@ -216,7 +219,7 @@ $mysqli_tourney->close();
 
 // Instanciation of inherited class
 if ($duration == 1) {
-    $pdf = new PDF('P','in','LEGAL');
+    $pdf = new PDF('P','in','LETTER');
     $pdf->SetLeftMargin(.25);
     // Column headings
     $pdf->SetFont('Arial','',10);
@@ -232,9 +235,9 @@ if ($duration == 2) {
     $pdf = new PDF('L','in','LETTER');
     $pdf->SetLeftMargin(.25);
     // Column headings
-    $pdf->SetFont('Arial','',10);
+    $pdf->SetFont('Arial','',8);
     $pdf->AddPage();
-    $pdf->TwoDayTable($tbl_header,$rankings,$comeback_team_string);
+    $pdf->TwoDayTable($rankings,$comeback_team_string);
     $pdf->AliasNbPages();
     $pdf->Output();
 }
