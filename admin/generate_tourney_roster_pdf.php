@@ -49,6 +49,15 @@ class PDF extends FPDF
         //Next Line for Tourney Dates
         $this->Cell(50);
         $this->Cell(100,5,$date,0,0,'C');
+        // Header
+        $this->Setx(42);
+        $tbl_header=array('Boat #','Partner 1','Partner 2','Option Pot','Big Fish');
+        $this->Cell(15,5,$tbl_header[0],1,0,'C');
+        $this->Cell(40,5,$tbl_header[1],1,0,'C');
+        $this->Cell(40,5,$tbl_header[2],1,0,'C');
+        $this->Cell(15,5,$tbl_header[3],1,0,'C');
+        $this->Cell(20,5,$tbl_header[4],1,0,'C');
+        $this->Ln();
         // Line break
         $this->Ln(15);
     }
@@ -65,14 +74,7 @@ class PDF extends FPDF
     }
     function BasicTable($tbl_header, $roster)
     {
-        // Header
-        $this->Setx(42);
-        $this->Cell(15,5,$tbl_header[0],1,0,'C');
-        $this->Cell(40,5,$tbl_header[1],1,0,'C');
-        $this->Cell(40,5,$tbl_header[2],1,0,'C');
-        $this->Cell(15,5,$tbl_header[3],1,0,'C');
-        $this->Cell(20,5,$tbl_header[4],1,0,'C');
-        $this->Ln();
+
         // Data
         $x = 0;
         //foreach($rankings as $row)
@@ -90,7 +92,7 @@ class PDF extends FPDF
 }
 
 $roster=array();
-$tbl_header=array('Boat #','Partner 1','Partner 2','Option Pot','Big Fish');
+
 $sql="call ListTourneyRoster('".$tourney_id."')";
 $result = mysqli_query($mysqli,$sql);
 $i=1;
@@ -123,7 +125,7 @@ $pdf->SetLeftMargin(3);
 $pdf->SetFont('Arial','',8);
 $pdf->AddPage();
 
-$pdf->BasicTable($tbl_header, $roster);
+$pdf->BasicTable($roster);
 $pdf->AliasNbPages();
 $pdf->Output();
 
