@@ -41,6 +41,20 @@ class PDF extends FPDF
         $this->Cell(100,5,$dates,0,0,'C');
         // Line break
         $this->Ln(15);
+        $tbl_header=array('Place','Boat #','Team','Fish','Penalty','Day 1 Weight','Day 2 Fish','Day 2 Penalty','Day 2 Weight','Total Weight');
+        $this->Setx(42);
+        $this->SetFont('Arial','B',8);
+        $this->Cell(8,5,$rankings[$x][1],1,0,'C');
+        $this->Cell(10,5,$rankings[$x][2],1,0,'C');
+        $this->Cell(55,5,$rankings[$x][3],1,0,'C');
+        $this->Cell(15,5,$rankings[$x][4],1,0,'C');
+        #                $this->Cell(20,5,$rankings[$x][5],1,0,'C');
+        #                $this->Cell(20,5,$rankings[$x][6],1,0,'C');
+        #                $this->Cell(15,5,$rankings[$x][7],1,0,'C');
+        #                $this->Cell(20,5,$rankings[$x][8],1,0,'C');
+        #                $this->Cell(20,5,$rankings[$x][9],1,0,'C');
+        $this->Cell(20,5,$rankings[$x][10],1,0,'C');
+        $this->Ln(5);
     }
     
     // Page footer
@@ -57,32 +71,14 @@ class PDF extends FPDF
     {
         // Header
             $this->Setx(50);
-            $this->Cell(8,5,$tbl_header[0],1,0,'C');
-            $this->Cell(10,5,$tbl_header[1],1,0,'C');
-            $this->Cell(55,5,$tbl_header[2],1,0,'C');
-            $this->Cell(15,5,$tbl_header[3],1,0,'C');
-#            $this->Cell(20,5,$tbl_header[4],1,0,'C');
-#            $this->Cell(20,5,$tbl_header[5],1,0,'C');
-#            $this->Cell(15,5,$tbl_header[6],1,0,'C');
-#            $this->Cell(20,5,$tbl_header[7],1,0,'C');
-#            $this->Cell(20,5,$tbl_header[8],1,0,'C');
-            $this->Cell(20,5,$tbl_header[9],1,0,'C');
+
             $this->Ln();
         // Data
             $x = 0;
             //foreach($rankings as $row)
             while ($x < count($rankings,0)) {
                 $this->Setx(50);
-                $this->Cell(8,5,$rankings[$x][1],1,0,'C');
-                $this->Cell(10,5,$rankings[$x][2],1,0,'C');
-                $this->Cell(55,5,$rankings[$x][3],1,0,'C');
-                $this->Cell(15,5,$rankings[$x][4],1,0,'C');
-#                $this->Cell(20,5,$rankings[$x][5],1,0,'C');
-#                $this->Cell(20,5,$rankings[$x][6],1,0,'C');
-#                $this->Cell(15,5,$rankings[$x][7],1,0,'C');
-#                $this->Cell(20,5,$rankings[$x][8],1,0,'C');
-#                $this->Cell(20,5,$rankings[$x][9],1,0,'C');
-                $this->Cell(20,5,$rankings[$x][10],1,0,'C');
+
                 $this->Ln();
                 $x++;
             }
@@ -96,7 +92,7 @@ if ($mysqli_tourney->query('CALL updaterankings()') == TRUE) {
     $result = $mysqli_tourney->query($result_sql);
     if ($result->num_rows > 0) {
         // output data of each row
-        $tbl_header=array('Place','Boat #','Team','Fish','Penalty','Day 1 Weight','Day 2 Fish','Day 2 Penalty','Day 2 Weight','Total Weight');
+
         $place=0;
         $place_position=0;
         $prev_weight=1000000;
