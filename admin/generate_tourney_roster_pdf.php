@@ -72,7 +72,7 @@ class PDF extends FPDF
         // Page number
         $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
     }
-    function BasicTable($tbl_header, $roster)
+    function BasicTable($roster)
     {
 
         // Data
