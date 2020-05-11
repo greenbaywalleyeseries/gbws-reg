@@ -42,18 +42,18 @@ class PDF extends FPDF
         // Line break
         $this->Ln(15);
         $tbl_header=array('Place','Boat #','Team','Fish','Penalty','Day 1 Weight','Day 2 Fish','Day 2 Penalty','Day 2 Weight','Total Weight');
-        $this->Setx(42);
+        $this->Setx(50);
         $this->SetFont('Arial','B',8);
-        $this->Cell(8,5,$rankings[$x][1],1,0,'C');
-        $this->Cell(10,5,$rankings[$x][2],1,0,'C');
-        $this->Cell(55,5,$rankings[$x][3],1,0,'C');
-        $this->Cell(15,5,$rankings[$x][4],1,0,'C');
-        #                $this->Cell(20,5,$rankings[$x][5],1,0,'C');
-        #                $this->Cell(20,5,$rankings[$x][6],1,0,'C');
-        #                $this->Cell(15,5,$rankings[$x][7],1,0,'C');
-        #                $this->Cell(20,5,$rankings[$x][8],1,0,'C');
-        #                $this->Cell(20,5,$rankings[$x][9],1,0,'C');
-        $this->Cell(20,5,$rankings[$x][10],1,0,'C');
+        $this->Cell(8,5,$tbl_header[0],1,0,'C');
+        $this->Cell(10,5,$tbl_header[1],1,0,'C');
+        $this->Cell(55,5,$tbl_header[2],1,0,'C');
+        $this->Cell(15,5,$tbl_header[3],1,0,'C');
+        #            $this->Cell(20,5,$tbl_header[4],1,0,'C');
+        #            $this->Cell(20,5,$tbl_header[5],1,0,'C');
+        #            $this->Cell(15,5,$tbl_header[6],1,0,'C');
+        #            $this->Cell(20,5,$tbl_header[7],1,0,'C');
+        #            $this->Cell(20,5,$tbl_header[8],1,0,'C');
+        $this->Cell(20,5,$tbl_header[9],1,0,'C');
         $this->Ln(5);
     }
     
@@ -67,18 +67,24 @@ class PDF extends FPDF
         // Page number
         $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
     }
-    function BasicTable($tbl_header, $rankings)
+    function BasicTable($rankings)
     {
-        // Header
             $this->Setx(50);
-
-            $this->Ln();
         // Data
             $x = 0;
             //foreach($rankings as $row)
             while ($x < count($rankings,0)) {
                 $this->Setx(50);
-
+                $this->Cell(8,5,$rankings[$x][1],1,0,'C');
+                $this->Cell(10,5,$rankings[$x][2],1,0,'C');
+                $this->Cell(55,5,$rankings[$x][3],1,0,'C');
+                $this->Cell(15,5,$rankings[$x][4],1,0,'C');
+#                $this->Cell(20,5,$rankings[$x][5],1,0,'C');
+#                $this->Cell(20,5,$rankings[$x][6],1,0,'C');
+#                $this->Cell(15,5,$rankings[$x][7],1,0,'C');
+#                $this->Cell(20,5,$rankings[$x][8],1,0,'C');
+#                $this->Cell(20,5,$rankings[$x][9],1,0,'C');
+                $this->Cell(20,5,$rankings[$x][10],1,0,'C');
                 $this->Ln();
                 $x++;
             }
@@ -138,7 +144,7 @@ $pdf->SetLeftMargin(3);
 $pdf->SetFont('Arial','',8);
 $pdf->AddPage();
 
-$pdf->BasicTable($tbl_header,$rankings);
+$pdf->BasicTable($rankings);
 $pdf->AliasNbPages();
 $pdf->Output();
 
