@@ -224,7 +224,7 @@ if ($duration == 1) {
     // Column headings
     $pdf->SetFont('Arial','',10);
     $pdf->AddPage();
-    $pdf->OneDayTable($tbl_header,$rankings);
+    $pdf->OneDayTable($rankings);
     $pdf->AliasNbPages();
     $pdf->Output();
     
