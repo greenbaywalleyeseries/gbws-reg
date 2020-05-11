@@ -161,6 +161,20 @@ a.button{
 	width: 30%;
 }
 
+.unmapped_teams-tbl {
+	table-layout: fixed;
+	border: 1px solid black;
+	width: 100%;
+	max-width: 300px;
+	text-align: center;	
+}
+
+.unmapped_teams-tbl td {
+  overflow: hidden;
+  border: 1px solid black;
+  text-overflow: ellipsis;
+}
+
 .teamdetail-tbl {
 	table-layout: fixed;
 	border: 1px solid black;
