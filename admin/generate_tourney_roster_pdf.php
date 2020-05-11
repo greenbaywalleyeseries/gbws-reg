@@ -51,15 +51,19 @@ class PDF extends FPDF
         $this->Cell(100,5,$date,0,0,'C');
         // Header
         $this->Setx(42);
+
+        $this->Ln();
+        // Line break
+        $this->Ln(15);
+        $this->Setx(42);
+        $this->SetFont('Arial','B',8);
         $tbl_header=array('Boat #','Partner 1','Partner 2','Option Pot','Big Fish');
         $this->Cell(15,5,$tbl_header[0],1,0,'C');
         $this->Cell(40,5,$tbl_header[1],1,0,'C');
         $this->Cell(40,5,$tbl_header[2],1,0,'C');
         $this->Cell(15,5,$tbl_header[3],1,0,'C');
         $this->Cell(20,5,$tbl_header[4],1,0,'C');
-        $this->Ln();
-        // Line break
-        $this->Ln(15);
+        $this->Ln(5);
     }
     
     // Page footer
