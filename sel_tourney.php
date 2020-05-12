@@ -256,7 +256,7 @@
                         $date=date_create($tourney['start_date']);
                         $date2=date_create($tourney['start_date']);
                         $reg_deadline = $date;
-                        date_sub($reg_deadline, date_interval_create_from_date_string('5 days'));
+                        date_sub($reg_deadline, date_interval_create_from_date_string('2 days'));
                         $reg_deadline = date_format($reg_deadline,'Y-m-d');
                         $today = date('Y-m-d');
                         if ($today >= $reg_deadline) {
