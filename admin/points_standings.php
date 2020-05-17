@@ -53,8 +53,6 @@ while($row = mysqli_fetch_array($result)) {
         }
     }
     $place_position=$place_position+1;    
-    $Partner1=$row['partner1_first'] ." ".$row['partner1_last'];
-    $Partner2=$row['partner2_first'] ." ".$row['partner2_last'];
     if (is_null($row['GB'])) {
         $GB=0;
     } else {
@@ -78,8 +76,8 @@ while($row = mysqli_fetch_array($result)) {
     echo "<tr>";
     echo "<td>" . $place. "</td>";
     echo "<td>" . $row['team_id']. "</td>";
-    echo "<td>" . $Partner1. "</td>";
-    echo "<td>" . $Partner2. "</td>";
+    echo "<td>" . $row['Partner1']. "</td>";
+    echo "<td>" . $row['Partner2']. "</td>";
     echo "<td>" . $GB. "</td>";
     echo "<td>" . $DY. "</td>";
     echo "<td>" . $SB. "</td>";
