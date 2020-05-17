@@ -1,19 +1,87 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="..\membership.css">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body>
-
-
 <?php
 include('../php/gbws_reg_db.php');
+require('../pdf/fpdf.php');
 
-mysqli_select_db($mysqli,"gbws_reg");
+class PDF extends FPDF
+{
+    // Page header
+    function Header()
+    {
 
-$sql="SELECT a.team_id,
+
+
+        // Logo
+        $this->Image('../images/gbws_logo-no-background.png',20,6,40,40);
+        // Arial bold 15
+        $this->SetFont('Arial','B',15);
+        // Move to the right
+        $this->Cell(50);
+        // Title
+        $this->Cell(100,8,'Green Bay Walleye Series',0,0,'C');
+        //2nd Image
+        $this->Image('../images/gbws_logo-no-background.png', 160,6,40,40);
+        // Line break
+        $this->Ln(15);
+        //Next Line for Tourney Location
+        // Arial bold 12
+        $this->SetFont('Arial','B',12);
+        $this->Cell(50);
+        $this->Cell(100,5,'2020 Points Standings',0,1,'C');
+        // Line break
+        //$this->Ln(20);
+        //Next Line for Tourney Dates
+        //$this->Cell(50);
+        //$this->Cell(100,5,$dates,0,0,'C');
+        // Line break
+        $this->Ln(15);
+        $tbl_header=array('Place','Team','Metro','Oconto','Sturgeon Bay','Marinette','Total Points');
+        $this->Setx(30);
+        $this->SetFont('Arial','B',8);
+        $this->Cell(12,5,$tbl_header[0],1,0,'C');
+        $this->Cell(55,5,$tbl_header[1],1,0,'C');
+        $this->Cell(20,5,$tbl_header[2],1,0,'C');
+        $this->Cell(20,5,$tbl_header[3],1,0,'C');
+        $this->Cell(20,5,$tbl_header[4],1,0,'C');
+        $this->Cell(20,5,$tbl_header[5],1,0,'C');
+        $this->Cell(20,5,$tbl_header[6],1,0,'C');
+        $this->Ln(5);
+    }
+    
+    // Page footer
+    function Footer()
+    {
+        // Position at 1.5 cm from bottom
+        $this->SetY(-15);
+        // Arial italic 8
+        $this->SetFont('Arial','I',8);
+        // Page number
+        $this->Cell(0,10,'Page '.$this->PageNo().'/{nb}',0,0,'C');
+    }
+    function BasicTable($rankings)
+    {
+            $this->Setx(50);
+        // Data
+            $x = 0;
+            //foreach($rankings as $row)
+            while ($x < count($rankings,0)) {
+                $this->Setx(30);
+                $this->Cell(12,5,$rankings[$x][1],1,0,'C');
+                $this->Cell(55,5,$rankings[$x][2],1,0,'C');
+                $this->Cell(20,5,$rankings[$x][3],1,0,'C');
+                $this->Cell(20,5,$rankings[$x][4],1,0,'C');
+                $this->Cell(20,5,$rankings[$x][5],1,0,'C');
+                $this->Cell(20,5,$rankings[$x][6],1,0,'C');
+                $this->Cell(20,5,$rankings[$x][7],1,0,'C');
+                $this->Ln();
+                $x++;
+            }
+    }
+}
+
+$rankings=array();
+
+
+$result_sql = "SELECT a.team_id,
 	concat(c.first, ' ', c.last) as Partner1,
 	concat(d.first, ' ', d.last) as Partner2,
 	a.GB,
@@ -26,68 +94,51 @@ FROM gbws_reg.points as a
     inner join gbws_reg.member_info c on ( b.partner1=c.mbr_id)
     inner join gbws_reg.member_info d on (b.partner2=d.mbr_id)
 order by total_points desc";
+    $result = $mysqli->query($result_sql);
+    if ($result->num_rows > 0) {
+        // output data of each row
 
-$result = mysqli_query($mysqli,$sql);
-
-echo '<table id="team">
-<tr>
-<th>Place</th>
-<th>Team ID</th>
-<th>Partner 1</th>
-<th>Partner 2</th>
-<th>Green Bay</th>
-<th>Oconto</th>
-<th>Sturgeon Bay</th>
-<th>Marinette</th>
-<th>Total Points</th>
-</tr>';
-$place=0;
-$place_position=0;
-$prev_points=10000000;
-while($row = mysqli_fetch_array($result)) {
-    if ($row['total_points'] !== $prev_points) {
-        if ($place=$place_position) {
-            $place=$place+1;
-        } else {
-            $place=$place_position+1;
+        $place=0;
+        $place_position=0;
+        $prev_points=1000000;
+        $pos=0;
+        while($row = $result->fetch_assoc()) {
+            if ($row['total_points'] !== $prev_points) {
+                if ($place=$place_position) {
+                    $place=$place+1;
+                } else {
+                    $place=$place_position+1;
+                }
+            }
+            $place_position=$place_position+1;
+            $Partners=$row["Partner1"] . " & " .$row["Partner2"];
+            $GB=$row["GB"];
+            $DY=$row["DY"];
+            $SB=$row["SB"];
+            $MAR=$row["MAR"];
+            $total_points=$row["total_points"];
+            $data=array($pos,$place, $Partners, $GB, $DY, $SB, $MAR, $total_points);
+            $rankings[]=$data;
+            $pos++;
+            $prev_points = $row['total_points'];
         }
-    }
-    $place_position=$place_position+1;    
-    if (is_null($row['GB'])) {
-        $GB=0;
     } else {
-        $GB=$row['GB'];
+        echo "0 results";
     }
-    if (is_null($row['DY'])) {
-        $DY=0;
-    } else {
-        $DY=$row['DY'];
-    }
-    if (is_null($row['SB'])) {
-        $SB=0;
-    } else {
-        $SB=$row['SB'];
-    }
-    if (is_null($row['MAR'])) {
-        $MAR=0;
-    } else {
-        $MAR=$row['MAR'];
-    }
-    echo "<tr>";
-    echo "<td>" . $place. "</td>";
-    echo "<td>" . $row['team_id']. "</td>";
-    echo "<td>" . $row['Partner1']. "</td>";
-    echo "<td>" . $row['Partner2']. "</td>";
-    echo "<td>" . $GB. "</td>";
-    echo "<td>" . $DY. "</td>";
-    echo "<td>" . $SB. "</td>";
-    echo "<td>" . $MAR. "</td>";
-    echo "<td>" . $row['total_points']. "</td>";
-    echo "</tr>";
-    $prev_points=$row['total_points'];
-}
-echo "</table>";
-mysqli_close($mysqli);
+
+$mysqli->close();
+
+
+// Instanciation of inherited class
+//$pdf = new PDF('P','mm','Legal');
+$pdf = new PDF('P','mm','Letter');
+$pdf->SetLeftMargin(3);
+// Column headings
+$pdf->SetFont('Arial','',8);
+$pdf->AddPage();
+
+$pdf->BasicTable($rankings);
+$pdf->AliasNbPages();
+$pdf->Output();
+
 ?>
-</body>
-</html>
