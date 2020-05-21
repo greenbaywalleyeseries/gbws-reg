@@ -27,7 +27,7 @@ having (total_points > 799
 order by total_points desc";
 echo $sql;
 $result = mysqli_query($mysqli,$sql);
-print_r($result;)
+print_r($result);
 echo '<table id="team">
 <tr>
 <th>Team ID</th>
