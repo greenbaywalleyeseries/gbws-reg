@@ -13,7 +13,6 @@ include('..\php\gbws_reg_db.php');
 
 
 
-mysqli_select_db($mysqli,"gbws_reg");
 $sql="SELECT a.team_id, c.first as partner1_first, c.last as partner1_last, d.first as partner2_first, d.last as partner2_last, a.GB, a.DY, a.SB, (ifnull(a.GB,0) + ifnull(a.DY,0) + ifnull(a.SB,0) + ifnull(a.MAR,0)) as total_points
 FROM points as a
 join team_info as b
