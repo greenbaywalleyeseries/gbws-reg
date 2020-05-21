@@ -18,12 +18,8 @@ $sql="SELECT a.team_id, c.first as partner1_first, c.last as partner1_last, d.fi
 echo $sql;
 
 
-$result = $mysqli->query($sql);
-if ($result->num_rows > 0) {
-    print_r ($result);
-} else {
-    echo "0 results";
-}
+$result = mysqli($mysqli,$sql);
+
 
 echo '<table id="team">
 <tr>
