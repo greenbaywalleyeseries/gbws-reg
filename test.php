@@ -1,9 +1,10 @@
 <?php 
-echo date("m/d/Y h:i:s a", time());
-echo date_default_timezone_get();
+echo nl2br("Default System timezone is: " . date_default_timezone_get() . "\r\n");
+echo nl2br("Current System time is: " . date("m/d/Y g:i:s e", time()) . "\r\n");
+
 
 $today = new DateTime("now", new DateTimeZone('America/Chicago') );
-echo $today->format('Y-m-d h:i:s a');
+echo nl2br("Current Central Time is: " . $today->format('m/d/Y g:i:s e'));
 
 
 ?>
