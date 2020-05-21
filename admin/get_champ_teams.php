@@ -29,6 +29,7 @@ echo '<table id="team">
 <th>Total Points</th>
 </tr>';
 while($row = mysqli_fetch_array($result)) {
+    print_r($row);
     $Team_ID=$row['team_id'];
     $Team_URL='<a href="tourney_reg.php?team_id=' .$Team_ID. '&new_team=">'.$Team_ID.'</a>';
     $Partner1=$row['partner1_first'] ." ".$row['partner1_last'];
