@@ -254,18 +254,20 @@
                     while($tourney = mysqli_fetch_array($tourney_result)) { 
                         $disabled='';
                         $date=date_create($tourney['start_date']);
-                        $date2=date_create($tourney['start_date']);
-                        $reg_deadline = $date;
-                        date_sub($reg_deadline, date_interval_create_from_date_string('5 days'));
-                        $reg_deadline = date_format($reg_deadline,'Y-m-d');
-                        $today = date('Y-m-d');
+                        $reg_cutoff = $tourney['reg_deadline'];
+                        $time_cutoff = "23:59:59";
+                        $reg_deadline = date('Y-m-d G:i:s', strtotime("$reg_cutoff $time_cutoff"));
+                        date_default_timezone_set("America/Chicago");
+                        $today = date('Y-m-d G:i:s');
+                        #$today = date('Y-m-d');
                         if ($today >= $reg_deadline) {
+                            echo $reg_deadline;
                             #$disabled='';
                             $disabled='disabled';
                         } else {
                             $disabled='';
                         }
-                        $description=date_format($date2, 'F d') ." - " . $tourney['location'];
+                        $description=date_format($date, 'F d') ." - " . $tourney['location'];
                         $tourney_fee=$tourney["entry_fee"];
                         $option_fee=$tourney["option_fee"];
                         $big_fish_fee=$tourney["big_fish_fee"];
