@@ -16,8 +16,15 @@ include('..\php\gbws_reg_db.php');
 $sql="SELECT a.team_id, c.first as partner1_first, c.last as partner1_last, d.first as partner2_first, d.last as partner2_last, a.GB, a.DY, a.SB, (ifnull(a.GB,0) + ifnull(a.DY,0) + ifnull(a.SB,0) + ifnull(a.MAR,0)) as total_points FROM points as a join team_info as b on a.team_id=b.team_id join member_info as c on b.partner1=c.mbr_id join member_info as d on b.partner2=d.mbr_id having (total_points > 799 or (a.GB is not null and a.DY is not null and a.SB is not null)) order by total_points desc";
 
 echo $sql;
+
+
 $result = $mysqli->query($sql);
-print_r($result);
+if ($result->num_rows > 0) {
+    print_r ($result);
+} else {
+    echo "0 results";
+}
+
 echo '<table id="team">
 <tr>
 <th>Team ID</th>
