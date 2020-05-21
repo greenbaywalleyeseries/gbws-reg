@@ -25,7 +25,7 @@ join member_info as d
 having (total_points > 799
     or a.GB is not null and a.DY is not null and a.SB is not null)
 order by total_points desc";
-
+echo $sql;
 $result = mysqli_query($mysqli,$sql);
 
 echo '<table id="team">
