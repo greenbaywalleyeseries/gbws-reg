@@ -9,7 +9,7 @@
 
 
 <?php
-include('..\gbws_reg_db.php');
+include('..\php\gbws_reg_db.php');
 
 
 
