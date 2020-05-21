@@ -12,9 +12,8 @@ if(isset($_POST["Import"])){
         $file = fopen($filename, "r");
         while (($emapData = fgetcsv($file, 10000, ",")) !== FALSE)
         {
-            
-            $sql = "INSERT into donkey(ID, Division, Participant, Species, Length) values('$emapData[0]','$emapData[1]','$emapData[2]','$emapData[3]','$emapData[4]')";
-
+            $datetime = date('Y-m-d H:i:s', strtotime($emapData[5]));
+            $sql = "INSERT into donkey(ID, Division, Participant, Species, Length, timestamp) values('$emapData[0]','$emapData[1]','$emapData[2]','$emapData[3]','$emapData[4]','$datetime')";
             $result=mysqli_query($mysqli_tourney, $sql);
             if(!isset($result))
             {
@@ -29,11 +28,13 @@ if(isset($_POST["Import"])){
             window.location = \"import_file.html\"
           </script>";
             }
+        }
+
     }
     
     fclose($file);
 }
 
     
-}
+
 ?>
