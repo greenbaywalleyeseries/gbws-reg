@@ -47,14 +47,14 @@ if ($mysqli_tourney->query('CALL UpdateRankings()') == TRUE) {
                 $day_2_penalty=$row["day_2_penalty"];
                 $day_2_weight=$row["day_2_weight"];
                 $total_weight=$row["total_weight"];
-                
-                $data=array($pos,$place, $boat_num, $team_id, $Partners, $day_1_fish, $day_1_penalty, $day_1_weight, $day_2_fish, $day_2_penalty, $day_2_weight, $total_weight, $points);
-                $rankings[]=$data;
-                $pos++;
                 $prev_weight = $row['total_weight'];
                 if ($total_weight < .00000000001 ) {
                     $points = 100;
                 }
+                $data=array($pos,$place, $boat_num, $team_id, $Partners, $day_1_fish, $day_1_penalty, $day_1_weight, $day_2_fish, $day_2_penalty, $day_2_weight, $total_weight, $points);
+                $rankings[]=$data;
+                $pos++;
+
             }
         } else {
             echo "0 results";
