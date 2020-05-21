@@ -18,7 +18,7 @@ $sql="SELECT a.team_id, c.first as partner1_first, c.last as partner1_last, d.fi
 echo $sql;
 
 
-$result = mysqli($mysqli,$sql);
+$result = mysqli_query($mysqli,$sql);
 
 
 echo '<table id="team">
