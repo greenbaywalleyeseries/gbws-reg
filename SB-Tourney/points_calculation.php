@@ -2,7 +2,7 @@
 include('includes/GBWS-functions.php');
 include('includes/datalogin.php');
 
-$points_field="DY";
+$points_field="SB";
 $points_table='points';
 
 $rankings=array();
