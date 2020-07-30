@@ -54,7 +54,7 @@ $place_position=0;
 $prev_points=10000000;
 while($row = mysqli_fetch_array($result)) {
     while($sub_team = mysqli_fetch_array($sub_result)) {
-        if ($row['team_id'] = $sub_team['team_id']) {
+        if ($row['team_id'] == $sub_team['team_id']) {
             echo "bad team";
         }
     }
