@@ -29,6 +29,14 @@ order by total_points desc";
 
 $result = mysqli_query($mysqli,$sql);
 
+$sub_team_sql="select distinct a.team_id from gbws_reg.transaction_items a join gbws_reg.team_info b on a.team_id=b.team_id
+where item_number like '%-Tourney' and
+(a.partner1=b.sub1 or a.partner2=b.sub1
+or a.partner1=b.sub2 or a.partner2=b.sub2
+or a.team_id='2020_93')";
+
+$sub_result = mysqli_query($mysqli,$sub_team_sql);
+
 echo '<table id="team">
 <tr>
 <th>Place</th>
