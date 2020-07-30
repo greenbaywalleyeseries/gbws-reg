@@ -60,7 +60,8 @@ print_r($sub_array);
 
 while($row = mysqli_fetch_array($result)) {
 
-    foreach ($sub_array as $sub_team) {
+    for ($i = 0; $i < count($sub_array);$i++) {
+        $sub_team=$sub_array[$i];
         echo "sub team is: " .$sub_team ."<br>";
         if ($row['team_id'] != $sub_team) {
             if ($row['total_points'] != $prev_points) {
