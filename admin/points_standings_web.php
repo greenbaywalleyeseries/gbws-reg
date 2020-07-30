@@ -52,6 +52,7 @@ echo '<table id="team">
 $place=0;
 $place_position=0;
 $prev_points=10000000;
+print_r($sub_result);
 while($row = mysqli_fetch_array($result)) {
     echo $row['team_id'] ."<br>";
     while($sub_team = mysqli_fetch_array($sub_result)) {
