@@ -57,7 +57,7 @@ while($row = mysqli_fetch_array($result)) {
     while($sub_team = mysqli_fetch_array($sub_result)) {
         echo "sub team is: " .$sub_team['team_id'] ."<br>";
         if ($row['team_id'] != $sub_team['team_id']) {
-            if ($row['total_points'] !== $prev_points) {
+            if ($row['total_points'] != $prev_points) {
                 if ($place=$place_position) {
                     $place=$place+1;
                 } else {
