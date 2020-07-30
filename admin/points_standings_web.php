@@ -54,50 +54,50 @@ $place_position=0;
 $prev_points=10000000;
 while($row = mysqli_fetch_array($result)) {
     while($sub_team = mysqli_fetch_array($sub_result)) {
-        if ($row['team_id'] = $sub_team['team_id']) {
-            echo "<tr>bad team</tr>";
+        if ($row['team_id'] != $sub_team['team_id']) {
+            if ($row['total_points'] !== $prev_points) {
+                if ($place=$place_position) {
+                    $place=$place+1;
+                } else {
+                    $place=$place_position+1;
+                }
+            }
+            $place_position=$place_position+1;
+            if (is_null($row['GB'])) {
+                $GB=0;
+            } else {
+                $GB=$row['GB'];
+            }
+            if (is_null($row['DY'])) {
+                $DY=0;
+            } else {
+                $DY=$row['DY'];
+            }
+            if (is_null($row['SB'])) {
+                $SB=0;
+            } else {
+                $SB=$row['SB'];
+            }
+            if (is_null($row['MAR'])) {
+                $MAR=0;
+            } else {
+                $MAR=$row['MAR'];
+            }
+            echo "<tr>";
+            echo "<td>" . $place. "</td>";
+            echo "<td>" . $row['team_id']. "</td>";
+            echo "<td>" . $row['Partner1']. "</td>";
+            echo "<td>" . $row['Partner2']. "</td>";
+            echo "<td>" . $GB. "</td>";
+            echo "<td>" . $DY. "</td>";
+            echo "<td>" . $SB. "</td>";
+            echo "<td>" . $MAR. "</td>";
+            echo "<td>" . $row['total_points']. "</td>";
+            echo "</tr>";
+            $prev_points=$row['total_points'];
         }
     }
-    if ($row['total_points'] !== $prev_points) {
-        if ($place=$place_position) {
-            $place=$place+1;
-        } else {
-            $place=$place_position+1;
-        }
-    }
-    $place_position=$place_position+1;    
-    if (is_null($row['GB'])) {
-        $GB=0;
-    } else {
-        $GB=$row['GB'];
-    }
-    if (is_null($row['DY'])) {
-        $DY=0;
-    } else {
-        $DY=$row['DY'];
-    }
-    if (is_null($row['SB'])) {
-        $SB=0;
-    } else {
-        $SB=$row['SB'];
-    }
-    if (is_null($row['MAR'])) {
-        $MAR=0;
-    } else {
-        $MAR=$row['MAR'];
-    }
-    echo "<tr>";
-    echo "<td>" . $place. "</td>";
-    echo "<td>" . $row['team_id']. "</td>";
-    echo "<td>" . $row['Partner1']. "</td>";
-    echo "<td>" . $row['Partner2']. "</td>";
-    echo "<td>" . $GB. "</td>";
-    echo "<td>" . $DY. "</td>";
-    echo "<td>" . $SB. "</td>";
-    echo "<td>" . $MAR. "</td>";
-    echo "<td>" . $row['total_points']. "</td>";
-    echo "</tr>";
-    $prev_points=$row['total_points'];
+    
 }
 echo "</table>";
 mysqli_close($mysqli);
