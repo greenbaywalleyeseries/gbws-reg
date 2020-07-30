@@ -56,7 +56,7 @@ $sub_array = array();
 while ($sub = mysqli_fetch_array($sub_result)) {
     $sub_array[]=$sub['team_id'];
 }
-print_r($sub_array)
+print_r($sub_array);
 
 while($row = mysqli_fetch_array($result)) {
 
