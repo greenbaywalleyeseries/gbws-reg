@@ -52,12 +52,16 @@ echo '<table id="team">
 $place=0;
 $place_position=0;
 $prev_points=10000000;
-print_r($sub_result);
+$sub_array = array();
+while ($sub = mysqli_fetch_array($sub_result)) {
+    $sub_array[]=$sub['team_id'];
+}
+
 while($row = mysqli_fetch_array($result)) {
     echo $row['team_id'] ."<br>";
-    while($sub_team = mysqli_fetch_array($sub_result)) {
-        echo "sub team is: " .$sub_team['team_id'] ."<br>";
-        if ($row['team_id'] != $sub_team['team_id']) {
+    foreach ($sub_team as $sub_array) {
+        echo "sub team is: " .$sub_team ."<br>";
+        if ($row['team_id'] != $sub_team) {
             if ($row['total_points'] != $prev_points) {
                 if ($place=$place_position) {
                     $place=$place+1;
