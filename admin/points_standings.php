@@ -133,7 +133,8 @@ class PDF extends FPDF
         $sub_string = '* Teams which used subs are ineligible for Team of the Year';
         $this->Ln();
         $this->SetFont('Arial','B',8);
-        $this->cell(30,100,$sub_string,0,0);
+        $this->Setx(30);
+        $this->cell(30,5,$sub_string,0,0);
     }
 }
 
