@@ -83,16 +83,16 @@ for ($j = 0; $j < count($result);$j++) {
     }
     echo "<tr>";
     echo "<td>" . $place. "</td>";
-    echo "<td>" . $row['team_id']. "</td>";
-    echo "<td>" . $row['Partner1']. "</td>";
-    echo "<td>" . $row['Partner2']. "</td>";
+    echo "<td>" . $result[$j]['team_id']. "</td>";
+    echo "<td>" . $result[$j]['Partner1']. "</td>";
+    echo "<td>" . $result[$j]['Partner2']. "</td>";
     echo "<td>" . $GB. "</td>";
     echo "<td>" . $DY. "</td>";
     echo "<td>" . $SB. "</td>";
     echo "<td>" . $MAR. "</td>";
-    echo "<td>" . $row['total_points']. "</td>";
+    echo "<td>" . $result[$j]['total_points']. "</td>";
     echo "</tr>";
-    $prev_points=$row['total_points'];
+    $prev_points=$result[$j]['total_points'];
 }
 
 
