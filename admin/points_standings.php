@@ -111,24 +111,25 @@ class PDF extends FPDF
         $this->Cell(20,5,$tbl_header[6],1,0,'C');
         $this->Ln(5);
     }
-}
-function SubTable($rankings)
-{
-    $this->Setx(50);
-    // Data
-    $x = 0;
-    //foreach($rankings as $row)
-    while ($x < count($rankings,0)) {
-        $this->Setx(30);
-        $this->Cell(12,5,$rankings[$x][1],1,0,'C');
-        $this->Cell(55,5,$rankings[$x][2],1,0,'C');
-        $this->Cell(20,5,$rankings[$x][3],1,0,'C');
-        $this->Cell(20,5,$rankings[$x][4],1,0,'C');
-        $this->Cell(20,5,$rankings[$x][5],1,0,'C');
-        $this->Cell(20,5,$rankings[$x][6],1,0,'C');
-        $this->Cell(20,5,$rankings[$x][7],1,0,'C');
-        $this->Ln();
-        $x++;
+
+    function SubTable($rankings)
+    {
+        $this->Setx(50);
+        // Data
+        $x = 0;
+        //foreach($rankings as $row)
+        while ($x < count($rankings,0)) {
+            $this->Setx(30);
+            $this->Cell(12,5,$rankings[$x][1],1,0,'C');
+            $this->Cell(55,5,$rankings[$x][2],1,0,'C');
+            $this->Cell(20,5,$rankings[$x][3],1,0,'C');
+            $this->Cell(20,5,$rankings[$x][4],1,0,'C');
+            $this->Cell(20,5,$rankings[$x][5],1,0,'C');
+            $this->Cell(20,5,$rankings[$x][6],1,0,'C');
+            $this->Cell(20,5,$rankings[$x][7],1,0,'C');
+            $this->Ln();
+            $x++;
+        }
     }
 }
 
