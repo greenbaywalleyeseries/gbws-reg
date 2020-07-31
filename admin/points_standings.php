@@ -203,8 +203,7 @@ FROM gbws_reg.points as a
 	join gbws_reg.team_info as b on a.team_id=b.team_id
     inner join gbws_reg.member_info c on ( b.partner1=c.mbr_id)
     inner join gbws_reg.member_info d on (b.partner2=d.mbr_id)
-    left join gbws_reg.temp_subs e on a.team_id=e.team_id
-where e.team_id IS NULL
+    right join gbws_reg.temp_subs e on a.team_id=e.team_id
 order by total_points desc";
     
     $sub_result = $mysqli->query($sub_sql);
@@ -237,9 +236,7 @@ $pdf->SetFont('Arial','',8);
 $pdf->AddPage();
 
 $pdf->BasicTable($rankings);
-$pdf->AddPage();
 
-$pdf->SubTable($sub_rankings);
 $pdf->AliasNbPages();
 $pdf->Output();
 
