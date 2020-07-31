@@ -59,8 +59,8 @@ while ($sub = mysqli_fetch_array($sub_result)) {
 print_r($result);
 
 for ($j = 0; $j < count($result);$j++) {
-    $team_id=$result[$j]['team_id]'];
-    $total_points=$result[$j]['total_points]'];
+    $team_id=$result[$j]['team_id'];
+    $total_points=$result[$j]['total_points'];
     if (is_null($result[$j]['GB'])) {
         $GB=0;
     } else {
@@ -83,7 +83,7 @@ for ($j = 0; $j < count($result);$j++) {
     }
     echo "<tr>";
     echo "<td>" . $place. "</td>";
-    echo "<td>" . $result[$j]['team_id']. "</td>";
+    echo "<td>" . $team_id. "</td>";
     echo "<td>" . $result[$j]['Partner1']. "</td>";
     echo "<td>" . $result[$j]['Partner2']. "</td>";
     echo "<td>" . $GB. "</td>";
