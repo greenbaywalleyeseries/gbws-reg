@@ -234,9 +234,8 @@ $pdf->SetLeftMargin(3);
 // Column headings
 $pdf->SetFont('Arial','',8);
 $pdf->AddPage();
-
 $pdf->BasicTable($rankings);
-
+$pdf->SubTable($sub_rankings);
 $pdf->AliasNbPages();
 $pdf->Output();
 
