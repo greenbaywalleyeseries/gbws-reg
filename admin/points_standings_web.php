@@ -13,6 +13,10 @@ include('../php/gbws_reg_db.php');
 
 mysqli_select_db($mysqli,"gbws_reg");
 
+$get_subs_sql="call find_subs()";
+
+mysqli_query($mysqli,$get_subs_sql);
+
 $sql="SELECT a.team_id,
 	concat(c.first, ' ', c.last) as Partner1,
 	concat(d.first, ' ', d.last) as Partner2,
@@ -25,6 +29,8 @@ FROM gbws_reg.points as a
 	join gbws_reg.team_info as b on a.team_id=b.team_id
     inner join gbws_reg.member_info c on ( b.partner1=c.mbr_id)
     inner join gbws_reg.member_info d on (b.partner2=d.mbr_id)
+    left join gbws_reg.temp_subs e on a.team_id=e.team_id
+where e.team_id IS NULL
 order by total_points desc";
 
 $result = mysqli_query($mysqli,$sql);
@@ -32,8 +38,7 @@ $result = mysqli_query($mysqli,$sql);
 $sub_team_sql="select distinct a.team_id from gbws_reg.transaction_items a join gbws_reg.team_info b on a.team_id=b.team_id
 where item_number like '%-Tourney' and
 (a.partner1=b.sub1 or a.partner2=b.sub1
-or a.partner1=b.sub2 or a.partner2=b.sub2
-or a.team_id='2020_93')";
+or a.partner1=b.sub2 or a.partner2=b.sub2)";
 
 $sub_result = mysqli_query($mysqli,$sub_team_sql);
 
@@ -52,65 +57,49 @@ echo '<table id="team">
 $place=0;
 $place_position=0;
 $prev_points=10000000;
-$sub_array = array();
-while ($sub = mysqli_fetch_array($sub_result)) {
-    $sub_array[]=$sub['team_id'];
-}
-print_r($result);
+
 
 while($row = mysqli_fetch_array($result)) {
-    $sub_team=0;
-    for ($i = 0; $i < count($sub_array);$i++) {
-        $sub_team=$sub_array[$i];
-        echo "sub team is: " .$sub_team ."<br>";
-        if ($row['team_id'] == $sub_team) {
-            $sub_team=1;
-            break;
+        if ($row['total_points'] != $prev_points) {
+            if ($place=$place_position) {
+                $place=$place+1;
+            } else {
+                $place=$place_position+1;
+            }
         }
-    }
-    if ($sub_team == 0 ) {
-            if ($row['total_points'] != $prev_points) {
-                if ($place=$place_position) {
-                    $place=$place+1;
-                } else {
-                    $place=$place_position+1;
-                }
-            }
-            $place_position=$place_position+1;
-            if (is_null($row['GB'])) {
-                $GB=0;
-            } else {
-                $GB=$row['GB'];
-            }
-            if (is_null($row['DY'])) {
-                $DY=0;
-            } else {
-                $DY=$row['DY'];
-            }
-            if (is_null($row['SB'])) {
-                $SB=0;
-            } else {
-                $SB=$row['SB'];
-            }
-            if (is_null($row['MAR'])) {
-                $MAR=0;
-            } else {
-                $MAR=$row['MAR'];
-            }
-            echo "<tr>";
-            echo "<td>" . $place. "</td>";
-            echo "<td>" . $row['team_id']. "</td>";
-            echo "<td>" . $row['Partner1']. "</td>";
-            echo "<td>" . $row['Partner2']. "</td>";
-            echo "<td>" . $GB. "</td>";
-            echo "<td>" . $DY. "</td>";
-            echo "<td>" . $SB. "</td>";
-            echo "<td>" . $MAR. "</td>";
-            echo "<td>" . $row['total_points']. "</td>";
-            echo "</tr>";
-            $prev_points=$row['total_points'];
-    }
-    
+        $place_position=$place_position+1;
+        if (is_null($row['GB'])) {
+            $GB=0;
+        } else {
+            $GB=$row['GB'];
+        }
+        if (is_null($row['DY'])) {
+            $DY=0;
+        } else {
+            $DY=$row['DY'];
+        }
+        if (is_null($row['SB'])) {
+            $SB=0;
+        } else {
+            $SB=$row['SB'];
+        }
+        if (is_null($row['MAR'])) {
+            $MAR=0;
+        } else {
+            $MAR=$row['MAR'];
+        }
+        echo "<tr>";
+        echo "<td>" . $place. "</td>";
+        echo "<td>" . $row['team_id']. "</td>";
+        echo "<td>" . $row['Partner1']. "</td>";
+        echo "<td>" . $row['Partner2']. "</td>";
+        echo "<td>" . $GB. "</td>";
+        echo "<td>" . $DY. "</td>";
+        echo "<td>" . $SB. "</td>";
+        echo "<td>" . $MAR. "</td>";
+        echo "<td>" . $row['total_points']. "</td>";
+        echo "</tr>";
+        $prev_points=$row['total_points'];
 }
 
 
