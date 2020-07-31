@@ -2,7 +2,7 @@
 <html>
 <head>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="..\membership.css">
+	
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
@@ -58,56 +58,45 @@ while ($sub = mysqli_fetch_array($sub_result)) {
 }
 print_r($result);
 
-while($row = mysqli_fetch_array($result)) {
-
-    for ($i = 0; $i < count($sub_array);$i++) {
-        $sub_team=$sub_array[$i];
-        echo "sub team is: " .$sub_team ."<br>";
-        if ($row['team_id'] != $sub_team) {
-            if ($row['total_points'] != $prev_points) {
-                if ($place=$place_position) {
-                    $place=$place+1;
-                } else {
-                    $place=$place_position+1;
-                }
-            }
-            $place_position=$place_position+1;
-            if (is_null($row['GB'])) {
-                $GB=0;
-            } else {
-                $GB=$row['GB'];
-            }
-            if (is_null($row['DY'])) {
-                $DY=0;
-            } else {
-                $DY=$row['DY'];
-            }
-            if (is_null($row['SB'])) {
-                $SB=0;
-            } else {
-                $SB=$row['SB'];
-            }
-            if (is_null($row['MAR'])) {
-                $MAR=0;
-            } else {
-                $MAR=$row['MAR'];
-            }
-            echo "<tr>";
-            echo "<td>" . $place. "</td>";
-            echo "<td>" . $row['team_id']. "</td>";
-            echo "<td>" . $row['Partner1']. "</td>";
-            echo "<td>" . $row['Partner2']. "</td>";
-            echo "<td>" . $GB. "</td>";
-            echo "<td>" . $DY. "</td>";
-            echo "<td>" . $SB. "</td>";
-            echo "<td>" . $MAR. "</td>";
-            echo "<td>" . $row['total_points']. "</td>";
-            echo "</tr>";
-            $prev_points=$row['total_points'];
-        }
+for ($j = 0; $j < count($result);$j++) {
+    $team_id=$result[$j]['team_id]'];
+    $total_points=$result[$j]['total_points]'];
+    if (is_null($result[$j]['GB'])) {
+        $GB=0;
+    } else {
+        $GB=$result[$j]['GB'];
     }
-    
+    if (is_null($result[$j]['DY'])) {
+        $DY=0;
+    } else {
+        $DY=$result[$j]['DY'];
+    }
+    if (is_null($result[$j]['SB'])) {
+        $SB=0;
+    } else {
+        $SB=$result[$j]['SB'];
+    }
+    if (is_null($result[$j]['MAR'])) {
+        $MAR=0;
+    } else {
+        $MAR=$result[$j]['MAR'];
+    }
+    echo "<tr>";
+    echo "<td>" . $place. "</td>";
+    echo "<td>" . $row['team_id']. "</td>";
+    echo "<td>" . $row['Partner1']. "</td>";
+    echo "<td>" . $row['Partner2']. "</td>";
+    echo "<td>" . $GB. "</td>";
+    echo "<td>" . $DY. "</td>";
+    echo "<td>" . $SB. "</td>";
+    echo "<td>" . $MAR. "</td>";
+    echo "<td>" . $row['total_points']. "</td>";
+    echo "</tr>";
+    $prev_points=$row['total_points'];
 }
+
+
+
 echo "</table>";
 mysqli_close($mysqli);
 ?>
