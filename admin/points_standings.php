@@ -7,9 +7,6 @@ class PDF extends FPDF
     // Page header
     function Header()
     {
-
-
-
         // Logo
         $this->Image('../images/gbws_logo-no-background.png',20,6,40,40);
         // Arial bold 15
@@ -81,7 +78,13 @@ class PDF extends FPDF
 $rankings=array();
 
 
-$result_sql = "SELECT a.team_id,
+mysqli_select_db($mysqli,"gbws_reg");
+
+$get_subs_sql="call find_subs()";
+
+mysqli_query($mysqli,$get_subs_sql);
+
+$result_sql="SELECT a.team_id,
 	concat(c.first, ' ', c.last) as Partner1,
 	concat(d.first, ' ', d.last) as Partner2,
 	a.GB,
@@ -93,11 +96,13 @@ FROM gbws_reg.points as a
 	join gbws_reg.team_info as b on a.team_id=b.team_id
     inner join gbws_reg.member_info c on ( b.partner1=c.mbr_id)
     inner join gbws_reg.member_info d on (b.partner2=d.mbr_id)
+    left join gbws_reg.temp_subs e on a.team_id=e.team_id
+where e.team_id IS NULL
 order by total_points desc";
+    
     $result = $mysqli->query($result_sql);
     if ($result->num_rows > 0) {
         // output data of each row
-
         $place=0;
         $place_position=0;
         $prev_points=1000000;
@@ -130,8 +135,8 @@ $mysqli->close();
 
 
 // Instanciation of inherited class
-//$pdf = new PDF('P','mm','Legal');
-$pdf = new PDF('P','mm','Letter');
+$pdf = new PDF('P','mm','Legal');
+//$pdf = new PDF('P','mm','Letter');
 $pdf->SetLeftMargin(3);
 // Column headings
 $pdf->SetFont('Arial','',8);
