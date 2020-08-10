@@ -1,0 +1,128 @@
+1) Create Schema
+2) Copy conversion table
+3) Create tourney_info table
+4) Insert Data into tourney_info table from registration schema
+5) Create tourney_teams table
+6) Copy create <name>-Tourney folder
+7) Update datalogin.php, $db_name with schema
+8) Update $tourney_id field in update_teams.php
+9) Create import table (see below for donkey table)
+10) create tempsortfish table
+11) create temp_places table
+12) create penalties table
+13) create BigFish table
+14) Create sortmemberfish stored proc
+15) create sort_places stored proc
+16) create update_rankings stored proc
+17) create BigFish stored proc
+18) Populate tourney_info table (replace "where local='XX')
+19) Populate conversion table
+
+
+
+
+
+
+
+
+
+
+
+Submission ID	Division	Participant	Species	Length	Mobile create date	
+ID, Division, Participant, Species, Length, Timestamp, Weight
+
+
+Participant
+Length
+species
+Mobile create date
+
+
+2) CREATE TABLE oconto_tourney.conversion LIKE gbws_reg.conversion;
+INSERT oconto_tourney.conversion SELECT * FROM gbws_reg.conversion;
+
+3) CREATE TABLE `tourney_info` (
+  `Day1` date NOT NULL,
+  `Day2` date DEFAULT NULL,
+  `description` varchar(45) DEFAULT NULL,
+  `option_pot_places` int(11) DEFAULT NULL,
+  `big_fish_places` int(11) DEFAULT NULL,
+  `comeback_award` varchar(1) DEFAULT NULL COMMENT 'Y only if exists',
+  PRIMARY KEY (`Day1`)
+);
+
+4) INSERT INTO `oconto_tourney`.`tourney_info` (`Day1`, `description`, `option_pot_places`, `big_fish_places`, `comeback_award`) VALUES ('2020-05-17', 'Oconto', '3', '3', 'N');
+
+5) CREATE TABLE `tourney_teams` (
+  `boat_num` int(11) NOT NULL,
+  `participant` varchar(255) NULL,
+  `team_id` varchar(8) NOT NULL,
+  `partner1` varchar(50) NOT NULL,
+  `partner2` varchar(50) NOT NULL,
+  `big_fish` varchar(1) DEFAULT NULL,
+  `option_pot` varchar(1) DEFAULT NULL,
+  `NTC_side_pot` varchar(1) DEFAULT NULL,
+  `weigh_in` varchar(1) DEFAULT NULL,
+  PRIMARY KEY (`boat_num`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+9) CREATE TABLE `donkey` (
+  `ID` int(11) NOT NULL,
+  `Division` varchar(45) DEFAULT NULL,
+  `Participant` varchar(255) DEFAULT NULL,
+  `Species` varchar(45) DEFAULT NULL,
+  `Length` decimal(4,2) DEFAULT NULL,
+  `timestamp` date DEFAULT NULL,
+  `weight` decimal(4,2) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+10) CREATE TABLE `tempsortfish` (
+  `participant` varchar(255) NOT NULL,
+  `ID` int(3) NOT NULL,
+  `length` decimal(4,2) DEFAULT NULL,
+  `weight` decimal(4,2) DEFAULT NULL,
+  `time` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+11) CREATE TABLE `temp_places` (
+  `boat_num` int(11) NOT NULL,
+  `participant` varchar(255) DEFAULT NULL,
+  `team_id` varchar(8) DEFAULT NULL,
+  `partner1` varchar(50) DEFAULT NULL,
+  `partner2` varchar(50) DEFAULT NULL,
+  `day_1_fish` int(2) DEFAULT 0,
+  `day_1_penalty` int(2) DEFAULT 0,
+  `day_1_weight` decimal(5,2) DEFAULT 0.00,
+  `day_2_fish` int(2) DEFAULT 0,
+  `day_2_penalty` int(2) DEFAULT 0,
+  `day_2_weight` decimal(5,2) DEFAULT 0.00,
+  `total_weight` decimal(5,2) DEFAULT 0.00,
+  PRIMARY KEY (`boat_num`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+12) CREATE TABLE `penalties` (
+  `boat_num` int(11) NOT NULL,
+  `minutes_late` int(3) NOT NULL,
+  `date` date DEFAULT NULL,
+  KEY `fk_team_penalty` (`boat_num`),
+  CONSTRAINT `fk_team_penalty` FOREIGN KEY (`boat_num`) REFERENCES `tourney_teams` (`boat_num`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+13) CREATE TABLE `BigFish` (
+  `participant` varchar(255) NOT NULL,
+  `ID` int(3) NOT NULL,
+  `length` decimal(4,2) DEFAULT NULL,
+  `weight` decimal(4,2) DEFAULT NULL,
+  `time` datetime DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+
+
+
+
+
+
+
+if ($mysqli_tourney->query('CALL UpdateRankings()') == TRUE) {
+    $result_sql = "SELECT * FROM temp_all_results";
+

@@ -1,0 +1,7 @@
+UpdateRankings() does the following:
+
+1) call sortmemberfish() creates and inserts top 5 fish for each team from donkey table into tempsortfish
+2) call sort_places()  populates temp_places with team info from tourney_teams and fish info from tempsort fish.  inserts teams with no fish from tourney_teams into temp_places.  Calculates and inserts penalties into temp_places
+3) call BigFish() populates BigFish with largest fish from every team
+
+

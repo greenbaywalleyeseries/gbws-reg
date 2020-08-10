@@ -1,0 +1,18 @@
+CALL updaterankings()
+
+ALTER TABLE `temp_day_1_rank` ADD COLUMN `day_2_rank` INT NULL AFTER `day_1_rank`;
+UPDATE temp_day_1_rank, temp_day_2_rank
+set temp_day_1_rank.day_2_rank = temp_day_2_rank.day_2_rank
+where temp_day_1_rank.team_id=temp_day_2_rank.team_id;
+
+ALTER TABLE `temp_day_1_rank` ADD COLUMN `rank_change` INT GENERATED ALWAYS AS (day_1_rank-day_2_rank) AFTER `day_2_rank`; 
+
+
+########################### Come-back team ###########################
+#Update All Results temp table with rank change
+CREATE TABLE IF NOT EXISTS temp_day_1_rank AS (Select boat_num, team_id, day_1_weight from temp_all_results order by day_1_weight desc);
+
+ALTER TABLE `temp_day_1_rank` ADD COLUMN `day_1_rank` INT NULL AFTER `day_1_weight`;
+SET @r=0;
+UPDATE temp_day_1_rank JOIN (SELECT @r := @r + 1 AS day_1_rank, team_id FROM temp_day_1_rank ORDER BY day_1_rank DESC)
+AS sorted USING(team_id) SET temp_day_1_rank.day_1_rank = sorted.day_1_rank;
