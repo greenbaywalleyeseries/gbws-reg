@@ -7,7 +7,7 @@
 $host = "localhost";
 $username = "root";
 $password = "";
-$db_name = "sb_tourney";
+$db_name = "champ_tourney";
 
 // Create connection for mysqli extension
 $mysqli_tourney = new mysqli($host, $username, $password, $db_name);
