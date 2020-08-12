@@ -20,7 +20,9 @@ if(!isset($_COOKIE['GBWS-admin'])) {
        <div class="divider"></div>
         	<a href="team_detail.php" class="button">Team Detail</a>
        <div class="divider"></div>
-           	<a href="team_fish.php" class="button">Team Fish List/Add/Edit</a>
+           	<a href="import_file.html" class="button">Upload Day 1 CSV from Fish Donkey</a>
+       <div class="divider"></div>
+            <a href="import_file.html" class="button">Upload Day 2 CSV from Fish Donkey</a>
        <div class="divider"></div>
     <!--        	<a href="leader_after_weigh_in_pdf.php" class="button">Current Standings</a>
        <div class="divider"></div>

@@ -2,7 +2,7 @@
 include('../php/gbws_reg_db.php');
 include('includes/datalogin.php');
 
-$tourney_id='SB';
+$tourney_id='MAR';
 
 $save_mapping_SQL1="DROP TABLE IF EXISTS participant_mapping";
 $save_mapping_SQL2="CREATE TABLE participant_mapping AS SELECT team_id, participant from tourney_teams";

@@ -1,7 +1,7 @@
 -- ----------------------------------------------------------------------------
 -- MySQL Workbench Migration
--- Migrated Schemata: sb_tourney
--- Source Schemata: sb_tourney
+-- Migrated Schemata: champ_tourney
+-- Source Schemata: champ_tourney
 -- Created: Mon Jun  8 12:43:28 2020
 -- Workbench Version: 8.0.19
 -- ----------------------------------------------------------------------------
@@ -9,15 +9,15 @@
 SET FOREIGN_KEY_CHECKS = 0;
 
 -- ----------------------------------------------------------------------------
--- Schema sb_tourney
+-- Schema champ_tourney
 -- ----------------------------------------------------------------------------
-DROP SCHEMA IF EXISTS `sb_tourney` ;
-CREATE SCHEMA IF NOT EXISTS `sb_tourney` ;
+DROP SCHEMA IF EXISTS `champ_tourney` ;
+CREATE SCHEMA IF NOT EXISTS `champ_tourney` ;
 
 -- ----------------------------------------------------------------------------
--- Table sb_tourney.bigfish
+-- Table champ_tourney.bigfish
 -- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sb_tourney`.`bigfish` (
+CREATE TABLE IF NOT EXISTS `champ_tourney`.`bigfish` (
   `participant` VARCHAR(255) NOT NULL,
   `ID` INT(3) NOT NULL,
   `length` DECIMAL(4,2) NULL DEFAULT NULL,
@@ -27,9 +27,9 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 -- ----------------------------------------------------------------------------
--- Table sb_tourney.conversion
+-- Table champ_tourney.conversion
 -- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sb_tourney`.`conversion` (
+CREATE TABLE IF NOT EXISTS `champ_tourney`.`conversion` (
   `length` DECIMAL(4,2) NOT NULL,
   `weight` DECIMAL(4,2) NULL DEFAULT NULL,
   PRIMARY KEY (`length`))
@@ -37,9 +37,9 @@ ENGINE = InnoDB
 ;
 
 -- ----------------------------------------------------------------------------
--- Table sb_tourney.donkey
+-- Table champ_tourney.donkey
 -- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sb_tourney`.`donkey` (
+CREATE TABLE IF NOT EXISTS `champ_tourney`.`donkey` (
   `ID` INT(11) NOT NULL,
   `Division` VARCHAR(45) NULL DEFAULT NULL,
   `Participant` VARCHAR(255) NULL DEFAULT NULL,
@@ -51,18 +51,18 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 -- ----------------------------------------------------------------------------
--- Table sb_tourney.participant_mapping
+-- Table champ_tourney.participant_mapping
 -- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sb_tourney`.`participant_mapping` (
+CREATE TABLE IF NOT EXISTS `champ_tourney`.`participant_mapping` (
   `team_id` VARCHAR(8) NOT NULL,
   `participant` VARCHAR(255) NULL DEFAULT NULL)
 ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 -- ----------------------------------------------------------------------------
--- Table sb_tourney.penalties
+-- Table champ_tourney.penalties
 -- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sb_tourney`.`penalties` (
+CREATE TABLE IF NOT EXISTS `champ_tourney`.`penalties` (
   `boat_num` INT(11) NOT NULL,
   `minutes_late` INT(3) NOT NULL,
   `date` DATE NULL DEFAULT NULL)
@@ -70,9 +70,9 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 -- ----------------------------------------------------------------------------
--- Table sb_tourney.temp_all_results
+-- Table champ_tourney.temp_all_results
 -- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sb_tourney`.`temp_all_results` (
+CREATE TABLE IF NOT EXISTS `champ_tourney`.`temp_all_results` (
   `boat_num` INT(11) NOT NULL,
   `participant` VARCHAR(255) NULL DEFAULT NULL,
   `team_id` VARCHAR(8) NULL DEFAULT NULL,
@@ -93,9 +93,9 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 -- ----------------------------------------------------------------------------
--- Table sb_tourney.temp_big_fish_pot
+-- Table champ_tourney.temp_big_fish_pot
 -- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sb_tourney`.`temp_big_fish_pot` (
+CREATE TABLE IF NOT EXISTS `champ_tourney`.`temp_big_fish_pot` (
   `team_id` VARCHAR(8) NOT NULL,
   `participant` VARCHAR(255) NOT NULL,
   `length` DECIMAL(4,2) NULL DEFAULT NULL,
@@ -105,9 +105,9 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 -- ----------------------------------------------------------------------------
--- Table sb_tourney.temp_option_pot
+-- Table champ_tourney.temp_option_pot
 -- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sb_tourney`.`temp_option_pot` (
+CREATE TABLE IF NOT EXISTS `champ_tourney`.`temp_option_pot` (
   `participant` VARCHAR(255) NULL DEFAULT NULL,
   `total_weight` DECIMAL(5,2) NULL DEFAULT '0.00',
   `rank` INT(11) NULL DEFAULT NULL)
@@ -115,9 +115,9 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 -- ----------------------------------------------------------------------------
--- Table sb_tourney.temp_places
+-- Table champ_tourney.temp_places
 -- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sb_tourney`.`temp_places` (
+CREATE TABLE IF NOT EXISTS `champ_tourney`.`temp_places` (
   `boat_num` INT(11) NOT NULL,
   `participant` VARCHAR(255) NULL DEFAULT NULL,
   `team_id` VARCHAR(8) NULL DEFAULT NULL,
@@ -135,9 +135,9 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 -- ----------------------------------------------------------------------------
--- Table sb_tourney.tempsortfish
+-- Table champ_tourney.tempsortfish
 -- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sb_tourney`.`tempsortfish` (
+CREATE TABLE IF NOT EXISTS `champ_tourney`.`tempsortfish` (
   `participant` VARCHAR(255) NOT NULL,
   `ID` INT(3) NOT NULL,
   `length` DECIMAL(4,2) NULL DEFAULT NULL,
@@ -147,9 +147,9 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 -- ----------------------------------------------------------------------------
--- Table sb_tourney.tourney_info
+-- Table champ_tourney.tourney_info
 -- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sb_tourney`.`tourney_info` (
+CREATE TABLE IF NOT EXISTS `champ_tourney`.`tourney_info` (
   `Day1` DATE NOT NULL,
   `Day2` DATE NULL DEFAULT NULL,
   `description` VARCHAR(45) NULL DEFAULT NULL,
@@ -161,9 +161,9 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 -- ----------------------------------------------------------------------------
--- Table sb_tourney.tourney_teams
+-- Table champ_tourney.tourney_teams
 -- ----------------------------------------------------------------------------
-CREATE TABLE IF NOT EXISTS `sb_tourney`.`tourney_teams` (
+CREATE TABLE IF NOT EXISTS `champ_tourney`.`tourney_teams` (
   `boat_num` INT(11) NOT NULL,
   `participant` VARCHAR(255) NULL DEFAULT NULL,
   `team_id` VARCHAR(8) NOT NULL,
@@ -178,12 +178,12 @@ ENGINE = InnoDB
 DEFAULT CHARACTER SET = latin1;
 
 -- ----------------------------------------------------------------------------
--- Routine sb_tourney.BigFish
+-- Routine champ_tourney.BigFish
 -- ----------------------------------------------------------------------------
 DELIMITER $$
 
 DELIMITER $$
-USE `sb_tourney`$$
+USE `champ_tourney`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `BigFish`()
 BEGIN
 
@@ -229,12 +229,12 @@ END$$
 DELIMITER ;
 
 -- ----------------------------------------------------------------------------
--- Routine sb_tourney.sortmemberfish
+-- Routine champ_tourney.sortmemberfish
 -- ----------------------------------------------------------------------------
 DELIMITER $$
 
 DELIMITER $$
-USE `sb_tourney`$$
+USE `champ_tourney`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sortmemberfish`()
 Begin
 
@@ -283,12 +283,12 @@ END$$
 DELIMITER ;
 
 -- ----------------------------------------------------------------------------
--- Routine sb_tourney.sort_places
+-- Routine champ_tourney.sort_places
 -- ----------------------------------------------------------------------------
 DELIMITER $$
 
 DELIMITER $$
-USE `sb_tourney`$$
+USE `champ_tourney`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `sort_places`()
 BEGIN
 set @Day1 = (select concat((select Day1 from tourney_info), "%"));
@@ -370,12 +370,12 @@ end$$
 DELIMITER ;
 
 -- ----------------------------------------------------------------------------
--- Routine sb_tourney.UpdateRankings
+-- Routine champ_tourney.UpdateRankings
 -- ----------------------------------------------------------------------------
 DELIMITER $$
 
 DELIMITER $$
-USE `sb_tourney`$$
+USE `champ_tourney`$$
 CREATE DEFINER=`root`@`localhost` PROCEDURE `UpdateRankings`()
 Begin
 
@@ -488,8 +488,8 @@ END$$
 
 DELIMITER ;
 
-insert into sb_tourney.tourney_info (select start_date as Day1, second_date as Day2, location as description, 3 as option_pot_places, 3 as big_fish_places, 'N' as comeback_awark from gbws_reg.tourneyinfo where local='SB');
+insert into champ_tourney.tourney_info (select start_date as Day1, second_date as Day2, location as description, 3 as option_pot_places, 3 as big_fish_places, 'N' as comeback_awark from gbws_reg.tourneyinfo where local='SB');
 
-insert into sb_tourney.conversion (select * from gbws_reg.conversion);
+insert into champ_tourney.conversion (select * from gbws_reg.conversion);
 
 SET FOREIGN_KEY_CHECKS = 1;
