@@ -24,6 +24,8 @@ if(!isset($_COOKIE['GBWS-admin'])) {
        <div class="divider"></div>
             <a href="import_file.html" class="button">Upload Day 2 CSV from Fish Donkey</a>
        <div class="divider"></div>
+    		<a href="unmapped_teams.php" class="button">Entries not mapped to Teams</a>
+       <div class="divider"></div>
     <!--        	<a href="leader_after_weigh_in_pdf.php" class="button">Current Standings</a>
        <div class="divider"></div>
      -->
