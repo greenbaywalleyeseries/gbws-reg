@@ -20,11 +20,16 @@ if(!isset($_COOKIE['GBWS-admin'])) {
        <div class="divider"></div>
         	<a href="team_detail.php" class="button">Team Detail</a>
        <div class="divider"></div>
-           	<a href="import_file.html" class="button">Upload Day 1 CSV from Fish Donkey</a>
+           	<a href="import_day1_file.html" class="button">Upload Day 1 CSV from Fish Donkey</a>
        <div class="divider"></div>
-            <a href="import_file.html" class="button">Upload Day 2 CSV from Fish Donkey</a>
+           		<a href="day1_unmapped_teams.php" class="button">Day 1 Entries Not Mapped to Teams</a>
        <div class="divider"></div>
-    		<a href="unmapped_teams.php" class="button">Entries not mapped to Teams</a>
+       
+       
+            <a href="import_day2_file.html" class="button">Upload Day 2 CSV from Fish Donkey</a>
+       <div class="divider"></div>
+
+           	<a href="day2_unmapped_teams.php" class="button">Day 2 Entries Not Mapped to Teams</a>
        <div class="divider"></div>
     <!--        	<a href="leader_after_weigh_in_pdf.php" class="button">Current Standings</a>
        <div class="divider"></div>

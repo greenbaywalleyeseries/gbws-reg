@@ -26,21 +26,21 @@ class PDF extends FPDF
         // Move to the right
         $this->Cell(2);
         // Title
-        $this->Cell(6,.5,'Green Bay Walleye Series',0,0,'C');
+        $this->Cell(6.5,.5,'Green Bay Walleye Series',0,0,'C');
         //2nd Image
-        $this->Image('../images/gbws_logo-no-background.png', 8.5,.25,1.5,1.5);
+        $this->Image('../images/gbws_logo-no-background.png', 9.5,.25,1.5,1.5);
         // Line break
         $this->Ln(.5);
         //Next Line for Tourney Location
         // Arial bold 12
         $this->SetFont('Arial','B',12);
         $this->Cell(2);
-        $this->Cell(6,.25,$location,0,1,'C');
+        $this->Cell(6.5,.25,$location,0,1,'C');
         // Line break
         //$this->Ln(20);
         //Next Line for Tourney Dates
         $this->Cell(2);
-        $this->Cell(6,.25,$dates,0,0,'C');
+        $this->Cell(6.5,.25,$dates,0,0,'C');
         // Line break
         $this->Ln(.5);
     }
@@ -59,19 +59,28 @@ class PDF extends FPDF
     function TwoDayTable($tbl_header, $rankings, $comeback_team_string)
     {
         // Header
-            $this->Cell(.5,.25,$tbl_header[0],1,0,'C');
-            $this->Cell(.5,.25,$tbl_header[1],1,0,'C');
-            $this->Cell(2.5,.25,$tbl_header[2],1,0,'C');
-            $this->Cell(.75,.25,$tbl_header[3],1,0,'C');
-            #$this->Cell(.75,.25,$tbl_header[4],1,0,'C');
-            $this->Cell(.75,.25,$tbl_header[5],1,0,'C');
-            $this->Cell(.75,.25,$tbl_header[6],1,0,'C');
-            #$this->Cell(.75,.25,$tbl_header[7],1,0,'C');
+            $this->cell(3.5);
+            $this->Cell(2.75,.25,$tbl_header[0],1,0,'C');
+            $this->Cell(2.75,.25,$tbl_header[1],1,0,'C');
+            $this->Ln();
+            $this->Cell(.5,.25,$tbl_header[2],1,0,'C');
+            $this->Cell(.5,.25,$tbl_header[3],1,0,'C');
+            $this->Cell(2.5,.25,$tbl_header[4],1,0,'C');
+            
+            $this->Cell(.5,.25,$tbl_header[5],1,0,'C');
+            #$this->Cell(.75,.25,$tbl_header[6],1,0,'C');
+            $this->Cell(.75,.25,$tbl_header[7],1,0,'C');
+            $this->Cell(.5,.25,$tbl_header[10],1,0,'C');
+            $this->Cell(1,.25,$tbl_header[11],1,0,'C');
+            
+            $this->Cell(.5,.25,$tbl_header[5],1,0,'C');
+            #$this->Cell(.75,.25,$tbl_header[6],1,0,'C');
+            $this->Cell(.75,.25,$tbl_header[7],1,0,'C');
+            $this->Cell(.5,.25,$tbl_header[10],1,0,'C');
+            $this->Cell(1,.25,$tbl_header[11],1,0,'C');
+            
             $this->Cell(.75,.25,$tbl_header[8],1,0,'C');
             $this->Cell(.75,.25,$tbl_header[9],1,0,'C');
-            $this->Cell(.75,.25,$tbl_header[10],1,0,'C');
-            $this->Cell(.75,.25,$tbl_header[11],1,0,'C');
-            $this->Cell(1,.25,$tbl_header[12],1,0,'C');
             $this->Ln();
         // Data
             $x = 0;
@@ -80,16 +89,21 @@ class PDF extends FPDF
                 $this->Cell(.5,.15,$rankings[$x][1],1,0,'C');
                 $this->Cell(.5,.15,$rankings[$x][2],1,0,'C');
                 $this->Cell(2.5,.15,$rankings[$x][3],1,0,'C');
-                $this->Cell(.75,.15,$rankings[$x][4],1,0,'C');
+                
+                $this->Cell(.5,.15,$rankings[$x][4],1,0,'C');
                 #$this->Cell(.75,.15,$rankings[$x][5],1,0,'C');
                 $this->Cell(.75,.15,$rankings[$x][6],1,0,'C');
-                $this->Cell(.75,.15,$rankings[$x][7],1,0,'C');
-                #$this->Cell(.75,.15,$rankings[$x][8],1,0,'C');
-                $this->Cell(.75,.15,$rankings[$x][9],1,0,'C');
+                $this->Cell(.5,.15,$rankings[$x][12],1,0,'C');
+                $this->Cell(1,.15,$rankings[$x][13],1,0,'C');
+                
+                $this->Cell(.5,.15,$rankings[$x][4],1,0,'C');
+                #$this->Cell(.75,.15,$rankings[$x][5],1,0,'C');
+                $this->Cell(.75,.15,$rankings[$x][6],1,0,'C');
+                $this->Cell(.5,.15,$rankings[$x][14],1,0,'C');
+                $this->Cell(1,.15,$rankings[$x][15],1,0,'C');
+                
                 $this->Cell(.75,.15,$rankings[$x][10],1,0,'C');
                 $this->Cell(.75,.15,$rankings[$x][11],1,0,'C');
-                $this->Cell(.75,.15,$rankings[$x][12],1,0,'C');
-                $this->Cell(1,.15,$rankings[$x][13],1,0,'C');
                 $this->Ln();
                 $x++;
             }
@@ -151,7 +165,7 @@ if ($mysqli_tourney->query('CALL UpdateRankings()') == TRUE) {
     $result = $mysqli_tourney->query($result_sql);
     if ($result->num_rows > 0) {
         // output data of each row
-        $tbl_header=array('Place','Boat #','Team','Day 1 Fish','Day 1 Penalty','Day 1 Weight','Day 2 Fish','Day 2 Penalty','Day 2 Weight','Total Weight','Option Pot','Big Fish','Big Fish Weight');
+        $tbl_header=array('Day 1','Day 2','Place','Boat #','Team','Fish','Penalty','Weight','Total Weight','Option Pot','Big Fish','Big Fish Weight');
         $place=0;
         $place_position=0;
         $prev_weight=1000000;
@@ -176,10 +190,12 @@ if ($mysqli_tourney->query('CALL UpdateRankings()') == TRUE) {
             $day_2_weight=$row["day_2_weight"];
             $total_weight=$row["total_weight"];
             $option_pot=$row["option_pot"];
-            $big_fish_rank=$row["big_fish_rank"];
-            $big_fish_size=$row["big_fish_size"];
+            $big_fish_rank_day1=$row["big_fish_rank_day1"];
+            $big_fish_size_day1=$row["big_fish_size_day1"];
+            $big_fish_rank_day2=$row["big_fish_rank_day2"];
+            $big_fish_size_day2=$row["big_fish_size_day2"];
             
-            $data=array($pos,$place, $boat_num, $Partners, $day_1_fish, $day_1_penalty, $day_1_weight, $day_2_fish, $day_2_penalty, $day_2_weight, $total_weight, $option_pot, $big_fish_rank, $big_fish_size);
+            $data=array($pos,$place, $boat_num, $Partners, $day_1_fish, $day_1_penalty, $day_1_weight, $day_2_fish, $day_2_penalty, $day_2_weight, $total_weight, $option_pot, $big_fish_rank_day1, $big_fish_size_day1, $big_fish_rank_day2, $big_fish_size_day2);
             $rankings[]=$data;
             $pos++;
             $prev_weight = $row['total_weight'];

@@ -15,12 +15,14 @@ class PDF extends FPDF
             $location=$row['description'];
         endforeach;
         
+        $dates=TourneyDates();
+/*        
         $dates_sql='select Day1 from tourney_info ';;
         $dates_result = $mysqli_tourney->query($dates_sql);
         foreach ($dates_result as $row):
             $dates=$row['Day1'];
         endforeach;
-        
+*/        
         // Logo
         $this->Image('../images/gbws_logo-no-background.png',10,6,40,40);
         // Arial bold 15
