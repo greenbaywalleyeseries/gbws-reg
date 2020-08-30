@@ -96,9 +96,9 @@ class PDF extends FPDF
                 $this->Cell(.5,.15,$rankings[$x][12],1,0,'C');
                 $this->Cell(1,.15,$rankings[$x][13],1,0,'C');
                 
-                $this->Cell(.5,.15,$rankings[$x][4],1,0,'C');
+                $this->Cell(.5,.15,$rankings[$x][7],1,0,'C');
                 #$this->Cell(.75,.15,$rankings[$x][5],1,0,'C');
-                $this->Cell(.75,.15,$rankings[$x][6],1,0,'C');
+                $this->Cell(.75,.15,$rankings[$x][9],1,0,'C');
                 $this->Cell(.5,.15,$rankings[$x][14],1,0,'C');
                 $this->Cell(1,.15,$rankings[$x][15],1,0,'C');
                 
