@@ -112,14 +112,14 @@ function UpdateCart(chkbox_name,description,cost){
 
 function checkCoupon() {
 	var code = document.getElementById("coupon").value;
-	if (code == 'TopStick2019') {
+	if (code == 'champ2020') {
 	 	for (var i = 0; i < items.length; i++) {
 	     	var check_box = items[i].check_box ;
-	        if (check_box == "MAR-Tourney") {
-	        	items[i].cost = 260;
+	        if (check_box == "CH-Tourney") {
+	        	items[i].cost = 0;
 	        }
-	        if (check_box == "GB-Tourney" || check_box == "DY-Tourney" || check_box == "SB-Tourney"){
-	        	items[i].cost = 210;
+	        if (check_box == "T1-Tourney" || check_box == "T2-Tourney" || check_box == "T3-Tourney"){
+	        	items[i].cost = 0;
 	        }
 	 	}
 	}

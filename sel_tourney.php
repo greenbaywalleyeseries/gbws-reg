@@ -69,7 +69,7 @@
             if (event.target.readyState === "interactive") {   //same as:  ..addEventListener("DOMContentLoaded".. and   jQuery.ready
             	if ( team_reg > 0 ) {
             		var regitem = "Registration-(X" +team_reg+ ")";
-            		var regdesc = "2020 GBWS Registration";
+            		var regdesc = "2021 GBWS Registration";
             		var regtotal = team_reg * 40;
             	
             			items.push({
