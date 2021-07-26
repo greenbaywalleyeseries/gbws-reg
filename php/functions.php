@@ -34,7 +34,7 @@ function reg_mbr($sql) {
 function chk_paid($team_id) {
     include('gbws_reg_db.php');
     $team_size=0;
-    $sql="select * from team_info where upper(team_id)=upper('".$team_id."')";
+    $sql="select * from team_info where team_id='".$team_id."'";
     $result = $mysqli->query($sql);
     if ($result->num_rows > 0) {        
         while($row = mysqli_fetch_array($result)) {
@@ -75,7 +75,7 @@ function get_team($last_name) {
     $team_info = array();
     $output = array();
     include('gbws_reg_db.php');
-    $sql="SELECT mbr_id FROM member_info WHERE last like '".$last_name."%'";
+    $sql="SELECT mbr_id FROM member_info WHERE upper(last) like upper('".$last_name."%')";
     //$sql="SELECT mbr_id FROM member_info";
     $result = $mysqli->query($sql);
     if ($result->num_rows > 0) {
