@@ -34,7 +34,7 @@ function reg_mbr($sql) {
 function chk_paid($team_id) {
     include('gbws_reg_db.php');
     $team_size=0;
-    $sql="select * from team_info where team_id='".$team_id."'";
+    $sql="select * from team_info where upper(team_id)=upper('".$team_id."')";
     $result = $mysqli->query($sql);
     if ($result->num_rows > 0) {        
         while($row = mysqli_fetch_array($result)) {
