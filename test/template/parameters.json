@@ -1,0 +1,27 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "subscriptionId": {
+            "value": "d7b62445-760c-431a-8457-954c30149d98"
+        },
+        "name": {
+            "value": "gbws-registration"
+        },
+        "location": {
+            "value": "North Central US"
+        },
+        "hostingPlanName": {
+            "value": "ASP-gbws-ae73"
+        },
+        "serverFarmResourceGroup": {
+            "value": "gbws"
+        },
+        "alwaysOn": {
+            "value": false
+        },
+        "linuxFxVersion": {
+            "value": "PHP|7.3"
+        }
+    }
+}
