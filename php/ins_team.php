@@ -119,7 +119,7 @@ if("" == trim($_POST['sub2_first'])){
 }  
 
 
-//echo $reg_size;
+echo $reg_size;
 
 //Get team_id 
 $sql= "CALL get_team_id(@team);";
