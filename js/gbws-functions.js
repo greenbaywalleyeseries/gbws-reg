@@ -79,11 +79,11 @@ function showAllMembers() {
 
 function CalcMbrRegFee(quantity){
 	var regitem = "Registration-(X" +quantity+ ")";
-	var regdesc = "2020 GBWS Registration";
+	var regdesc = "2022 GBWS Registration";
 	var regtotal = quantity * 1;
 	
 		items.push({
-       		check_box: regiten,
+       		check_box: regitem,
        		desc: regdesc,
        		cost: regtotal 
 		});
@@ -112,16 +112,30 @@ function UpdateCart(chkbox_name,description,cost){
 
 function checkCoupon() {
 	var code = document.getElementById("coupon").value;
-	if (code == 'champ2020') {
+	if (code == '2021TOY') {
 	 	for (var i = 0; i < items.length; i++) {
 	     	var check_box = items[i].check_box ;
 	        if (check_box == "CH-Tourney") {
 	        	items[i].cost = 0;
 	        }
-	        if (check_box == "T1-Tourney" || check_box == "T2-Tourney" || check_box == "T3-Tourney"){
+	        if (check_box == "T1-Tourney" || check_box == "T2-Tourney" || check_box == "T3-Tourney"|| check_box == "T4-Tourney"){
 	        	items[i].cost = 0;
 	        }
 	 	}
+	}
+	if (code == '2022AdMiN') {
+	 	for (var i = 0; i < items.length; i++) {
+	     	var check_box = items[i].check_box ;
+	        if (check_box.includes("Registration-",0)) {
+	        	items[i].cost = 0;
+	        }
+	        if (check_box == "CH-Tourney") {
+	        	items[i].cost = 0;
+	        }
+	        if (check_box == "T1-Tourney" || check_box == "T2-Tourney" || check_box == "T3-Tourney"|| check_box == "T4-Tourney"){
+	        	items[i].cost = 0;
+	 		}
+		}
 	}
 }
 

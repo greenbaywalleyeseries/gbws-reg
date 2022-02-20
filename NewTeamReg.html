@@ -2,16 +2,12 @@
 <html lang="en">
 
   <head>
-  	 	<script src="js/jquery-3.3.1.min.js"></script>
-  	<script type="text/javascript" src="js/reg_functions.js"></script>
+  	<script src="js/jquery-3.3.1.min.js"></script>
     <title>Green Bay Walleye Series</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
     <link href="https://fonts.googleapis.com/css?family=Muli:400,700" rel="stylesheet">
-
     <link rel="stylesheet" href="fonts/icomoon/style.css">
-
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="css/jquery.fancybox.min.css">
@@ -22,65 +18,72 @@
 
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="css/style.css">
- <!-- <script>
-    $(document).ready(function(){
-        $("#myModal").modal('show');
-    });
-    
-    function Refund() {
-    	var refund=document.getElementById("refund").value ;
-    	if (refund == "Refund") {
-    		$("#Refund").modal('show');
-    	}
-    }
 
-	</script>
-	 -->  
   </head>
+  <script>
+	$(document).ready( function() {
+	    var now = new Date();
+	    var day = ("0" + now.getDate()).slice(-2);
+	    var month = ("0" + (now.getMonth() + 1)).slice(-2);
+	    var today = now.getFullYear()+"-"+(month)+"-"+(day) ;
+	   $('#date').val(today);
+	});
+	
+  	function DataValidation() {
+  		var sub_first = document.getElementById('sub1_first').value;
+  		var sub_last = document.getElementById('sub1_last').value;
+  		var sub_ssn = document.getElementById('sub1_SSN').value;
+		var cap1 = document.getElementById('Captain1');
+		var co1 = document.getElementById('CoAngler1');
+		var sub1 = document.getElementById('Sub1');
+		var cap2 = document.getElementById('Captain2');
+		var co2 = document.getElementById('CoAngler2');
+		var sub2 = document.getElementById('Sub2');
+		var cap3 = document.getElementById('Captain3');
+		var co3 = document.getElementById('CoAngler3');
+		var sub3 = document.getElementById('Sub3');
+
+        if ( sub_first != "" || sub_last != "") {
+        	if (sub_ssn.length == 0) {
+        		document.getElementById("sub1_SSN").required = true;
+        		return false;
+        	}else{
+        	}
+        	if (!sub1.checked || !sub2.checked || !sub3.checked) {
+        		document.getElementById("Sub1").required = true;
+        		document.getElementById("Sub2").required = true;
+        		document.getElementById("Sub3").required = true;
+        		return false;
+        	}else{
+	        	document.getElementByName("NewTeamRegistration").submit();
+        	}
+        }
+
+
+
+	}
+  </script>
 
   <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+     <div class="modal fade" id="WaiverModal" role="dialog">
+	    <div class="modal-dialog">
+	      <div class="modal-content">
+	        <div class="modal-header">
+	          
+	          <h4 class="modal-title">GBWS Waiver Agreement</h4>
+	        </div>
+	        <div class="modal-body">
+	          <p>Agreement to the GBWS Waiver is required for each team member</p>
+	        </div>
+	        <div class="modal-footer">
+	          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+	        </div>
+	      </div>
+	
+	    </div>
+ 	</div>
   
-  <div class="container">
-
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          
-          <h4 class="modal-title">Team Subs</h4>
-        </div>
-        <div class="modal-body">
-          <p>Teams using subs during the season will not be eligible to win Team of the Year.  Subs must be registered when the team is registered.</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-  
-    <div class="modal fade" id="Refund" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          
-          <h4 class="modal-title">Refund Selected</h4>
-        </div>
-        <div class="modal-body">
-          <p>If a tournament is cancelled and a refund is issued, the team will be ineligible to fish the championship tournament</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
-
-</div>
-
-    
     <div class="site-wrap" id="home-section">
 
       <div class="site-mobile-menu site-navbar-target">
@@ -96,28 +99,22 @@
 
         <div class="container">
           <div class="row align-items-center position-relative">
-
             <div class="col-4 ">
               <div class="site-logo">
                 <a href="index.html" class="font-weight-bold">Green Bay Walleye Series</a>
               </div>
             </div>
-
             <div class="col-6  text-right">
-              
-
               <span class="d-inline-block d-lg-block"><a href="#" class="text-white site-menu-toggle js-menu-toggle py-5 text-white"><span class="icon-menu h3 text-white"></span></a></span>
-
-
-               <nav class="site-navigation text-right ml-auto d-none d-lg-none" role="navigation">
+ 			<nav class="site-navigation text-right ml-auto d-none d-lg-none" role="navigation">
                 <ul class="site-menu main-menu js-clone-nav ml-auto ">
-                  <li class="active"><a href="index.html" class="nav-link">Home</a></li>
+                  <li class="active"><a href="https://www.greenbaywalleyeseries.com/" class="nav-link">Home</a></li>
                   <li><a href="registration.html" class="nav-link">Registration</a></li>
-                  <li><a href="payouts.html" class="nav-link">Payouts</a></li>
-                  <li><a href="standings.html" class="nav-link">Standings</a></li>
+                  <li><a href="https://www.greenbaywalleyeseries.com/payouts.html" class="nav-link">Payouts</a></li>
+                  <li><a href="https://www.greenbaywalleyeseries.com/toy-standings.html" class="nav-link">Standings</a></li>
                   <li><a href="https://drive.google.com/file/d/1ayzA34s1sblJjrXLwphyFCAx25pQd_H3/view?usp=sharing" class="nav-link">Rules</a></li>
                   <li><a href="documents/green_bay_walleye_series_length_to_weight_conversion_chart.pdf" class="nav-link">Conversion Chart</a></li>
-                  <li><a href="index.html#sponsors" class="nav-link">Sponsors</a></li>
+                  <li><a href="https://www.greenbaywalleyeseries.com/sponsors.html" class="nav-link">Sponsors</a></li>
                 </ul>
               </nav>
 
@@ -136,8 +133,6 @@
               </nav>
 -->
 
-
-
             </div>
           </div>
         </div>
@@ -154,17 +149,15 @@
         </div>
       </div>
 	</div> 
-
-
-
-		<form name="NewTeamRegistration" method="POST" 	action="php/ins_team.php">
+<!-- 		<form name="NewTeamRegistration" method="POST" 	action="php/ins_team.php" > -->
+		<form name="NewTeamRegistration" method="POST" action="php/ins_team.php" onsubmit="return DataValidation()">
 		   	<div class="site-section">
 				<div class="container">
 					<div class="row align-items-center">
 						<div class="col-md-6 center-block">
 							<div class="form-row">
 								<div class="col">
-									<h2 class="text-center">Partner 1</h2>
+									<h2 class="text-center">Captain</h2>
 								</div>
 							</div>
 							<div class="form-row">
@@ -173,7 +166,7 @@
 									<input name="partner1_first" id="partner1_first" type="text" class="form-control" placeholder="First name" required>
 								</div>
 								<div class="col">
-									<label for="partner1_last">Last Name</label>
+								 	<label for="partner1_last">Last Name</label>
 									<input name="partner1_last" id="partner1_last" type="text" class="form-control" placeholder="Last name" required>
 								</div>
 							</div>
@@ -276,7 +269,7 @@
 						<div class="col-md-6 center-block">
 							<div class="form-row">
 								<div class="col">
-									<h2 class="text-center">Partner 2</h2>
+									<h2 class="text-center">Co-Angler</h2>
 								</div>
 							</div>
 							<div class="form-row">
@@ -393,15 +386,15 @@
 <!--  Team Equipment registration info -->					
 					<div class="row align-items-center">
 						<div class="col-md-12 center-block">
-							<div class="form-row">
+<!-- 						<div class="form-row">
 								<div class="col">
-									<label for="refund">In the event of a tournament cancellation, should the fees for the cancelled tournement to be refunded or rolled into the championship pot?</label>
+									<label for="refund">In the event of a tournament cancellation, should the fees for the cancelled tournament to be refunded or rolled into the championship pot?</label>
 									<select onchange="Refund()" name="refund" id="refund">
                         				<option value="Roll">Roll into Championship Payout</option>
                         				<option value="Refund">Refund</option>
                     				</select>
 								</div>
-							</div>
+							</div> -->	
 							<div class="form-row">
 								<div class="col">
 									<label for="boat">Boat</label>
@@ -438,7 +431,7 @@
 						<div class="col-md-6 center-block">
 							<div class="form-row">
 								<div class="col">
-									<h2 class="text-center">Sub 1</h2>
+									<h2 class="text-center">Sub</h2>
 								</div>
 							</div>
 							<div class="form-row">
@@ -546,7 +539,8 @@
 								</div>
 							</div>
 						</div>
-<!-- Sub 2 Registration Info -->
+					
+<!-- Sub 2 Registration Info
 						<div class="col-md-6 center-block">
 							<div class="form-row">
 								<div class="col">
@@ -659,11 +653,217 @@
 							</div>
 						</div>
 					</div>
+ -->
+			<div class="col-md-6 center-block">
+				<div class="form-row">
+					<div class="col">
+
+					</div>
+				</div>
+			</div>
+		</div>
+<!-- Start of Waiver -->
+<!-- Start of Header -->
+			<div class="row align-items-center">
+				<div class="col-md-12 center-block">
+					<div class="form-row">
+						<div class="col">
+							<h2 class="text-center">GREEN BAY WALLEYE SERIES WAIVER AND RELEASE OF LIABILITY</h2>
+						</div>
+					</div>
+				</div>
+			</div>
+ 			<div class="row align-items-center">
+				<div class="col-md-12 center-block">
+					<div class="form-row">
+						<div class="col">
+							<h6 class="text-left">In consideration for Participant’s being permitted to participate in Green Bay Walleye 
+Series (“GBWS”) programs, events, or tournaments and/or use GBWS’s facilities or equipment,
+Participant agrees as follows:
+</h6>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+<!-- End of Header -->
+
+
+
+<!-- Start of #1 -->
+			<div class="row align-items-center">
+				<div class="col-md-6 center-block">
+					<div class="form-row">
+						<div class="col">
+							<h6 class="text-left">1. ACKNOWLEDGEMENT OF RISK. Participant acknowledges and fully 
+understands there are inherent risks of serious injury or death associated with fishing and 
+aspects related thereto. These inherent risks include, but are not limited to: drowning, injury 
+due to fishing hooks, lures, and other related equipment, or water conditions. Inherent risks 
+also include acts or omissions of other participants; the condition of equipment or property; 
+weather conditions (such as lightning strikes, sunburn, rain or hail storms, tornadoes, and the 
+like); contact with animals or insects; the risk of Participant engaging in unauthorized activities; 
+Participant’s physical condition; Participant’s own acts and omissions; the administration and 
+availability of first aid and emergency treatment; and consumption of food or drink by 
+Participant. Participant further acknowledges that all inherent risks associated with such 
+activities cannot be described in this document.
+</h6>
+						</div>
+
+				</div>
+			</div>
+			
+
+				<div class="col-md-2 center-block">
+
+						<div class="col">
+							<div class="checkbox-inline" style="text-align:center;">
+  								<input type="checkbox" id="Captain1" name="Captain1" required>
+  								<label for="Captain1">Captain</label>
+
+							</div>
+						</div>
+					</div>
+					<div class="col-md-2 center-block">
+
+						<div class="col">
+							<div class="checkbox-inline" style="text-align:center;">
+  								<input type="checkbox" id="CoAngler1" name="CoAngler1" required>
+  								<label for="CoAngler1">Co-Angler</label>
+
+							</div>
+						</div>
+					</div>
+						<div class="col">
+							<div class="checkbox-inline" style="text-align:center;">
+  								<input type="checkbox" id="Sub1" name="Sub1">
+  								<label for="Sub1">Sub</label>
+
+							</div>
+						</div>
+					</div>
+		
+ <!-- End of #1 -->
+ 
+ <!-- Start of #2-->
+			<div class="row align-items-center">
+				<div class="col-md-6 center-block">
+					<div class="form-row">
+						<div class="col">
+							<h6 class="text-left">2. PARTICIPANT WAIVER OF RIGHTS AND RELEASE OF LIABILITY. 
+Participant, hereby releases, waives, discharges and covenants not to sue GBWS, its 
+employees, officers, directors, agents and/or volunteers (collectively, the “GBWS Releasees”) 
+from all liability to the Participant, his/her personal representatives, assigns, heirs and next of 
+kin, for any and all loss or damage, and any claim or demands therefore, on account of injury to 
+the person or property or resulting in the death of Participant, arising out of or related to 
+participation in GBWS programs, events or tournaments, including but not limited to those risks 
+described in Paragraph 1 above, whether caused by the negligence of the GBWS Releasees or 
+otherwise. This waiver of rights and release of liability does not include injury, damage, death,
+or loss as a result of the intentional or reckless acts of the GBWS Releasees.
+</h6>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="col-md-2 center-block">
+
+						<div class="col">
+							<div class="checkbox-inline" style="text-align:center;">
+  								<input type="checkbox" id="Captain2" name="Captain2" required>
+  								<label for="Captain2">Captain</label>
+
+							</div>
+						</div>
+					</div>
+					<div class="col-md-2 center-block">
+
+						<div class="col">
+							<div class="checkbox-inline" style="text-align:center;">
+  								<input type="checkbox" id="CoAngler2" name="CoAngler2" required>
+  								<label for="CoAngler2">Co-Angler</label>
+
+							</div>
+						</div>
+					</div>
+						<div class="col">
+							<div class="checkbox-inline" style="text-align:center;">
+  								<input type="checkbox" id="Sub2" name="Sub2">
+  								<label for="Sub2">Sub</label>
+
+							</div>
+						</div>
+					</div>		
+ <!-- End of #2 -->
+ 
+  <!-- Start of #3-->
+			<div class="row align-items-center">
+				<div class="col-md-6 center-block">
+					<div class="form-row">
+						<div class="col">
+							<h6 class="text-left">3. OPPORTUNITY TO NEGOTIATE. You are encouraged to review the contents 
+of this Agreement carefully. DO NOT SIGN this Agreement unless you understand and agree to 
+its terms and conditions. You may wish to consult an attorney. If you wish to NEGOTIATE any 
+of the terms of this Agreement for any modifications, deletions, or additions, please contact 
+Shelly Swain prior to signing and executing this Agreement. If you do not contact Shelly Swain
+prior to signing and executing this Agreement, GBWS understands that you are accepting the 
+terms and conditions set forth above, and that you do not wish to pursue any negotiations 
+regarding the terms and conditions of this Agreement.
+</h6>
+						</div>
+					</div>
+				</div>
+
+
+				<div class="col-md-2 center-block">
+
+						<div class="col">
+							<div class="checkbox-inline" style="text-align:center;">
+  								<input type="checkbox" id="Captain3" name="Captain3" required>
+  								<label for="Captain3">Captain</label>
+
+							</div>
+						</div>
+					</div>
+					<div class="col-md-2 center-block">
+
+						<div class="col">
+							<div class="checkbox-inline" style="text-align:center;">
+  								<input type="checkbox" id="CoAngler3" name="CoAngler3" required>
+  								<label for="CoAngler3">Co-Angler</label>
+
+							</div>
+						</div>
+					</div>
+						<div class="col">
+							<div class="checkbox-inline" style="text-align:center;">
+  								<input type="checkbox" id="Sub3" name="Sub3">
+  								<label for="Sub3">Sub</label>
+
+							</div>
+						</div>
+					</div>			
+ <!-- End of #3 -->
+ 
+ 
+ <!-- End of Waiver -->
+ 
+<div class="form-row">
+	<div class="col">
+		<label for="date">Date</label>
+		<input name="date" id="date" type="date" class="form-control">
+		<script>
+			document.getElementById('date').value = moment().format('MM/DD/YYYY');
+		</script>
+	</div>
+</div>
+
 					<br>
 					<hr>
 					<br>
+					<br>
 					<div class="col-md-12 text-center">
-						<input type="submit" class="btn btn-block btn-primary text-white py-3 px-2" value="Submit">
+				<!-- 	<input type="button"  onclick="return TestFunction()" value="Submit" name="submitsignup" id="submit" class="btn btn-block btn-primary text-white py-3 px-2">    -->
+				<input type="submit" class="btn btn-block btn-primary text-white py-3 px-2" value="Submit">
 					</div>
 				</div>
 			</div>        	

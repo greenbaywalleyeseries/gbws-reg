@@ -1,0 +1,1 @@
+C:\xampp\mysql\bin\mysqldump -u root -R gbws_reg >C:\xampp\htdocs\gbws-reg\DB\31OCT2021\gbws_reg.sql

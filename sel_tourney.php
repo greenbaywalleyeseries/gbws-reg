@@ -69,7 +69,7 @@
             if (event.target.readyState === "interactive") {   //same as:  ..addEventListener("DOMContentLoaded".. and   jQuery.ready
             	if ( team_reg > 0 ) {
             		var regitem = "Registration-(X" +team_reg+ ")";
-            		var regdesc = "2021 GBWS Registration";
+            		var regdesc = "GBWS Registration";
             		var regtotal = team_reg * 40;
             	
             			items.push({
@@ -129,13 +129,13 @@
 
               <span class="d-inline-block d-lg-block"><a href="#" class="text-white site-menu-toggle js-menu-toggle py-5 text-white"><span class="icon-menu h3 text-white"></span></a></span>
 
-              <nav class="site-navigation text-right ml-auto d-none d-lg-none" role="navigation">
+ 			<nav class="site-navigation text-right ml-auto d-none d-lg-none" role="navigation">
                 <ul class="site-menu main-menu js-clone-nav ml-auto ">
-                  <li><a href="https://www.greenbaywalleyeseries.com/" class="nav-link">Home</a></li>
-                  <li class="active"><a href="registration.html" class="nav-link">Registration</a></li>
+                  <li class="active"><a href="https://www.greenbaywalleyeseries.com/" class="nav-link">Home</a></li>
+                  <li><a href="registration.html" class="nav-link">Registration</a></li>
                   <li><a href="https://www.greenbaywalleyeseries.com/payouts.html" class="nav-link">Payouts</a></li>
-                  <li><a href="standings.html" class="nav-link">Standings</a></li>
-                  <li><a href="documents/green_bay_walleye_series_rules.pdf" class="nav-link">Rules</a></li>
+                  <li><a href="https://www.greenbaywalleyeseries.com/toy-standings.html" class="nav-link">Standings</a></li>
+                  <li><a href="https://drive.google.com/file/d/1ayzA34s1sblJjrXLwphyFCAx25pQd_H3/view?usp=sharing" class="nav-link">Rules</a></li>
                   <li><a href="documents/green_bay_walleye_series_length_to_weight_conversion_chart.pdf" class="nav-link">Conversion Chart</a></li>
                   <li><a href="https://www.greenbaywalleyeseries.com/sponsors.html" class="nav-link">Sponsors</a></li>
                 </ul>
@@ -191,29 +191,31 @@
                 
                 <div class="form-row">
                     <div class="col-3 col-md-3 text center">
-                    	<p>Team Member 1: <?php
+                    	<p>Captain: <?php
                     	   if (isset($partner1_name)) {
                     	       echo $partner1_name;
                     	   }?></p>
                     </div>
                     <div class="col-3 col-md-3 text center">
-                    	<p>Team Member 2: <?php
+                    	<p>Co-Angler: <?php
                     	   if (isset($partner2_name)) {
                     	       echo $partner2_name;
                     	   }?></p>
                     </div>
                     <div class="col-3 col-md-3 text center">
-                    	<p>First Sub: <?php
+                    	<p>Sub: <?php
                     	   if (isset($sub1_name)) {
                     	       echo $sub1_name;
                     	   }?></p>
                     </div>
-                    <div class="col-3 col-md-3 text center">
+ <!--
+                     <div class="col-3 col-md-3 text center">
                     	<p>Second Sub: <?php
                     	   if (isset($sub2_name)) {
                     	       echo $sub2_name;
                     	   }?></p>
-                    </div>
+                    </div>  
+-->
                 </div>
                 <hr>
                 <div class="form-row mb-3">

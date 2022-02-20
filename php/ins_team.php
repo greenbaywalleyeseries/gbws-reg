@@ -2,6 +2,7 @@
 include('gbws_reg_db.php');
 include('functions.php');
 
+$date=$_POST['date'];
 $partner1_first=$_POST['partner1_first'];
 $partner1_last=$_POST['partner1_last'];
 $partner1_address=$_POST['partner1_address'];
@@ -11,6 +12,9 @@ $partner1_zip=$_POST['partner1_zip'];
 $partner1_phone=$_POST['partner1_phone'];
 $partner1_email=$_POST['partner1_email'];
 $partner1_SSN=$_POST['partner1_SSN'];
+$captain1=$_POST['Captain1'];
+$captain2=$_POST['Captain2'];
+$captain3=$_POST['Captain3'];
 
 $partner2_first=$_POST['partner2_first'];
 $partner2_last=$_POST['partner2_last'];
@@ -21,6 +25,9 @@ $partner2_zip=$_POST['partner2_zip'];
 $partner2_phone=$_POST['partner2_phone'];
 $partner2_email=$_POST['partner2_email'];
 $partner2_SSN=$_POST['partner2_SSN'];
+$coangler1=$_POST['CoAngler1'];
+$coangler2=$_POST['CoAngler2'];
+$coangler3=$_POST['CoAngler3'];
 
 $refund_choice=$_POST['refund'];
 $boat=$_POST['boat'];
@@ -37,6 +44,9 @@ $sub1_zip=$_POST['sub1_zip'];
 $sub1_phone=$_POST['sub1_phone'];
 $sub1_email=$_POST['sub1_email'];
 $sub1_SSN=$_POST['sub1_SSN'];
+$sub1=$_POST['Sub1'];
+$sub2=$_POST['Sub2'];
+$sub3=$_POST['Sub3'];
 
 $sub2_first=$_POST['sub2_first'];
 $sub2_last=$_POST['sub2_last'];
@@ -75,7 +85,7 @@ if("" == trim($_POST['partner1_first'])){
     $partner1_mbr_id='';
 } else {
 	$partner1_mbr_id=get_mbr_id();
-	$ins_sql="INSERT INTO member_info (mbr_id, first, last, address, city, state, zip, phone, email, SSN) VALUES('$partner1_mbr_id', '$partner1_first', '$partner1_last', '$partner1_address', '$partner1_city', '$partner1_state', '$partner1_zip', '$partner1_phone', '$partner1_email', '$partner1_SSN')";
+	$ins_sql="INSERT INTO member_info (mbr_id, first, last, address, city, state, zip, phone, email, SSN, waiver1, waiver2, waiver3, date) VALUES('$partner1_mbr_id', '$partner1_first', '$partner1_last', '$partner1_address', '$partner1_city', '$partner1_state', '$partner1_zip', '$partner1_phone', '$partner1_email', '$partner1_SSN', '$captain1', '$captain2', '$captain3', '$date')";
 	$rc=reg_mbr($ins_sql);
 	$reg_size+=1;
 }
@@ -84,7 +94,7 @@ if("" == trim($_POST['partner2_first'])){
     $partner2_mbr_id='';
 } else {
 	$partner2_mbr_id=get_mbr_id();
-	$ins_sql="INSERT INTO member_info (mbr_id, first, last, address, city, state, zip, phone, email, SSN) VALUES('$partner2_mbr_id', '$partner2_first', '$partner2_last', '$partner2_address', '$partner2_city', '$partner2_state', '$partner2_zip', '$partner2_phone', '$partner2_email', '$partner2_SSN')";
+	$ins_sql="INSERT INTO member_info (mbr_id, first, last, address, city, state, zip, phone, email, SSN, waiver1, waiver2, waiver3, date) VALUES('$partner2_mbr_id', '$partner2_first', '$partner2_last', '$partner2_address', '$partner2_city', '$partner2_state', '$partner2_zip', '$partner2_phone', '$partner2_email', '$partner2_SSN', '$coangler1', '$coangler2', '$coangler3', '$date')";
 	$rc=reg_mbr($ins_sql);
 	$reg_size+=1;
 }
@@ -94,7 +104,7 @@ if("" == trim($_POST['sub1_first'])){
     $sub1_mbr_id='';
 } else {
 	$sub1_mbr_id=get_mbr_id();
-	$ins_sql="INSERT INTO member_info (mbr_id, first, last, address, city, state, zip, phone, email, SSN) VALUES('$sub1_mbr_id', '$sub1_first', '$sub1_last', '$sub1_address', '$sub1_city', '$sub1_state', '$sub1_zip', '$sub1_phone', '$sub1_email', '$sub1_SSN')";
+	$ins_sql="INSERT INTO member_info (mbr_id, first, last, address, city, state, zip, phone, email, SSN, waiver1, waiver2, waiver3, date) VALUES('$sub1_mbr_id', '$sub1_first', '$sub1_last', '$sub1_address', '$sub1_city', '$sub1_state', '$sub1_zip', '$sub1_phone', '$sub1_email', '$sub1_SSN', '$sub1', '$sub2', '$sub3', '$date')";
 	$rc=reg_mbr($ins_sql);
 	$reg_size+=1;
 }
@@ -138,7 +148,7 @@ echo 'alert("Problem registering team")';
     echo '</script>';
 }
 
-$mysqli->close();\
+$mysqli->close();
 header("Location:../sel_tourney.php?team_id=$team_id&team_reg=$reg_size");
 
 echo "<br>";

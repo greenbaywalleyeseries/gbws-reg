@@ -37,10 +37,10 @@
     <thead>
       <tr>
         <th>Team Number</th>
-        <th>Partner #1</th>
-        <th>Partner #2</th>
-        <th>Sub #1</th>
-        <th>Sub #2</th>
+        <th>Captain</th>
+        <th>Co-Angler</th>
+        <th>Sub</th>
+<!--        <th>Sub #2</th> -->
       </tr>
     </thead>
     <tbody>';
@@ -94,7 +94,7 @@
             <td>' .$Partner1_URL .'</td>
             <td>' .$Partner2_URL .'</td>
             <td>' .$Sub1_URL .'</td>
-            <td>' .$Sub2_URL .'</td>
+<!--             <td>' .$Sub2_URL .'</td> -->
         </tr>';
                     }
                 echo '

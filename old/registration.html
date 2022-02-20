@@ -22,44 +22,8 @@
 
     <!-- MAIN CSS -->
     <link rel="stylesheet" href="css/style.css">
-	<script>
-	$(document).ready(function(){
-		var ba = ["Chrome","Firefox","Safari","Opera","MSIE","Trident","Edge"];
-		var b, ua = navigator.userAgent;
-		for(var i=0; i < ba.length; i++){
-		    if( ua.indexOf(ba[i]) > -1 ){
-		        b = ba[i];
-		        break;
-		    }
-		}
-		if(b == "MSIE" || b == "Trident" || b == "Edge"){
-		    b = "Internet Explorer";
-        	$("#myModal").modal('show');
-		}
-    });
-	</Script>
-
 
   </head>
-
-  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300"">
-  <div class="modal fade" id="myModal" role="dialog">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          
-          <h4 class="modal-title">Incompatible Browser</h4>
-        </div>
-        <div class="modal-body">
-          <p>Internet Explorer is not compatible with the GBWS registration site.  Please use another browser such as Chrome or Edge</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        </div>
-      </div>
-
-    </div>
-  </div>
     
     <div class="site-wrap" id="home-section">
 
@@ -87,7 +51,7 @@
 
               <span class="d-inline-block d-lg-block"><a href="#" class="text-white site-menu-toggle js-menu-toggle py-5 text-white"><span class="icon-menu h3 text-white"></span></a></span>
 
- 			<nav class="site-navigation text-right ml-auto d-none d-lg-none" role="navigation">
+               <nav class="site-navigation text-right ml-auto d-none d-lg-none" role="navigation">
                 <ul class="site-menu main-menu js-clone-nav ml-auto ">
                   <li class="active"><a href="index.html" class="nav-link">Home</a></li>
                   <li><a href="registration.html" class="nav-link">Registration</a></li>
@@ -114,6 +78,7 @@
               </nav>
 -->
 
+
             </div>
           </div>
         </div>
@@ -124,7 +89,7 @@
         <div class="container">
         	<div class="row align-items-center justify-content-center">
             	<div class="col-md-12 text-center">
-              		<h1 class="md-12 text-white">GBWS Online Registration</h1>
+              		<h1 class="md-12 text-white">GBWS Tournament Registration</h1>
             	</div>
 			</div>
         </div>
@@ -132,20 +97,25 @@
 	</div> 
     
     <div class="site-section">
-	    <div class="col-lg 4">
-	    	
-	    	<form name="GetTeam" method="POST">
-	    		<a href="NewTeamReg.html" class="button">Register New Team</a> or 
-	        	<label for="member_input">enter your last name and select from the list below if you have already registered for the 2021 season</label>
-	        	<input class="text" id="member_input" name="member_input" type="text" oninput="showTeam(this.value)">
-	        </form>
-	    
-	    </div>
-	   
-		<div id="ListTeams">
-    
-    	</div>
-
+    	<div class="col-lg-10 ml-auto">
+	   		<div class="form-row">
+				<p>To be eligible for the Cabela's NTC bid, members must be registered at TWF through the Green Bay Walleye Series. </p>
+	
+				<p>To register as members of the TWF, call (580) 765-9031 and tell the Federation you would like to become a TWF member through the Green Bay Walleye Series.  If a team already signed up for TWF through another TWF member club, you are good to go.</p> 
+			</div>
+	
+<!--		<div class="form-row">
+				<p><a href="documents/2021_GBWS_registration_form.pdf" class="button">Click here to Register by Mail / Pay via Check</a></p>
+			</div>
+	  -->			
+			<div class="form-row">
+				<a href="online_registration.html" class="button">Click here for Online Registration*</a>
+			</div>
+			
+			<div class="form-row">
+				<p>*Online registration includes a $10 processing fee</p>
+			</div>
+		</div>
 	</div>
 
     <footer class="site-footer">
