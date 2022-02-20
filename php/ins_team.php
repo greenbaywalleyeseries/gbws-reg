@@ -141,6 +141,7 @@ $ins_sql="INSERT INTO team_info (team_id, partner1, partner2, sub1, sub2, refund
 
 if ($mysqli->query($ins_sql) == TRUE) {
    echo "Team ID for " . $partner1_last . " / " .$partner2_last." is ". $team_id. "<br>";
+   echo $date;
 }
 else {
     echo '<script language="javascript">';
@@ -149,7 +150,7 @@ echo 'alert("Problem registering team")';
 }
 
 $mysqli->close();
-header("Location:../sel_tourney.php?team_id=$team_id&team_reg=$reg_size");
+// header("Location:../sel_tourney.php?team_id=$team_id&team_reg=$reg_size");
 
 echo "<br>";
 
