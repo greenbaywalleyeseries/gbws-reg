@@ -88,6 +88,8 @@ if("" == trim($_POST['partner1_first'])){
 	$ins_sql="INSERT INTO member_info (mbr_id, first, last, address, city, state, zip, phone, email, SSN, waiver1, waiver2, waiver3, date) VALUES('$partner1_mbr_id', '$partner1_first', '$partner1_last', '$partner1_address', '$partner1_city', '$partner1_state', '$partner1_zip', '$partner1_phone', '$partner1_email', '$partner1_SSN', '$captain1', '$captain2', '$captain3', '$date')";
 	$rc=reg_mbr($ins_sql);
 	$reg_size+=1;
+//	echo "Partner 1 rc: " .$rc;
+//	echo $ins_sql;
 }
 
 if("" == trim($_POST['partner2_first'])){
@@ -97,6 +99,8 @@ if("" == trim($_POST['partner2_first'])){
 	$ins_sql="INSERT INTO member_info (mbr_id, first, last, address, city, state, zip, phone, email, SSN, waiver1, waiver2, waiver3, date) VALUES('$partner2_mbr_id', '$partner2_first', '$partner2_last', '$partner2_address', '$partner2_city', '$partner2_state', '$partner2_zip', '$partner2_phone', '$partner2_email', '$partner2_SSN', '$coangler1', '$coangler2', '$coangler3', '$date')";
 	$rc=reg_mbr($ins_sql);
 	$reg_size+=1;
+//	echo "Partner 2 rc: " .$rc;
+//	echo $ins_sql;
 }
 
 
@@ -107,6 +111,8 @@ if("" == trim($_POST['sub1_first'])){
 	$ins_sql="INSERT INTO member_info (mbr_id, first, last, address, city, state, zip, phone, email, SSN, waiver1, waiver2, waiver3, date) VALUES('$sub1_mbr_id', '$sub1_first', '$sub1_last', '$sub1_address', '$sub1_city', '$sub1_state', '$sub1_zip', '$sub1_phone', '$sub1_email', '$sub1_SSN', '$sub1', '$sub2', '$sub3', '$date')";
 	$rc=reg_mbr($ins_sql);
 	$reg_size+=1;
+//	echo "Sub 1 rc: " .$rc;
+//	echo $ins_sql;
 }
 
 if("" == trim($_POST['sub2_first'])){
@@ -116,6 +122,8 @@ if("" == trim($_POST['sub2_first'])){
 	$ins_sql="INSERT INTO member_info (mbr_id, first, last, address, city, state, zip, phone, email, SSN) VALUES('$sub2_mbr_id', '$sub2_first', '$sub2_last', '$sub2_address', '$sub2_city', '$sub2_state', '$sub2_zip', '$sub2_phone', '$sub2_email', $sub2_SSN)";
 	$rc=reg_mbr($ins_sql);
 	$reg_size+=1;
+//	echo "Sub 2 rc: " .$rc;
+//	echo $ins_sql;
 }  
 
 
@@ -141,7 +149,7 @@ echo $ins_sql;
 
 if ($mysqli->query($ins_sql) == TRUE) {
    echo "Team ID for " . $partner1_last . " / " .$partner2_last." is ". $team_id. "<br>";
-   echo $date;
+//   echo $date;
 }
 else {
     echo '<script language="javascript">';
@@ -150,7 +158,7 @@ echo 'alert("Problem registering team")';
 }
 
 $mysqli->close();
-// header("Location:../sel_tourney.php?team_id=$team_id&team_reg=$reg_size");
+ header("Location:../sel_tourney.php?team_id=$team_id&team_reg=$reg_size");
 
 echo "<br>";
 
