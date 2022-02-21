@@ -145,7 +145,7 @@ if ($team_result->num_rows > 0) {
 
 //Insert info for Team #1 into team_info table
 $ins_sql="INSERT INTO team_info (team_id, partner1, partner2, sub1, sub2, refund, boat, motor, trolling_motor, electronics) VALUES('$team_id', '$partner1_mbr_id', '$partner2_mbr_id', '$sub1_mbr_id', '$sub2_mbr_id', '$refund', '$boat', '$motor', '$trolling_motor', '$electronics')";
-echo $ins_sql;
+//echo $ins_sql;
 
 if ($mysqli->query($ins_sql) == TRUE) {
    echo "Team ID for " . $partner1_last . " / " .$partner2_last." is ". $team_id. "<br>";
@@ -158,7 +158,7 @@ echo 'alert("Problem registering team")';
 }
 
 $mysqli->close();
- header("Location:../sel_tourney.php?team_id=$team_id&team_reg=$reg_size");
+header("Location:../sel_tourney.php?team_id=$team_id&team_reg=$reg_size");
 
 echo "<br>";
 
