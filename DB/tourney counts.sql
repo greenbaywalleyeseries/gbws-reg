@@ -1,0 +1,2 @@
+SELECT count(*) as 'Big Fish Entries' FROM gbws_reg.transaction_items where item_number='T4-Fish';
+SELECT count(*) as 'Option Pot Entries' FROM gbws_reg.transaction_items where item_number='T4-Option';
