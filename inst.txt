@@ -7,3 +7,11 @@ create local folder (in "htdocs" to use local development environment)
 cd to local folder
 git clone https://github.com/greenbaywalleyeseries/greenbaywalleyeseries.github.io .
 
+
+Load file  .\DB\migration_script.sql into Mysql to generate schema, tables, procedures, etc.  May have to remove <Definer="gbws_reg" from file to get stored procedures to run correctly.
+Enter tourney info.  Column named Local should be T1, T2, T3, T4, & CH for each respective tournament
+Deploy MySql Flexible server
+Migrate database.  Will have to address create definer statement in stored procs
+update list_rosters.html (in admin folder) with new tourney dates)
+Create Web App with Name gbws-reg
+Setup GitHub Deployment thru Deployment Center on web app (after creation)
