@@ -112,7 +112,7 @@ function UpdateCart(chkbox_name,description,cost){
 
 function checkCoupon() {
 	var code = document.getElementById("coupon").value;
-	if (code == '2021TOY') {
+	if (code == '2022TOY') {
 	 	for (var i = 0; i < items.length; i++) {
 	     	var check_box = items[i].check_box ;
 	        if (check_box == "CH-Tourney") {
@@ -123,7 +123,7 @@ function checkCoupon() {
 	        }
 	 	}
 	}
-	if (code == '2022AdMiN') {
+	if (code == '2023AdMiN') {
 	 	for (var i = 0; i < items.length; i++) {
 	     	var check_box = items[i].check_box ;
 	        if (check_box.includes("Registration-",0)) {
