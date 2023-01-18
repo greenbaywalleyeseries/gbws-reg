@@ -79,7 +79,7 @@ function showAllMembers() {
 
 function CalcMbrRegFee(quantity){
 	var regitem = "Registration-(X" +quantity+ ")";
-	var regdesc = "2022 GBWS Registration";
+	var regdesc = "2023 GBWS Registration";
 	var regtotal = quantity * 1;
 	
 		items.push({
