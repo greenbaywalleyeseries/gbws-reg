@@ -36,4 +36,23 @@ if (isset($second_date)) {
     $date=$start_date;
 
 }
+
+$sql="call ListTourneyRoster('".$tourney_id."')";
+$result = mysqli_query($mysqli,$sql);
+$i=1;
+if ($result->num_rows > 0) {
+    while($row = $result->fetch_assoc()) {
+        
+        $boat_num=$i;
+        $partner1=$row["partner1"];
+        $partner2=$row["partner2"];
+        $option_pot=$row["option_pot"];
+        $big_fish=$row["big_fish"];
+        $data=array($boat_num, $partner1, $partner2, $option_pot, $big_fish);
+        $roster[]=$data;
+        $i=$i+1;
+    }
+    
+}
+
 ?>
