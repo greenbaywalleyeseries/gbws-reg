@@ -121,4 +121,12 @@ if ($result->num_rows > 0) {
 
 $mysqli->close();
 
+    // Instanciation of inherited class
+$pdf = new PDF('P','mm','Legal');
+//$pdf = new PDF('P','mm','Letter');
+$pdf->SetLeftMargin(3);
+// Column headings
+$pdf->SetFont('Arial','',8);
+$pdf->AddPage();
+
 ?>
