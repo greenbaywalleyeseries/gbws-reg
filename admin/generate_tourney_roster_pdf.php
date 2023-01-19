@@ -57,6 +57,7 @@ if ($result->num_rows > 0) {
         echo $partner2;
         echo $option_pot;
         echo $big_fish;
+        echo $i;
         $i=$i+1;
     }
     
