@@ -32,5 +32,5 @@ if (isset($second_date)) {
 } else {
     $date=$start_date;
 
-
+}
 ?>
