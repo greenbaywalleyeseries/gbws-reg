@@ -127,6 +127,5 @@ $pdf = new PDF('P','mm','Legal');
 $pdf->SetLeftMargin(3);
 // Column headings
 $pdf->SetFont('Arial','',8);
-$pdf->AddPage();
 
 ?>
