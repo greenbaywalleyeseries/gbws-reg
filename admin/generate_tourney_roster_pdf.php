@@ -6,9 +6,6 @@ $tourney_id = $_GET['tourney_id'];
 
 
 
-$mysqli->close();
-
-
 // Instanciation of inherited class
 $pdf = new PDF('P','mm','Legal');
 //$pdf = new PDF('P','mm','Letter');
