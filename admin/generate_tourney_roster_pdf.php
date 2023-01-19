@@ -27,6 +27,9 @@ $location=$row['location'];
 $start_date=$row['start_date'];
 $second_date=$row['second_date'];
 
+echo $location;
+echo $start_date;
+echo $second_date;
 
 endforeach;
 
@@ -50,6 +53,10 @@ if ($result->num_rows > 0) {
         $big_fish=$row["big_fish"];
         $data=array($boat_num, $partner1, $partner2, $option_pot, $big_fish);
         $roster[]=$data;
+        echo $partner1;
+        echo $partner2;
+        echo $option_pot;
+        echo $big_fish;
         $i=$i+1;
     }
     
