@@ -1,4 +1,5 @@
 <?php
+//'REST API to download CSV to excel for tourney template'
     include('../php/gbws_reg_db.php');
     print "{\"data\": ";
     //$tourney_id = 'T1';
