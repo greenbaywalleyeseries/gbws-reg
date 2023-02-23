@@ -56,5 +56,5 @@ jobs:
         with:
           app-name: 'gbws-reg'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_3FE18FD9C95540A687F87EDF87815000 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_C7A5E4D03BB54660B2CD567E47FE85A6 }}
           package: .
