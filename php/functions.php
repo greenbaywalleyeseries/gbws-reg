@@ -1,6 +1,7 @@
 <?php
 //include('gbws_reg_db.php');
 
+
 function get_mbr_id() {
     include('gbws_reg_db.php');
     $sql= "c;";

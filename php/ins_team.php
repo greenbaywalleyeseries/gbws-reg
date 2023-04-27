@@ -1,5 +1,4 @@
 <?php
-
 include('gbws_reg_db.php');
 include('functions.php');
 

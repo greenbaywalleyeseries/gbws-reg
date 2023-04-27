@@ -231,6 +231,7 @@
     			<div class="form-row">
     				<div class="col-3  col-md-2">
     			
+    			
     				</div>
     				<div class="col-3  col-md-2 text-center">
     					<p>Tournament<br>$415</p>
