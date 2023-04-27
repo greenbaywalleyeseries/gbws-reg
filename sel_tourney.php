@@ -70,7 +70,7 @@
             	if ( team_reg > 0 ) {
             		var regitem = "Registration-(X" +team_reg+ ")";
             		var regdesc = "GBWS Registration";
-            		var regtotal = team_reg * 40;
+            		var regtotal = team_reg * 42;
             	
             			items.push({
                	    		check_box: regitem,
@@ -233,13 +233,13 @@
     			
     				</div>
     				<div class="col-3  col-md-2 text-center">
-    					<p>Tournament<br>$410</p>
+    					<p>Tournament<br>$415</p>
     				</div>
     				<div class="col-3 col-md-2 text-center">
-    					<p>Option Pot - 100% Payback<br>$200</p>
+    					<p>Option Pot - 100% Payback<br>$220</p>
     				</div>
     				<div class="col-3  col-md-2 text-center">
-    					<p>Big Fish<br>$20</p>
+    					<p>Big Fish<br>$22</p>
     				</div>
     				<div class="col-md-2 text-center d-none d-sm-block">
     					<p>Partner #1</p>
@@ -312,13 +312,13 @@
     			
     				</div>
     				<div class="col-3  col-md-2 text-center">
-    					<p>Championship Tournament<br>$510</p>
+    					<p>Championship Tournament<br>$520</p>
     				</div>
     				<div class="col-3  col-md-2 text-center">
-    					<p>Option Pot - 100% Payback<br>$200</p>
+    					<p>Option Pot - 100% Payback<br>$210</p>
     				</div>
     				<div class="col-3  col-md-2 text-center">
-    					<p>Big Fish<br>$40</p>
+    					<p>Big Fish<br>$42</p>
     				</div>
     				<div class="col-md-2 text-center  d-none d-sm-block">
     					<p>Partner #1</p>

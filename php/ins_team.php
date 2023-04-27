@@ -29,7 +29,6 @@ $coangler1=$_POST['CoAngler1'];
 $coangler2=$_POST['CoAngler2'];
 $coangler3=$_POST['CoAngler3'];
 
-$refund_choice=$_POST['refund'];
 $boat=$_POST['boat'];
 $motor=$_POST['motor'];
 $trolling_motor=$_POST['trolling_motor'];
@@ -44,39 +43,16 @@ $sub1_zip=$_POST['sub1_zip'];
 $sub1_phone=$_POST['sub1_phone'];
 $sub1_email=$_POST['sub1_email'];
 $sub1_SSN=$_POST['sub1_SSN'];
-$sub1=$_POST['Sub1'];
-$sub2=$_POST['Sub2'];
-$sub3=$_POST['Sub3'];
-
-$sub2_first=$_POST['sub2_first'];
-$sub2_last=$_POST['sub2_last'];
-$sub2_address=$_POST['sub2_address'];
-$sub2_city=$_POST['sub2_city'];
-$sub2_state=$_POST['sub2_state'];
-$sub2_zip=$_POST['sub2_zip'];
-$sub2_phone=$_POST['sub2_phone'];
-$sub2_email=$_POST['sub2_email'];
-$sub2_SSN=$_POST['sub2_SSN'];
-
-switch ($refund_choice) {
-    case "Refund":
-        $refund='X';
-        break;
-    case "Roll":
-        $refund='';
-        break;
-}
+//$sub1=$_POST['Sub1'];
 
 //Clear phone numbers of spaces, hypens, etc.
 $partner1_phone = preg_replace('/\D+/', '', $partner1_phone); // Removes special chars.
 $partner2_phone = preg_replace('/\D+/', '', $partner2_phone); // Removes special chars.
 $sub1_phone = preg_replace('/\D+/', '', $sub1_phone); // Removes special chars.
-$sub2_phone = preg_replace('/\D+/', '', $sub2_phone); // Removes special chars.
 //ClearSSN of spaces, hypens, etc.
 $partner1_SSN = preg_replace('/\D+/', '', $partner1_SSN); // Removes special chars.
-$partner2_SSN = preg_replace('/\D+/', '', $partner2_SSN); // Removes special chars.
 $sub1_SSN = preg_replace('/\D+/', '', $sub1_SSN); // Removes special chars.
-$sub2_SSN = preg_replace('/\D+/', '', $sub2_SSN); // Removes special chars.
+
 
 
 $reg_size=0;
@@ -109,16 +85,6 @@ if("" == trim($_POST['sub1_first'])){
     $reg_size+=1;
 }
 
-if("" == trim($_POST['sub2_first'])){
-    $sub2_mbr_id='';
-} else {
-    $sub2_mbr_id=get_mbr_id();
-    $ins_sql="INSERT INTO member_info (mbr_id, first, last, address, city, state, zip, phone, email, SSN) VALUES('$sub2_mbr_id', '$sub2_first', '$sub2_last', '$sub2_address', '$sub2_city', '$sub2_state', '$sub2_zip', '$sub2_phone', '$sub2_email', $sub2_SSN)";
-    $rc=reg_mbr($ins_sql);
-    $reg_size+=1;
-}
-
-
 //echo $reg_size;
 
 //Get team_id
@@ -136,7 +102,7 @@ if ($team_result->num_rows > 0) {
 }
 
 //Insert info for Team #1 into team_info table
-$ins_sql="INSERT INTO team_info (team_id, partner1, partner2, sub1, sub2, refund, boat, motor, trolling_motor, electronics) VALUES('$team_id', '$partner1_mbr_id', '$partner2_mbr_id', '$sub1_mbr_id', '$sub2_mbr_id', '$refund', '$boat', '$motor', '$trolling_motor', '$electronics')";
+$ins_sql="INSERT INTO team_info (team_id, partner1, partner2, sub1, boat, motor, trolling_motor, electronics) VALUES('$team_id', '$partner1_mbr_id', '$partner2_mbr_id', '$sub1_mbr_id', '$boat', '$motor', '$trolling_motor', '$electronics')";
 //echo $ins_sql;
 
 if ($mysqli->query($ins_sql) == TRUE) {
