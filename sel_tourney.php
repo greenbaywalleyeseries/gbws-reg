@@ -236,7 +236,7 @@
     					<p>Tournament<br>$415</p>
     				</div>
     				<div class="col-3 col-md-2 text-center">
-    					<p>Option Pot - 100% Payback<br>$220</p>
+    					<p>Option Pot<br>$220</p>
     				</div>
     				<div class="col-3  col-md-2 text-center">
     					<p>Big Fish<br>$22</p>
@@ -315,7 +315,7 @@
     					<p>Championship Tournament<br>$520</p>
     				</div>
     				<div class="col-3  col-md-2 text-center">
-    					<p>Option Pot - 100% Payback<br>$210</p>
+    					<p>Option Pot<br>$210</p>
     				</div>
     				<div class="col-3  col-md-2 text-center">
     					<p>Big Fish<br>$42</p>
