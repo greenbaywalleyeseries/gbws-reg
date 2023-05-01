@@ -4,7 +4,7 @@
 
 function get_mbr_id() {
     include('gbws_reg_db.php');
-    $sql= "c;";
+    $sql= "CALL get_mbr_id(@mbr)";
     $result = $mysqli->query($sql);
     $mbr_result = $mysqli->query('select @mbr');
     if ($mbr_result->num_rows > 0) {
