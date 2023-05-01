@@ -221,7 +221,7 @@
                 <div class="form-row mb-3">
                     <div class="col-6 col-md-4 text-center">
         				GBWS Membership Registration 
-        				($40 per team member): 
+        				($42 per team member): 
         			</div>
         			<div class="col-1 col-md-1 text-center align-middle">
         				<input type="text" size="1" id="registrations" name="registrations" value="0" disabled/>
